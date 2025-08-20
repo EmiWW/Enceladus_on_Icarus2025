@@ -15,6 +15,7 @@
 *.vrb
 *.log
 *.spl
+*.zip
 
 # Editors
 *~
