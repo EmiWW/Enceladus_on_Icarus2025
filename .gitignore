@@ -31,5 +31,4 @@
 *.pdf
 
 # Manuall set for this only
-enceladus_crater.bib
-makepdf.sh
+unused/
