@@ -28,7 +28,7 @@
 .DS_Store
 
 # Output files (optional)
-*.pdf
+#*.pdf
 
 # Manuall set for this only
 unused/
