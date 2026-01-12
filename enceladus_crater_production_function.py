@@ -312,7 +312,7 @@ def calculate_crater_density(
     expected_enceladus_crater_size_from_one_km_impactor = impactor_to_crater(
         1.0, enceladus_impact_parameters
     )
-    one_km_impactor_on_enceldaus = crater_sfd(
+    one_km_impactor_on_enceladus = crater_sfd(
         expected_enceladus_crater_size_from_one_km_impactor
     )
     one_km_impactor_on_moon = expected_impact_density(
@@ -331,14 +331,14 @@ def calculate_crater_density(
     )
     density = crater_sfd(enceladus_reliable_crater_diameter)
     normalised_density = (
-        density / one_km_impactor_on_enceldaus * one_km_impactor_on_moon
+        density / one_km_impactor_on_enceladus * one_km_impactor_on_moon
     )
 
     # Creating function with the entire observed crater ranges in this work
     density_all_crater_diameter = crater_sfd(enceladus_crater_diameter)
     normalised_density_all_crater_diameter = (
         density_all_crater_diameter
-        / one_km_impactor_on_enceldaus
+        / one_km_impactor_on_enceladus
         * one_km_impactor_on_moon
     )
     return (
