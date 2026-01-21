@@ -596,16 +596,16 @@ To prevent visual distortion of the data and exclusion of readers with colour-vi
 
 \bibliographystyle{elsarticle-harv}
 \bibliography{enceladus_crater}{}
-\pagebreak
+\clearpage
 
 %====== APPENDIX ==================
 \appendix
 \section{Additional figures and data}
+\label{sec:appA}
 %\renewcommand{\thefigure}{A\arabic{figure}}
 \setcounter{figure}{0}
 Appendix: Figs.~\ref{fig:app_erosion1} to \ref{fig:app_erosion4}.\\
 \textbf{In the figure caption, some description perhaps could be adapted to the main paper or result? }
-
 
 \begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/FigS4B_CW-T-square.png}
@@ -614,37 +614,40 @@ Appendix: Figs.~\ref{fig:app_erosion1} to \ref{fig:app_erosion4}.\\
 \end{figure}
 
 
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/FigS4B_Near-Mid-CP2.png}
     \caption{Near-Mid-CP2 (20°W, 30°N), several tectonic features are evident. (i) Isolated ridges, up to 2 km wide, are scattered across the right region with varying orientations, including horizontal and NW-SE. Some ridges appear truncated by craters (yellow arrow), indicating the craters are younger, though higher-resolution images are needed to confirm this. (ii) In the western region, tectonic activity from CW-L-Curvilinear unit has transitioned into this more heavily cratered Near-Mid-CP2, where craters gradually smooth out and lose their rim and bowl shapes. (iii) The western boundary also shows pit chains cutting through these partially eroded, smooth craters (white lines). (iv) A 1 km-wide trough, extending $\sim$340 km from 40°N to 37°S, cuts through ridges and craters (yellow arrows).}
     \label{fig:app_erosion2}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/FigS4B_Far-Mid-CP9.png}
     \caption{Far-Mid-CP9 (165°W, 40°N) features three sets of pit chains formed at different times \citep{Martin2014}. The oldest NW-SE-trending chains (labelled as magenta lines) cross from the west, sharing an origin with those from Far-Mid-CP8. Two NE-SW trending chains lie along the southeast boundary adjacent to CW-S-curvilinear (red lines) and the northwest boundary adjacent to Far-Eq-CP8 (orange lines). The newest, also NE-SW chains dominate the terrain (yellow lines), intersecting most craters. The pit chain colours follow those used by \citet{Martin2014}. Due to images’ resolution limits, they indicate the general direction and rough location of each branch, rather than the precise position of individual pit chains. A most obvious feature is a 22 km crater at the southwest tip (white diamond), where pit chains and ridged belts have eroded at least one-third of its rim. Craters appear progressively more eroded and smoother toward the south.}
     \label{fig:app_erosion3}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/FigS4B_CW-L-CP-island.png}
     \caption{CW-L-CP-island (86°W, 29°S and 75°W, 28°S) consists of two small and heavily cratered ``islands'' surrounded by smoother terrain (CW-L-central). Most craters (up to $\sim$4 km) exhibit significant erosion, with distorted rims and shallow floors. In contrast, a few fresher craters (1.5–-2 km) with clear circular rims stand out, matching the morphology of craters on the younger CW-L-central. These fresher craters likely formed after the resurfacing event that shaped CW-L-central, underscoring the erosion of pre-existing craters. The crater density here aligns with other cratered plains at similar altitudes on both the anti-Saturn side and Saturn-facing side, suggesting a once higher global crater density on Enceladus before resurfacing events like the formation of CW-L-curvilinear and CW-L-central. These relict ``islands'' survived the resurfacing events and preserved pre-existing craters, which can still be distinguishable.}
     \label{fig:app_erosion4}
 \end{figure}
-\end{document}
+
+\clearpage
 
 %============================================================
 % TODO: how to add appendix B into the latex
 \section{Documentation and justification of the selected representative units}
+\label{sec:appB}
+
+\setcounter{figure}{0}
 Here, we document and justify the selection of each of the 13 representative units and their associated diameter ranges. The lower diameter cutoff is chosen to exclude features likely influenced by tectonic activity, which dominates at smaller scales. For units previously defined by CW15, we reference their documentation and adopt their characteristic properties as justification for selection.
 
 \subsection{Leading hemisphere central plains (CW-L-central)}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/CW-L-central.png}
     \caption{}
     \label{fig:cw-L-central}
 \end{figure}
-\end{document}
 CW-L-central is one of the smoothest and most homogeneous surface units on Enceladus, declared/defined by \citet{CrowWillard2015}. It forms a single, laterally continuous plains unit dominated by a consistent ridge–trough morphology. Although internal structures are present—such as ropy and interlaced ridges lacking a distinct preferred orientation \citep{CrowWillard2015}—these features do not subdivide the unit into discrete resurfacing episodes. This morphological uniformity indicates a single dominant surface age and minimizes the risk of mixing crater populations formed at different times.
 
 The surface is smooth and lacks evidence of burial by thick mantling deposits. Small craters appear fresh, with well-preserved circular rims and floors, and are not visibly deformed by the ridge–trough fabric, indicating they postdate the resurfacing that formed the units. Craters in this unit range from 0.8 to 1.5 km in diameter—a size range where small crater depletion is often problematic in heavily cratered terrains. Within this narrow diameter range, the crater size–frequency distribution is smooth and lacks inflections or roll-overs, indicating minimal erosion or partial resurfacing. This suggests that pre-existing craters were effectively removed during the formation of CW-L-central, and the current crater population represents a more recent, unmodified record.
@@ -652,7 +655,7 @@ The surface is smooth and lacks evidence of burial by thick mantling deposits. S
 The only evidence for partial resurfacing within CW-L-central is the presence of two small, isolated exposures of older cratered plains (CW-L-CP-island) embedded within the unit. These islands are morphologically distinct and spatially well bounded, allowing their crater populations and surface areas to be unambiguously identified and excluded from the analysis (see App.~\ref{fig:app_erosion4}). Taken together, these characteristics satisfy the principal criteria for reliable crater size–frequency analysis \citep{Neukum1983}, including geological homogeneity, limited resurfacing, preservation of small craters, and less likely contamination of small crater in absence of large impact structures within the unit or nearby, making CW-L-central a robust reference unit for constraining the small-diameter portion of the Enceladian crater production function.
 
 \subsection{Trailing hemisphere transitional plains, left (CW-T-transitional-left)}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/CW-T-transitional-left.png}
     \caption{Crater distribution in Trailing hemisphere transitional plains, left (CW-T-transitional-left).}
     \label{fig:cw-T-transitional-left}
@@ -671,7 +674,7 @@ Crater counts from KS-RP1-left and two subregions within this unit (Near-Mid-CP6
 
 
 \subsection{Trailing hemisphere striated plains, left (CW-T-striated-left)}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/CW-T-striated-left.png}
     \caption{Crater distribution in Trailing hemisphere striated plains, left (CW-T-striated-left).}
     \label{fig:cw-T-striated-left}
@@ -684,7 +687,7 @@ The profile of the crater size–frequency measurement is smooth at all recorded
 
 %\subsection{Trailing hemisphere striated plains, right (CW-T-striated-right)}
 \subsection{Ridged plain-4, right portion (KS-RP4-right)}
-\begin{figure}[t]
+\begin{figure}[H]
 %    \includegraphics[width=1.0\linewidth]{fig/CW-T-striated-right.png}
 %    \caption{Crater distribution in Trailing hemisphere striated plains, right (CW-T-striated-right).}
 %    \label{fig:cw-T-striated-right}
@@ -702,7 +705,7 @@ Following \citet{Kirchoff2009}, we therefore treat KS-RP4-right and KS-RP5 as di
 %TODO: change CW-T-straitedr-right in the figures and captions
 
 \subsection{Far-side equatorial cratered plain 4 (Far-Eq-CP4)}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Far-Eq-CP4.png}
     \caption{Crater distribution in Far-side equatorial cratered plain 4 (Far-Eq-CP4).}
     \label{fig:far-eq-cp4}
@@ -723,7 +726,7 @@ which might explain the roll very at around smaller than 1.2 km in the crater si
 measurement; in general, the profile of the crater size-frequency measurement is smooth from 1.2 km till the largest diamater record in this unit, and that's the ranges for modelling the CPF.\\
 
 \subsection{Far-side equatorial cratered plain 6 (Far-Eq-CP6)}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Far-Eq-CP6.png}
     \caption{Crater distribution in Far-side equatorial cratered plain 6 (Far-Eq-CP6).}
     \label{fig:far-eq-cp6}
@@ -731,7 +734,7 @@ measurement; in general, the profile of the crater size-frequency measurement is
 A narrow cratered plain unit situated between the trailing hemisphere curvilinear plains (CS-T-curvilinear-right) and the far-side crater plains. Original bounded within the large scaled cratered plain from \citet{Kirchoff2009}, now separately mapped to avoided obvious tectonic-like feature surrounding the unit for improving crater count statistic. At the eastern boundary, a massive corrugated trough or chasmata, characterized by its X and Y crossing structure, which extends from 5$^\circ$S to 40$^\circ$S, spanning nearly the entire southern hemisphere before terminating at the boundary of the CW-S-curvilinear. At the northern part of the unit, an NW-SE-trending pit chain traverses the craters and cutting across the corrugated troughs or chasmata, and pit chains are the most recently-formed geological features on the unit \citep{Martin2014}. Other than the pit-chain, this small unit is a homogeneous geological unit that likely to form in a single event then accumlate crater, which some are further transvered by pit chain. There are no large group of feature intruding the unit, which reduce contamination or obscuring the crater detection, but as a cratered plain which are surrounded by tectonic unit, and with pit-chain potentially obscuring the small crater, we pick only crater size from 2 to 5 kmm, also indicate as a smooth part of the cratre size-frequency measurement, which avoid flattening at small crater end, for fitting the CPF.\\
 
 %\subsection{Far-side mid-latitude cratered plain 10 (Far-Mid-CP10)}
-%\begin{figure}[t]
+%\begin{figure}[H]
 %    \includegraphics[width=1.0\linewidth]{fig/Far-Mid-CP10.png}
 %    \caption{Crater distribution in Far-side mid-latitude cratered plain 10 (Far-Mid-CP10).}
 %    \label{fig:far-mid-cp10}
@@ -748,7 +751,7 @@ A narrow cratered plain unit situated between the trailing hemisphere curvilinea
 % good unit. Given the description 
 
 \subsection{Far-side mid-latitude cratered plain 5 (Far-Mid-CP5)}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Far-Mid-CP5.png}
     \caption{Crater distribution in Far-side mid-latitude cratered plain 5 (Far-Mid-CP5).}
     \label{fig:far-mid-cp5}
@@ -759,7 +762,7 @@ incidence angles. Such limited resolution effect could be reflect in the rolling
 size-frequency measurement as early as $\sim$3.5 km diamater crater. But for constructing CPF
 purpose, we could limited to large crater size, i.e., from 4.0 km.
 The terrain is characterized by roughly Nw-Se trending corrugated narrow troughs (e.g., extend from
-58$\^{circ}N, 171\^{circ}E to 30$\^{circ}N, 175\^{circ}W) and pit chains. The pit chain is prominently intersecting the crater triplet in the western boundary, from north to south (also small to large) are Al-Haddar (15 km), Shahrazad (19.9 km) and Dunyazad (30.8 km, the second largest crater on Enceladus). 
+58$^{\circ}$N, 171$^{\circ}$E to 30$^{\circ}$N, 175$^{\circ}$W) and pit chains. The pit chain is prominently intersecting the crater triplet in the western boundary, from north to south (also small to large) are Al-Haddar (15 km), Shahrazad (19.9 km) and Dunyazad (30.8 km, the second largest crater on Enceladus). 
 Depite the transect of trough and pit-chain, their small scale does not significant obscure the
 cratre detection for over 4 km, and the crater size-frequency measuremnet maintain a smooth profile
 until 10 km. The triple craters are counted within the unit (also shared with the adjacent
@@ -775,7 +778,7 @@ profile.
 %grading from eastward.
 
 \subsection{Far-side equatorial cratered plain 8 (Far-Eq-CP8)}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Far-Eq-CP8.png}
     \caption{Crater distribution in Far-side equatorial cratered plain 8 (Far-Eq-CP8).}
     \label{fig:far-eq-cp8}
@@ -790,7 +793,7 @@ unit, interrupted by numerous craters and pit
 chains. Recent formations include three sets of
 pit chains arranged chronologically: (1) an NS-
 trending pit chain at 32◦ S, 172◦ E traversing two
-∼15 km craters. (2) a NW-SE-trending pit chain
+$\sim$15 km craters. (2) a NW-SE-trending pit chain
 near 31◦ S, 177◦ E, possibly formed contemporane-
 ously with those in the southern Far-Mid-Cp8. (3)
 an NE-SW-trending pit chain, formed more recent,
@@ -799,7 +802,7 @@ likely connected to the pit chain in the eastern Far-
 Mid-CP9. (\citet{Martin2014} provided a detailed.)
 
 Despite its classification as an equatorial cratered plain in \citet{Kirchoff2009} and still in this study (given majority of the unit is
-within 30$\^{circ}$S), the geomorphology and crater
+within 30$^{\circ}$S), the geomorphology and crater
 size-frequency measurement of this unit closely re-
 semble those in mid-latitude cratered plains. In
 contrast to the northern Far-Eq-CP4, situated
@@ -816,7 +819,7 @@ under 2 km and potentially a slight flatten at around 6 km crater diamater.
 % TODO: remove combined far-eq-cp4 and far-eq-cp8. Use far-eq-cp4 and far-eq-cp8 separately for
 % fitting CPF
 
-\subsection{Combined near-side mid-latitude cratered plain 1 and 2 (Near-Mid-CP1 & -CP2)}
+\subsection{Combined near-side mid-latitude cratered plain 1 and 2 (Near-Mid-CP1 \& -CP2)}
 
 The two mid-latitude crater plain unit in the near-side, can be combined despite of image resolution
 different due to the usage for constructing the CPF at the large cratre diamater size. Given the
@@ -827,7 +830,7 @@ As shown from the crater size-frequency measurement of the two units, the image 
 Individual geomorphological and crater distribution description for the two units are as follows.
 
 \subsubsection{Near-Mid-CP1}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Near-Mid-CP1.png}
     \caption{Crater distribution in Near-side mid-latitude cratered plain 1 (Near-Mid-CP1).}
     \label{fig:near-mid-cp1}
@@ -858,7 +861,7 @@ lineated.
 
 
 \subsubsection{Near-Mid-CP2}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Near-Mid-CP2.png}
     \caption{Crater distribution in Near-side mid-latitude cratered plain 2 (Near-Mid-CP2).}
     \label{fig:near-mid-cp2}
@@ -891,7 +894,7 @@ uncertainities.
 %titude (below 35◦ N).
 
 
-\subsection{Combined far-side mid-latitude cratered plain 1, 2, and 3 (Far-Mid-CP1, -CP2, & -CP3)}
+\subsection{Combined far-side mid-latitude cratered plain 1, 2, and 3 (Far-Mid-CP1, -CP2, \& -CP3)}
 
 The three units is sub-divided from the mid-latitude cratered plain (the region from 270$^\circ$W to
 180$^\circ$W) from \citet{Kirchoff2009}. The three units are seaparted from each other based on
@@ -909,7 +912,7 @@ accurate crater statistic at larger crater diamater size for constructing the CP
 Individual geomorphological and crater distribution description for the three units are as follows.
 
 \subsubsection{Far-Mid-CP1}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Far-Mid-CP1.png}
     \caption{Crater distribution in Far-side mid-latitude cratered plain 1 (Far-Mid-CP1).}
     \label{fig:far-mid-cp1}
@@ -939,7 +942,7 @@ smaller craters, that now has been avoid by restricting the area of the units fr
 mid-latitude crater plains defined by \citet{Kirchoff2009}.
 
 \subsubsection{Far-Mid-CP2}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Far-Mid-CP2.png}
     \caption{Crater distribution in Far-side mid-latitude cratered plain 2 (Far-Mid-CP2).}
     \label{fig:far-mid-cp2}
@@ -960,7 +963,7 @@ ern boundary: Dunyazad (30 km) and Shahrazad
 northern hemisphere.
 
 \subsubsection{Far-Mid-CP3}
-\begin{figure}[t]
+\begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/Far-Mid-CP3.png}
     \caption{Crater distribution in Far-side mid-latitude cratered plain 3 (Far-Mid-CP3).}
     \label{fig:far-mid-cp3}
@@ -981,3 +984,5 @@ NS-trending pit chain cross-cuts the craters in the
 northern part of the unit.
 
 % TODO: remove all crater plain from the SFD or not? Perhaps NOT 
+%
+\end{document}
