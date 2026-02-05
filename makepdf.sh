@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ["$1" = "full" ]; then
+if [ "$1" = "full" ]; then
   pdflatex enceladus_crater.tex
   bibtex enceladus_crater
   pdflatex enceladus_crater.tex

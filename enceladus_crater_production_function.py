@@ -9,9 +9,12 @@ Crater Production Function (CPF) Implementation and Plotting
 This script provides a reproducible implementation of the Crater Production Function (CPF) of Enceladus, published in Wong et al (updated years at the end). It models the expected number of craters on Enceladus as a function of impactors' size, impactor velocities and other parameters.
 
 Key features:
-- Implements the polynomial function of the CPF.
-- Provides functions to compute crater densities for arbitrary impactor diameters.
-- Includes comparisons with other published impactor and crater Size-Frequency Distributions (SFDs).
+- Provide the polynomial function of the CPF.
+- Compute crater densities for arbitrary impactor diameters.
+- Compare with other published impactor and crater Size-Frequency Distributions (SFDs), i.e.,
+    - crater SFD of Enceladus mid-latitude cratered plains from Kirchoff and Schenk (2009),
+    - jupiter family comet impactor SFD from Zahnle et al. (2003),
+    - kuiper belt object impactor SFD from Singer et al. (2019).
 
 Users can reproduce Figure 1 from Wong et al (year) and adapt the CPF to updated satellite-specific input parameters, such as surface gravity, impact velocities, and impact probability.
 
