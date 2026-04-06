@@ -9,6 +9,8 @@ else
   pdflatex enceladus_crater.tex
 fi
 
+cp enceladus_crater.pdf latest_copy.pdf
+
 #pdflatex new.tex
 #bibtex enceladus_crater
 #pdflatex new.tex
