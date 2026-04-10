@@ -240,6 +240,17 @@ def zahnle_jfc_impactor_sfd(impactor_diameter):
         ),
     )
 
+def zahnle_jfc_impactor_sfd_v2(impactor_diameter):
+    return np.where(
+        impactor_diameter >= 5.0,
+        (1.8749 / impactor_diameter) ** 2.5,
+        np.where(
+            impactor_diameter >= 1.5,
+            (1.1817 / impactor_diameter) ** 1.7,
+            (1.0 / impactor_diameter) ** 1.0,
+        ),
+    )
+
 # Zahnle et al 2003 case B impactor size-frequency distribution
 #   Studied the Triton's crater (tc)
 def zahnle_tc_impactor_sfd(impactor_diameter):
@@ -248,6 +259,13 @@ def zahnle_tc_impactor_sfd(impactor_diameter):
         0.129 * (impactor_diameter / 5) ** (-2.5),
         # TODO: something is wrong in the denumerator of the >1.5 (1.5-30km) terms
         2.62 * (impactor_diameter / 1.5) ** (-1.7),
+    )
+
+def zahnle_tc_impactor_sfd_v2(impactor_diameter):
+    return np.where(
+        impactor_diameter >= 1.5,
+        (1.1385 / impactor_diameter) ** 2.5,
+        (1.0 / impactor_diameter) ** 1.7,
     )
 
 
@@ -261,6 +279,15 @@ def kirchoff_crater_sfd(crater_diameter):
             (1.7203 / crater_diameter) ** 2.310,
             (1.0 / crater_diameter) ** 1.406,
         ),
+    )
+
+# Kirchoff and Schenk 2009 for crater plains on Tethys 
+def tethys_crater_sfd(crater_diameter):
+    return np.where(
+        crater_diameter >= 10.0,
+        (1.7131 / crater_diameter) ** 2.22,
+        (1.0 / crater_diameter) ** 1.701,
+        #(1.0 / crater_diameter) ** 1.728,
     )
 
 
@@ -456,6 +483,19 @@ def main():
         minimum_enceladus_crater_diameter=1.0,
         maximum_enceladus_crater_diameter=30.0,
     )
+    
+    # From kirchoff and Schenk (2009) Tethys' *crater* size-frequency distribution
+    (
+        tethys_reliable_crater_diameter,
+        tethys_normalised_density,
+        tethys_normalised_density_all_crater_diameter,
+    ) = calculate_crater_density(
+        enceladus_crater_diameter,
+        moon_impact_parameters,
+        tethys_crater_sfd,
+        minimum_enceladus_crater_diameter=1.0,
+        maximum_enceladus_crater_diameter=30.0,
+    )
 
     # Creating function with the crater diameter range plotted/discussed in the cited publication
     (
@@ -486,6 +526,15 @@ def main():
             kirchoff_normalised_density,
             "Enceladus cratered plains (Kirchoff and Schenk, 2009)",  # Kirchoff 2009",
             "#144e62",  # blue
+            "solid",
+        ],        
+        # Plotting Kirchoff and Schenk 2009, crater size-frequency distribution of mid-latitude crater plains on Encealdus
+        ## Plot reliable crater ranges in solid line
+        [
+            tethys_reliable_crater_diameter,
+            tethys_normalised_density,
+            "Tethys cratered plains (Kirchoff and Schenk, 2009)",  # Kirchoff 2009",
+            "#00ffff",  # blue
             "solid",
         ],
         ## Plot crater ranges outside the reliable ranges in dotted line
@@ -585,7 +634,7 @@ def plot_figure(all_data):
     plt.grid(True, which="both", color="#aeaeae", linewidth=0.5)
     plt.xticks(fontsize=13)
     plt.yticks(fontsize=13)
-    plt.savefig("./fig/Wongetal2025_fig1.png")
+    plt.savefig("./Tethys_trial_ZahnleSFD_fro_241015_current_rate_calculation_excelfile.png")
     plt.show()
 
 
