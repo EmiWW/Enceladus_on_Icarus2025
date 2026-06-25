@@ -125,9 +125,7 @@ def create_enceladus() -> IcyMoon:
         spherical_area=798_648,
     )
 
-    # with the impact parameters of Tethys
-
-
+# with the impact parameters of Tethys
 def create_tethys() -> IcyMoon:
     return IcyMoon(
         name="Tethys",
@@ -146,6 +144,10 @@ def generate_CPF() -> np.poly1d:
     """
     Generate a normalised crater production function (CPF) as a 10th-degree polynomial.
     Coefficients are in increasing order (a0, a1, ..., a10).
+
+    Reference
+    _________
+    Wong et al., 2026. Submitted to ICARUS.
     """
     cpf_coefficients = np.array(
         [
@@ -400,20 +402,24 @@ def plot_figure(all_data: list[tuple[np.ndarray, np.ndarray, str, str, str]]) ->
 
 
 def main() -> None:
+    # Validate input crater diameters from command line arguments, must be a float between 0.8 to 44
     for x in sys.argv[1:]:
         try:
             input_crater_diameter = float(x)
             if input_crater_diameter < 0.8 or input_crater_diameter > 44:
-                usage()
+                usage() # print usage message if input crater diameter is out of range
                 exit()
         except ValueError:
-            usage()
+            usage() # print usage message if parsing fails
             exit()
 
+    # Build list of crater diameters from command line arguments, or use default of 1.0 km if none provided
     crater_diameter_list = [float(arg) for arg in sys.argv[1:]] or [1.0]
+    # Print table for the requested crater diamaters
     print_crater_density_table(crater_diameter_list)
 
-    # enceladus = create_enceladus()
+    # Select icy moon model and set up parameters (default: Enceladus, swap to create_tethys() for Tethys)
+    # Return an icy moon with all physical parameters (e.g., surface_gravity, average_impact_velocity) used below.
     moon = create_enceladus()  # Change to create_tethys() for Tethys
 
     moon_crater_diameter = make_diameter_range(min=0.8, max=44.0)
@@ -521,7 +527,7 @@ def main() -> None:
         [
             moon.impactor_to_crater(zahnle_tc_reliable_impactor_diameter),
             zahnle_tc_normalised_density_reliable_impactor_diameter,
-            "Triton's crater (Zahnle et al, 2003)",
+            "Triton's craters (Zahnle et al, 2003)",
             "#687B3E",
             "solid",
         ],
@@ -582,7 +588,9 @@ Jotting for future steps:
 separated into different module file
 ** with simple test case
 
-add "attribute" host star
+add "attribute" host star for IcyMoon class
+- create CSV file for input (allow user to add another line)
+- create update function for updating parameters 
 
 write the SFD of cratre and impactor as object 
 - impactor or crater
@@ -601,6 +609,10 @@ line style:
 save_files
 ** with simple test case
 
+calculate the expected relative to the 
+- exact number for current SDO (default)
+- with certain ages provided by the user
+ 
 have configruation file for the following case:
 - SFD for different icy moon
 icy moon: list
@@ -614,7 +626,10 @@ add the cratre density overplotting and three plot overplotting
 crater data (only one file, later expand to list of file? )
 SFD (only one)
 
+add configuration files (test case) and function/feature for surface_ages_determination (without resurfacing)
+
 import the crater_data libarray for the other SFD
+
 
 ===========================
 

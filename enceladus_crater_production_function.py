@@ -39,14 +39,116 @@ def usage():
         "- If no arguments are provided, 1 km will be used as the default crater diameters to calculate the expected crater density."
     )
 
+
 # ==================================================================================
-# Evaluate the normalized CPF
-def generate_CPF():
+# === Icy Moon Class Definition ===
+class IcyMoon:
+    """
+    Represents an icy moon with impact parameters for crater scaling calculations.
+    """
+
+    def __init__(
+        self,
+        name: str,
+        surface_gravity: float,
+        density_ratio: float,
+        average_impact_velocity: float,
+        transition_diameter: float,
+        impact_probability: float,
+        spherical_area: float,
+    ) -> None:
+
+        # Name of the icy momon
+        self.name: str = name
+        # Surface gravity in m/s²
+        self.surface_gravity: float = surface_gravity
+        # Impactor's density to satellite's density ratio
+        # Bulk density of impactor ~ 400 kg/m3, satellite's icy crust ~ 1000 kg/m3
+        self.density_ratio: float = density_ratio
+        # Average impact velocity in km/s from Genga N-body simulations (Wong et al 2021, 2023)
+        self.average_impact_velocity: float = average_impact_velocity
+        # Simple-to-complex crater transition diameter in km (Schenk 1991)
+        self.transition_diameter: float = transition_diameter
+        # average impact probability of Enceladus (Wong et al 2023)
+        self.impact_probability: float = impact_probability
+        # global spherical area of Enceladus in km^{2}
+        self.spherical_area: float = spherical_area
+
+        self.crater_production_functions: Dict[str, Any] = {}
+
+    # === Crater scaling law (Zahnle et al 2003) ===
+    def impactor_to_crater(self, impactor_diameter: float) -> float:
+        """
+        Convert impactor diameter (km) to resulting crater diameter (km).
+        Uses the moon's specific impact parameters.
+        """
+        crater_diameter = (
+            impactor_diameter
+            * (0.1431**-1)
+            * (self.surface_gravity**-0.282)
+            * (self.density_ratio**0.427)
+            * (self.average_impact_velocity**0.564)
+            * (self.transition_diameter**-0.192)
+        ) ** (1 / 1.0897)
+        return crater_diameter
+
+    # === Inverse crater scaling law (Zahnle et al 2003) ===
+    def crater_to_impactor(self, crater_diameter: float) -> float:
+        """
+        Convert crater diameter (km) to typical impactor diameter (km).
+        Uses the moon's specific impact parameters.
+        """
+        impactor_diameter = (
+            0.1431
+            * (crater_diameter**1.0897)
+            * (self.surface_gravity**0.282)
+            * (self.density_ratio**-0.427)
+            * (self.average_impact_velocity**-0.564)
+            * (self.transition_diameter**0.192)
+        )
+        return impactor_diameter
+
+    def __repr__(self):
+        return f"IcyMoon('{self.name}', g={self.surface_gravity} m/s²)"
+
+
+# Create specific icy moon instances
+# with the impact parameters of Enceladus
+def create_enceladus() -> IcyMoon:
+    return IcyMoon(
+        name="Enceladus",
+        surface_gravity=0.1134,
+        density_ratio=0.4,
+        average_impact_velocity=22.174,
+        transition_diameter=15,
+        impact_probability=2.4854e-8,
+        spherical_area=798_648,
+    )
+
+# with the impact parameters of Tethys
+def create_tethys() -> IcyMoon:
+    return IcyMoon(
+        name="Tethys",
+        surface_gravity=0.1462,
+        density_ratio=0.4,
+        average_impact_velocity=19.997,
+        transition_diameter=15,
+        impact_probability=4.74e-8,
+        spherical_area=3.543e6,
+    )
+
+
+# ==================================================================================
+# === 1) Evaluate the normalized CPF ===
+def generate_CPF() -> np.poly1d:
     """
     Generate a normalised crater production function (CPF) as a 10th-degree polynomial.
     Coefficients are in increasing order (a0, a1, ..., a10).
+
+    Reference
+    _________
+    Wong et al., 2026. Submitted to ICARUS.
     """
-    # === 1) Coefficient of the 10-degree polynomial crater production function ===
     cpf_coefficients = np.array(
         [
             -0.065237099,  # a0
@@ -62,142 +164,37 @@ def generate_CPF():
             -14.84990662,  # a10
         ]
     )
-    # np.poly1d expects coefficients from highest to lowest degree, so reverse the input
     crater_production_function = np.poly1d(cpf_coefficients[::-1])
     return crater_production_function
 
 
-def wong_crater_sfd(crater_diameter):
+def wong_crater_sfd(crater_diameter: float | np.ndarray) -> float | np.ndarray:
     """
-    Calculate the expected cumulative crater density (crater/km^2) for given crater diameter(s) in
-    km
-    e.g., wong_crater_sfd([1, 2, 3])
+    Calculate the expected cumulative crater density (crater/km^2) for given crater diameter(s) in km
     """
-    # Our crater production function (CPF) for Enceladus
-    ##  Create the normalised CPF function within the crater diameter ranges
     crater_production_function = generate_CPF()
     return 10 ** (crater_production_function(np.log10(crater_diameter)))
 
 
-def define_impact_parameter_enceladus():
-    return {
-        # Enceladus' surface gravity in m/s2
-        "surface_gravity": 0.1134,
-        # Impactor's density to satellite's density ratio
-        #   Bulk density of impactor ~ 400 kg/m3, satellite's icy crust ~ 1000 kg/m3
-        "density_ratio": 0.4,
-        # Average impact velocity in km/s from Genga N-body simulations (Wong et al 2021, 2023)
-        "average_impact_velocity": 22.174,  # 21.7
-        # Simple-to-complex crater transition diameter in km (Schenk 1991)
-        "transition_diameter": 15,
-        # average impact probability of Enceladus (Wong et al 2023)
-        "impact_probability": 2.4854e-8,  # 1.355e-8
-        # global spherical area of Enceladus in km2
-        "spherical_area": 798_648,
-    }
-
-
-def define_impact_parameter_tethys():
-    return {
-        # Enceladus' surface gravity in m/s2
-        "surface_gravity": 0.1462,
-        # Impactor's density to satellite's density ratio
-        #   Bulk density of impactor ~ 400 kg/m3, satellite's icy crust ~ 1000 kg/m3
-        "density_ratio": 0.4,
-        # Average impact velocity in km/s from Genga N-body simulations (Wong et al 2021, 2023)
-        "average_impact_velocity": 19.997,
-        # Simple-to-complex crater transition diameter in km (Schenk 1991)
-        "transition_diameter": 15,
-        # average impact probability of Enceladus (Wong et al 2023)
-        "impact_probability": 4.74e-8,  # TODO check for updated value
-        # global spherical area of Enceladus in km2
-        "spherical_area": 3.543e6,
-    }
-
-# -------------------------------------------------------------------------------
-# User could add new impact target (i.e., other Saturnian moons) by defining a new function with
-# impact parameters similar to the above two functions, and then unpack the parameters using the 
-# 'unpack_moon' function below
-# -------------------------------------------------------------------------------
-
-def unpack_moon(moon_impact_parameters):
-    return (
-        moon_impact_parameters["surface_gravity"],
-        moon_impact_parameters["density_ratio"],
-        moon_impact_parameters["average_impact_velocity"],
-        moon_impact_parameters["transition_diameter"],
-        moon_impact_parameters["impact_probability"],
-        moon_impact_parameters["spherical_area"],
-    )
-
-
 # ==================================================================================
-# === 2) Crater scaling law (Zahnle et al 2003) ===
-def impactor_to_crater(impactor_diameter, moon_impact_parameters):
-    """
-    Convert impactor diameter (km) to resulting crater diameter (km) on Enceladus.
-        impactor_to_crater(impactor_diameter) = crater_diameter
-    """
-    surface_gravity, density_ratio, average_impact_velocity, transition_diameter = (
-        unpack_moon(moon_impact_parameters)[:4]
-    )
-    crater_diameter = (
-        impactor_diameter
-        * (0.1431**-1)
-        * (surface_gravity**-0.282)
-        * (density_ratio**0.427)
-        * (average_impact_velocity**0.564)
-        * (transition_diameter**-0.192)
-    ) ** (1 / 1.0897)
-
-    return crater_diameter
-
-
-def crater_to_impactor(crater_diameter, moon_impact_parameters):
-    """
-    Convert crater diameter (km) on Enceluads to typical impactor diameter (km), i.e., heliocentric
-    comet.
-        crater_to_impactor(crater_diameter) = impactor_diameter
-    """
-    surface_gravity, density_ratio, average_impact_velocity, transition_diameter = (
-        unpack_moon(moon_impact_parameters)[:4]
-    )
-    impactor_diameter = (
-        0.1431
-        * (crater_diameter**1.0897)
-        * (surface_gravity**0.282)
-        * (density_ratio**-0.427)
-        * (average_impact_velocity**-0.564)
-        * (transition_diameter**0.192)
-    )
-    return impactor_diameter
-
-
-# ==================================================================================
-# === 3) Calculate the number of impactor in the outer Solar System ===
-
-# Singer et al. (2019) size-frequency distribution of impactors
-#   Studied the Pluto-Charon crater population
-def singer_impactor_sfd(impactor_diameter):
+# === 2) Calculate the number of impactor in the outer Solar System ===
+def singer_impactor_sfd(impactor_diameter: float | np.ndarray) -> float | np.ndarray:
+    """Singer et al. (2019) size-frequency distribution of impactors"""
     return np.where(
         impactor_diameter >= 1.0,
         (1.0 / impactor_diameter) ** 2.0,
         (1.0 / impactor_diameter) ** 0.7,
     )
 
-# Cumulative number of Scattered disk object larger than certain diameter
-def number_of_impactor(impactor_diameter, impactor_sfd):
+
+def number_of_impactor(
+    impactor_diameter: float | np.ndarray,
+    impactor_sfd: callable,
+) -> float | np.ndarray:
     """
     Calculate the cumulative number of scattered disk objects larger than a given diameter,
     normalized to the reference size (10 km) using Singer's size-frequency distribution.
-
-    Parameters:
-        impactor_diameter (float): Diameter of the impactor in km.
-
-    Returns:
-        float: Scaled number of impactors larger than the specified diameter.
     """
-    # Known current number of outer Solar System small bodies of > 10 km (reference)
     reference_impactor_diameter = 10.0  # km
     current_number_of_10km_impactor = 2e7
     reference_impactor_count = impactor_sfd(reference_impactor_diameter)
@@ -208,39 +205,26 @@ def number_of_impactor(impactor_diameter, impactor_sfd):
         / reference_impactor_count
     )
 
-# Expected impact density (estimated from current number of 10 km object)
-def expected_impact_density(impactor_diameter, moon_impact_parameters, impactor_sfd):
-    impact_probability, spherical_area = unpack_moon(moon_impact_parameters)[4:6]
+
+def expected_impact_density(
+    impactor_diameter: float | np.ndarray,
+    IcyMoon,
+    impactor_sfd: callable,
+) -> float | np.ndarray:
+    """Expected impact density estimated from current number of 10 km object"""
     return (
         number_of_impactor(impactor_diameter, impactor_sfd)
-        / spherical_area
-        * impact_probability
+        / IcyMoon.spherical_area
+        * IcyMoon.impact_probability
     )
+
 
 # ==================================================================================
-# === 4) Creating the cumulative crater density function with ...
-# our crater production function and
-# different impactor or crater size-frequency distribution ===
-
-
-# Define the other size-frequency distributions (SFDs) for comparison
-# (already included Singer et al 2019 above)
-
-
-# Zahnle et al 2003 case A impactor size-frequency distribution
-#   Studied the cratering from Jovian-family comets  (jfc)
-def zahnle_jfc_impactor_sfd(impactor_diameter):
-    return np.where(
-        impactor_diameter >= 5.0,
-        0.129 * (impactor_diameter / 5) ** (-2.5),
-        np.where(
-            impactor_diameter >= 1.5,
-            (impactor_diameter / 1.5) ** (-1.7),
-            (impactor_diameter / 1.5) ** (-1.0),
-        ),
-    )
-
-def zahnle_jfc_impactor_sfd_v2(impactor_diameter):
+# === 3) Size-Frequency Distribution Functions ===
+def zahnle_jfc_impactor_sfd(
+    impactor_diameter: float | np.ndarray,
+) -> float | np.ndarray:
+    """Zahnle et al 2003 case A impactor size-frequency distribution (Jovian-family comets)"""
     return np.where(
         impactor_diameter >= 5.0,
         (1.8749 / impactor_diameter) ** 2.5,
@@ -251,17 +235,9 @@ def zahnle_jfc_impactor_sfd_v2(impactor_diameter):
         ),
     )
 
-# Zahnle et al 2003 case B impactor size-frequency distribution
-#   Studied the Triton's crater (tc)
-def zahnle_tc_impactor_sfd(impactor_diameter):
-    return np.where(
-        impactor_diameter >= 1.5,
-        0.129 * (impactor_diameter / 5) ** (-2.5),
-        # TODO: something is wrong in the denumerator of the >1.5 (1.5-30km) terms
-        2.62 * (impactor_diameter / 1.5) ** (-1.7),
-    )
 
-def zahnle_tc_impactor_sfd_v2(impactor_diameter):
+def zahnle_tc_impactor_sfd(impactor_diameter: float | np.ndarray) -> float | np.ndarray:
+    """Zahnle et al 2003 case B impactor size-frequency distribution (Triton's craters)"""
     return np.where(
         impactor_diameter >= 1.5,
         (1.1385 / impactor_diameter) ** 2.5,
@@ -269,8 +245,8 @@ def zahnle_tc_impactor_sfd_v2(impactor_diameter):
     )
 
 
-# Kirchoff and Schenk 2009 for Mid-latitude crater plains on Enceladus
-def kirchoff_crater_sfd(crater_diameter):
+def kirchoff_crater_sfd(crater_diameter: float | np.ndarray) -> float | np.ndarray:
+    """Kirchoff and Schenk 2009 for Mid-latitude crater plains on Enceladus"""
     return np.where(
         crater_diameter >= 7.0,
         (2.3671 / crater_diameter) ** 2.99,
@@ -281,17 +257,19 @@ def kirchoff_crater_sfd(crater_diameter):
         ),
     )
 
-# Kirchoff and Schenk 2009 for crater plains on Tethys 
-def tethys_crater_sfd(crater_diameter):
+
+def tethys_crater_sfd(crater_diameter: float | np.ndarray) -> float | np.ndarray:
+    """Kirchoff and Schenk 2009 for crater plains on Tethys"""
     return np.where(
         crater_diameter >= 10.0,
         (1.7131 / crater_diameter) ** 2.22,
         (1.0 / crater_diameter) ** 1.701,
-        #(1.0 / crater_diameter) ** 1.728,
     )
 
 
-def print_crater_density_table(crater_diameter_list):
+# ==================================================================================
+# === 4) Helper Functions ===
+def print_crater_density_table(crater_diameter_list: list[float]) -> None:
     print("\nExpected crater density on Enceladus using the CPF of this work:")
     print(f"{'Crater Diameter (km)':>20} | {'Expected Density (crater/km^2)':>30}")
     print(f"{'-' * 20} | {'-' * 30}")
@@ -300,36 +278,37 @@ def print_crater_density_table(crater_diameter_list):
         print(f"{crater_diameter:20.2g} | {expected_crater_density:30.3g}")
 
 
+def make_diameter_range(min: float, max: float) -> np.ndarray:
+    """Creating function with the crater or impactor diameter range plotted/discussed in the cited publication"""
+    return 10 ** (np.linspace(np.log10(min), np.log10(max), 1000))
+
+
 def calculate_impactor_density(
-    moon_crater_diameter,
-    moon_impact_parameters,
-    impactor_sfd,
-    minimum_impactor_diameter,
-    maximum_impactor_diameter,
-):
+    crater_diameter: float | np.ndarray,
+    IcyMoon,
+    impactor_sfd: callable,
+    minimum_impactor_diameter: float,
+    maximum_impactor_diameter: float,
+) -> tuple[np.ndarray, np.ndarray, float | np.ndarray, float | np.ndarray]:
+    """Calculate impactor density using the impactor size-frequency distribution"""
     # Expected number of 1 km impactor from the impactor size-frequency distribution
     one_km_impactor = impactor_sfd(1.0)
     expected_one_km_impactor = expected_impact_density(
-        1.0, moon_impact_parameters, singer_impactor_sfd
+        1.0, IcyMoon, singer_impactor_sfd
     )
 
     # Creating function with the impactor diameter range plotted/discussed in the cited publication
-    reliable_impactor_diameter = 10 ** (
-        np.linspace(
-            np.log10(minimum_impactor_diameter),
-            np.log10(maximum_impactor_diameter),
-            1000,
-        )
+    reliable_impactor_diameter = make_diameter_range(
+        minimum_impactor_diameter, maximum_impactor_diameter
     )
     # Calculating the impactor density using the 'impactor_sfd'
     impactor_density = impactor_sfd(reliable_impactor_diameter)
-    # Normalising the impactor density to the expected number of 1 km impactor onto Enceladus
-    normalised_density = impactor_density / one_km_impactor * expected_one_km_impactor
+    normalised_density_reliable_impactor_diameter = (
+        impactor_density / one_km_impactor * expected_one_km_impactor
+    )
 
     # Creating function with the entire observed crater ranges in this work
-    all_impactor_diameter = crater_to_impactor(
-        moon_crater_diameter, moon_impact_parameters
-    )
+    all_impactor_diameter = IcyMoon.crater_to_impactor(crater_diameter)
     impactor_density_all_impactor_diameter = impactor_sfd(all_impactor_diameter)
     normalised_density_all_impactor_diameter = (
         impactor_density_all_impactor_diameter
@@ -338,282 +317,64 @@ def calculate_impactor_density(
     )
     return (
         reliable_impactor_diameter,
-        normalised_density,
+        normalised_density_reliable_impactor_diameter,
         all_impactor_diameter,
         normalised_density_all_impactor_diameter,
     )
 
 
 def calculate_crater_density(
-    enceladus_crater_diameter,
-    moon_impact_parameters,
-    crater_sfd,
-    minimum_enceladus_crater_diameter,
-    maximum_enceladus_crater_diameter,
-):
-    # Gather the impact parameters of Enceladus
-    enceladus_impact_parameters = define_impact_parameter_enceladus()
-    # From Kirchoff and Schenk (2009) *crater* size-frequency distribution
-    expected_enceladus_crater_size_from_one_km_impactor = impactor_to_crater(
-        1.0, enceladus_impact_parameters
+    crater_diameter: float | np.ndarray,
+    IcyMoon,
+    crater_sfd: callable,
+    minimum_crater_diameter: float,
+    maximum_crater_diameter: float,
+) -> tuple[np.ndarray, np.ndarray, float | np.ndarray]:
+    """Calculate crater density using the crater size-frequency distribution"""
+    # Get the Enceladus instance to convert between impactor and crater diameters
+    expected_crater_size_from_one_km_impactor = IcyMoon.impactor_to_crater(1.0)
+    # Calculate expected 1 km impactor density from the provided *crater* size-frequency distribution
+    unscaled_one_km_impact_density_on_moon = crater_sfd(
+        expected_crater_size_from_one_km_impactor
     )
-    one_km_impactor_on_enceladus = crater_sfd(
-        expected_enceladus_crater_size_from_one_km_impactor
-    )
-    one_km_impactor_on_moon = expected_impact_density(
-        1.0, moon_impact_parameters, singer_impactor_sfd
+    expected_one_km_impact_density_on_moon = expected_impact_density(
+        1.0, IcyMoon, singer_impactor_sfd
     )
 
     # Creating function with the crater diameter range plotted/discussed in the cited publication
-    enceladus_reliable_crater_diameter = calculate_crater_diameter(
-        minimum_enceladus_crater_diameter, maximum_enceladus_crater_diameter
-    )
-    moon_reliable_crater_diameter = impactor_to_crater(
-        crater_to_impactor(
-            enceladus_reliable_crater_diameter, enceladus_impact_parameters
-        ),
-        moon_impact_parameters,
-    )
-    density = crater_sfd(enceladus_reliable_crater_diameter)
-    normalised_density = (
-        density / one_km_impactor_on_enceladus * one_km_impactor_on_moon
+    reliable_crater_diameter = make_diameter_range(
+        minimum_crater_diameter, maximum_crater_diameter
     )
 
-    # Creating function with the entire observed crater ranges in this work
-    density_all_crater_diameter = crater_sfd(enceladus_crater_diameter)
+    # Calculating the crater density using "crater_sfd"
+    unscaled_crater_density = crater_sfd(reliable_crater_diameter)
+    normalised_density_reliable_crater_diameter = (
+        unscaled_crater_density
+        / unscaled_one_km_impact_density_on_moon
+        * expected_one_km_impact_density_on_moon
+    )
+
+    unscaled_density_all_crater_diameter = crater_sfd(crater_diameter)
     normalised_density_all_crater_diameter = (
-        density_all_crater_diameter
-        / one_km_impactor_on_enceladus
-        * one_km_impactor_on_moon
+        unscaled_density_all_crater_diameter
+        / unscaled_one_km_impact_density_on_moon
+        * expected_one_km_impact_density_on_moon
     )
     return (
-        moon_reliable_crater_diameter,  # list of all crater sizes
-        normalised_density,  # list of how many craters of each size (within the reliable range) exist
-        normalised_density_all_crater_diameter,  # list of how many craters of each size exist (extrapolated)
+        reliable_crater_diameter,
+        normalised_density_reliable_crater_diameter,
+        normalised_density_all_crater_diameter,
     )
 
-
-def calculate_crater_diameter(min, max):
-    # Creating function with the crater diameter range plotted/discussed in the cited publication
-    return 10 ** (np.linspace(np.log10(min), np.log10(max), 1000))
-
-
-def main():
-    for x in sys.argv[1:]:
-        try:
-            input_crater_diameter = float(x)
-            if input_crater_diameter < 0.8 or input_crater_diameter > 44:
-                usage()
-                exit()
-        except ValueError:
-            usage()
-            exit()
-
-    # Get the user input (list of) crater diameter(s) or use 1 km is none provided
-    crater_diameter_list = [float(arg) for arg in sys.argv[1:]] or [1.0]
-    # print the expected crater density for the input crater diameter(s)
-    # if the user input is not provided, the expected crater density for 1 km crater on Enceladus is 0.8605238288 crater per km2 with our CPF
-    print_crater_density_table(crater_diameter_list)
-
-    # Gather the impact parameters of Enceladus
-    enceladus_impact_parameters = define_impact_parameter_enceladus()
-    # Gather the impact parameters of the target moon
-    # moon_impact_parameters = define_impact_parameter_tethys()
-    moon_impact_parameters = define_impact_parameter_enceladus()
-
-    ##  Define the crater diameter ranges for the plot.
-    ##  same as the diameter ranges observed on the surface images of Enceladus
-    enceladus_crater_diameter = calculate_crater_diameter(min=0.8, max=44.0)
-    moon_crater_diameter = impactor_to_crater(
-        crater_to_impactor(enceladus_crater_diameter, enceladus_impact_parameters),
-        moon_impact_parameters,
-    )
-
-    # Expected number of 1 km impactor from Singer et al. (2019) impactor size-frequency distribution
-    (
-        singer_reliable_impactor_diameter,
-        singer_normalised_density,
-        singer_all_impactor_diameter,
-        singer_normalised_density_all_impactor_diameter,
-    ) = calculate_impactor_density(
-        moon_crater_diameter,
-        moon_impact_parameters,
-        singer_impactor_sfd,
-        minimum_impactor_diameter=0.1,
-        maximum_impactor_diameter=15.0,
-    )
-
-    # From Zahnle et al. (2003) Case A JFC impactor size-frequency distribution
-    (
-        zahnle_jfc_reliable_impactor_diameter,
-        zahnle_jfc_normalised_density,
-        zahnle_jfc_all_impactor_diameter,
-        zahnle_jfc_normalised_density_all_impactor_diameter,
-    ) = calculate_impactor_density(
-        moon_crater_diameter,
-        moon_impact_parameters,
-        zahnle_jfc_impactor_sfd,
-        minimum_impactor_diameter=0.1,
-        maximum_impactor_diameter=20.0,
-    )    
-
-    # From Zahnle et al. (2003) Case B Triton's impactor size-frequency distribution
-    (
-        zahnle_tc_reliable_impactor_diameter,
-        zahnle_tc_normalised_density,
-        zahnle_tc_all_impactor_diameter,
-        zahnle_tc_normalised_density_all_impactor_diameter,
-    ) = calculate_impactor_density(
-        moon_crater_diameter,
-        moon_impact_parameters,
-        zahnle_tc_impactor_sfd,
-        minimum_impactor_diameter=0.1,
-        maximum_impactor_diameter=30.0,
-    )
-
-    # From kirchoff and Schenk (2009) *crater* size-frequency distribution
-    (
-        kirchoff_reliable_crater_diameter,
-        kirchoff_normalised_density,
-        kirchoff_normalised_density_all_crater_diameter,
-    ) = calculate_crater_density(
-        enceladus_crater_diameter,
-        moon_impact_parameters,
-        kirchoff_crater_sfd,
-        minimum_enceladus_crater_diameter=1.0,
-        maximum_enceladus_crater_diameter=30.0,
-    )
-    
-    # From kirchoff and Schenk (2009) Tethys' *crater* size-frequency distribution
-    (
-        tethys_reliable_crater_diameter,
-        tethys_normalised_density,
-        tethys_normalised_density_all_crater_diameter,
-    ) = calculate_crater_density(
-        enceladus_crater_diameter,
-        moon_impact_parameters,
-        tethys_crater_sfd,
-        minimum_enceladus_crater_diameter=1.0,
-        maximum_enceladus_crater_diameter=30.0,
-    )
-
-    # Creating function with the crater diameter range plotted/discussed in the cited publication
-    (
-        wong_reliable_crater_diameter,
-        wong_normalised_density,
-        _wong_normalised_density_all_crater_diameter,
-    ) = calculate_crater_density(
-        enceladus_crater_diameter,
-        moon_impact_parameters,
-        wong_crater_sfd,
-        minimum_enceladus_crater_diameter=0.8,
-        maximum_enceladus_crater_diameter=44.0,
-    )
-
-    all_data = [
-        # Plotting the crater production function of Enceladus of this work
-        [
-            wong_reliable_crater_diameter,
-            wong_normalised_density,
-            "Enceladus CPF (this work)",
-            "black",
-            "solid",
-        ],
-        # Plotting Kirchoff and Schenk 2009, crater size-frequency distribution of mid-latitude crater plains on Encealdus
-        ## Plot reliable crater ranges in solid line
-        [
-            kirchoff_reliable_crater_diameter,
-            kirchoff_normalised_density,
-            "Enceladus cratered plains (Kirchoff and Schenk, 2009)",  # Kirchoff 2009",
-            "#144e62",  # blue
-            "solid",
-        ],        
-        # Plotting Kirchoff and Schenk 2009, crater size-frequency distribution of mid-latitude crater plains on Encealdus
-        ## Plot reliable crater ranges in solid line
-        [
-            tethys_reliable_crater_diameter,
-            tethys_normalised_density,
-            "Tethys cratered plains (Kirchoff and Schenk, 2009)",  # Kirchoff 2009",
-            "#00ffff",  # blue
-            "solid",
-        ],
-        ## Plot crater ranges outside the reliable ranges in dotted line
-        [
-            moon_crater_diameter,
-            kirchoff_normalised_density_all_crater_diameter,
-            None,
-            "#144e62",  # blue
-            "dotted",
-        ],
-        # Plotting Zahnle et al 2003 Case A JFC impactor size-frequency distribution
-        ## Plot reliable crater ranges in solid line
-        [
-            impactor_to_crater(
-                zahnle_jfc_reliable_impactor_diameter, moon_impact_parameters
-            ),
-            zahnle_jfc_normalised_density,
-            "Jupiter-family comet (Zahnle et al, 2003)",  # Zahnle 2003",
-            "#D29343",  # yellow
-            "solid",
-        ],
-        ## Plot crater ranges outside the reliable ranges in dotted line
-        [
-            impactor_to_crater(zahnle_jfc_all_impactor_diameter, moon_impact_parameters),
-            zahnle_jfc_normalised_density_all_impactor_diameter,
-            None,
-            "#D29343",  # yellow
-            "dotted",
-        ],        
-        # Plotting Zahnle et al 2003 Case B Triton Crater impactor size-frequency distribution
-        ## Plot reliable crater ranges in solid line
-        [
-            impactor_to_crater(
-                zahnle_tc_reliable_impactor_diameter, moon_impact_parameters
-            ),
-            zahnle_tc_normalised_density,
-            "Triton's crater (Zahnle et al, 2003)",  # Zahnle 2003",
-            "#687B3E",  # green
-            "solid",
-        ],
-        ## Plot crater ranges outside the reliable ranges in dotted line
-        [
-            impactor_to_crater(zahnle_tc_all_impactor_diameter, moon_impact_parameters),
-            zahnle_tc_normalised_density_all_impactor_diameter,
-            None,
-            "#687B3E",  # green
-            "dotted",
-        ],
-        # Plotting Singer et al 2019 impactor size-frequency distribution
-        ## Plot reliable crater ranges in solid line
-        [
-            impactor_to_crater(
-                singer_reliable_impactor_diameter, moon_impact_parameters
-            ),
-            singer_normalised_density,
-            "Kuiper belt objects (Singer et al, 2009)",  # Singer 2019",
-            "#fdb7bc",  # pink
-            "solid",
-        ],
-        ## Plot crater ranges outside the reliable ranges in dotted line
-        [
-            impactor_to_crater(singer_all_impactor_diameter, moon_impact_parameters),
-            singer_normalised_density_all_impactor_diameter,
-            None,
-            "#fdb7bc",  # pink
-            "dotted",
-        ],
-    ]
 
 # ==================================================================================
-# === 5) Plot the normalised functions
-    plot_figure(all_data)
-
-
-def plot_figure(all_data):
-    # loop through all the crater size-frequency distribution (including the Enceladus CPF in this
-    # study) and overplot them in one figure
+# === 5) Plotting ===
+def plot_figure(all_data: list[tuple[np.ndarray, np.ndarray, str, str, str]]) -> None:
+    """Plot the normalised functions"""
     plt.figure(figsize=(7, 10))
 
+    # loop through all the crater size-frequency distribution (including the Enceladus CPF in this
+    # study) and overplot them in one figure
     for data in all_data:
         crater_diameter, size_function, label, color, linestyle = data
         plt.plot(
@@ -634,8 +395,179 @@ def plot_figure(all_data):
     plt.grid(True, which="both", color="#aeaeae", linewidth=0.5)
     plt.xticks(fontsize=13)
     plt.yticks(fontsize=13)
-    plt.savefig("./Tethys_trial_ZahnleSFD_fro_241015_current_rate_calculation_excelfile.png")
+    plt.savefig(
+        "./Wongetal2025_fig1.png"
+    )
     plt.show()
+
+
+def main() -> None:
+    # Validate input crater diameters from command line arguments, must be a float between 0.8 to 44
+    for x in sys.argv[1:]:
+        try:
+            input_crater_diameter = float(x)
+            if input_crater_diameter < 0.8 or input_crater_diameter > 44:
+                usage() # print usage message if input crater diameter is out of range
+                exit()
+        except ValueError:
+            usage() # print usage message if parsing fails
+            exit()
+
+    # Build list of crater diameters from command line arguments, or use default of 1.0 km if none provided
+    crater_diameter_list = [float(arg) for arg in sys.argv[1:]] or [1.0]
+    # Print table for the requested crater diamaters
+    print_crater_density_table(crater_diameter_list)
+
+    # Select icy moon model and set up parameters (default: Enceladus, swap to create_tethys() for Tethys)
+    # Return an icy moon with all physical parameters (e.g., surface_gravity, average_impact_velocity) used below.
+    moon = create_enceladus()  # Change to create_tethys() for Tethys
+
+    moon_crater_diameter = make_diameter_range(min=0.8, max=44.0)
+
+    # Expected number of 1 km impactor from Singer et al. (2019) impactor size-frequency distribution
+    (
+        singer_reliable_impactor_diameter,
+        singer_normalised_density_reliable_impactor_diameter,
+        singer_all_impactor_diameter,
+        singer_normalised_density_all_impactor_diameter,
+    ) = calculate_impactor_density(
+        moon_crater_diameter, moon, singer_impactor_sfd, 0.1, 15.0
+    )
+
+    # From Zahnle et al. (2003) Case A JFC impactor size-frequency distribution
+    (
+        zahnle_jfc_reliable_impactor_diameter,
+        zahnle_jfc_normalised_density_reliable_impactor_diameter,
+        zahnle_jfc_all_impactor_diameter,
+        zahnle_jfc_normalised_density_all_impactor_diameter,
+    ) = calculate_impactor_density(
+        moon_crater_diameter, moon, zahnle_jfc_impactor_sfd, 0.1, 20.0
+    )
+
+    # From Zahnle et al. (2003) Case B Triton's impactor size-frequency distribution
+    (
+        zahnle_tc_reliable_impactor_diameter,
+        zahnle_tc_normalised_density_reliable_impactor_diameter,
+        zahnle_tc_all_impactor_diameter,
+        zahnle_tc_normalised_density_all_impactor_diameter,
+    ) = calculate_impactor_density(
+        moon_crater_diameter, moon, zahnle_tc_impactor_sfd, 0.1, 30.0
+    )
+
+    # From kirchoff and Schenk (2009) *crater* size-frequency distribution
+    (
+        kirchoff_reliable_crater_diameter,
+        kirchoff_normalised_density_reliable_crater_diameter,
+        kirchoff_normalised_density_all_crater_diameter,
+    ) = calculate_crater_density(
+        moon_crater_diameter, moon, kirchoff_crater_sfd, 1.0, 30.0
+    )
+
+    # From kirchoff and Schenk (2009) Tethys' *crater* size-frequency distribution
+    (
+        tethys_reliable_crater_diameter,
+        tethys_normalised_density_reliable_crater_diameter,
+        tethys_normalised_density_all_crater_diameter,
+    ) = calculate_crater_density(
+        moon_crater_diameter, moon, tethys_crater_sfd, 1.0, 30.0
+    )
+
+    # Creating function with the crater diameter range plotted/discussed in the cited publication
+    (
+        wong_reliable_crater_diameter,
+        wong_normalised_density_reliable_crater_diameter,
+        _wong_normalised_density_all_crater_diameter,
+    ) = calculate_crater_density(moon_crater_diameter, moon, wong_crater_sfd, 0.8, 44.0)
+
+    all_data = [
+        # Plotting the crater production function of Enceladus of this work
+        [
+            wong_reliable_crater_diameter,
+            wong_normalised_density_reliable_crater_diameter,
+            "Enceladus CPF (this work)",
+            "#011959",
+            "solid",
+        ],
+        # Plotting Kirchoff and Schenk 2009, crater size-frequency distribution of mid-latitude crater plains on Encealdus
+        ## Plot reliable crater ranges in solid line
+        [
+            kirchoff_reliable_crater_diameter,
+            kirchoff_normalised_density_reliable_crater_diameter,
+            "Enceladus cratered plains (Kirchoff and Schenk, 2009)",
+            "#3C6D56",
+            "solid",
+        ],
+        ## Plot crater ranges outside the reliable ranges in dotted line
+        [
+            moon_crater_diameter,
+            kirchoff_normalised_density_all_crater_diameter,
+            None,
+            "#3C6D56",
+            "dotted",
+        ],
+        # Plotting Zahnle et al 2003 Case B Triton Crater impactor size-frequency distribution
+        ## Plot reliable crater ranges in solid line
+        [
+            moon.impactor_to_crater(zahnle_tc_reliable_impactor_diameter),
+            zahnle_tc_normalised_density_reliable_impactor_diameter,
+            "Triton's craters (Zahnle et al, 2003)",
+            "#9D892B",
+            "solid",
+        ],
+        ## Plot crater ranges outside the reliable ranges in dotted line
+        [
+            moon.impactor_to_crater(zahnle_tc_all_impactor_diameter),
+            zahnle_tc_normalised_density_all_impactor_diameter,
+            None,
+            "#9D892B",
+            "dotted",
+        ],
+        # Plotting Zahnle et al 2003 Case A JFC impactor size-frequency distribution
+        ## Plot reliable crater ranges in solid line
+        [
+            moon.impactor_to_crater(zahnle_jfc_reliable_impactor_diameter),
+            zahnle_jfc_normalised_density_reliable_impactor_diameter,
+            "Jupiter-family comet (Zahnle et al, 2003)",
+            "#F8A17B",
+            "solid",
+        ],
+        ## Plot crater ranges outside the reliable ranges in dotted line
+        [
+            moon.impactor_to_crater(zahnle_jfc_all_impactor_diameter),
+            zahnle_jfc_normalised_density_all_impactor_diameter,
+            None,
+            "#F8A17B",
+            "dotted",
+        ],
+        # Plotting Singer et al 2019 impactor size-frequency distribution
+        ## Plot reliable crater ranges in solid line
+        [
+            moon.impactor_to_crater(singer_reliable_impactor_diameter),
+            singer_normalised_density_reliable_impactor_diameter,
+            "Kuiper belt objects (Singer et al, 2009)",
+            "#FACCFA",
+            "solid",
+        ],
+        ## Plot crater ranges outside the reliable ranges in dotted line
+        [
+            moon.impactor_to_crater(singer_all_impactor_diameter),
+            singer_normalised_density_all_impactor_diameter,
+            None,
+            "#FACCFA",
+            "dotted",
+        ],
+#        # Plotting Kirchoff and Schenk 2009, crater size-frequency distribution of mid-latitude crater plains on Encealdus
+#        ## Plot reliable crater ranges in solid line. Currently commented out.
+#        [
+#            tethys_reliable_crater_diameter,
+#            tethys_normalised_density_reliable_crater_diameter,
+#            "Tethys cratered plains (Kirchoff and Schenk, 2009)",
+#            "grey",
+#            "solid",
+#        ],
+    ]
+
+    plot_figure(all_data)
 
 
 if __name__ == "__main__":
