@@ -13,54 +13,78 @@ The paper entitled "The Enceladian crater production function" by Wong et al. pr
 
 The methods are sound, self-consistent, and well thought out; the many challenges to accurately assessing crater distributions, and in particular crater production functions, were carefully considered and discussed throughout the paper. The figures and tables provided representations of the presented work clearly and added helpful visualization supplements to the text.
 
+Reply: We thank the reviewer for their thorough and constructive assessment, and for the kind remarks regarding the introduction, methodology, and presentation of the work.
+
 I have a few minor comments provided below. However, once those are addressed, I recommend this paper for publication in Icarus.
 
 Section 2.2:
 
 Line 315: "…as illustrated in the right panel of Fig. 2c."
 There is only one panel in Fig. 2c.
+Reply: corrected the typo
 
 Figure 2 caption: "This group of finer trough has a large area coverage, and seems to diverged into separated branch in its path and transect more craters."
 Some small grammar corrections to: "This group of finer trough[s] has a large area coverage, and seems to [diverge] into separated branch[s] in its path and transect more craters."
+Reply: corrected the typo
 
-Figure 2: The arrows and scale references are very nice here. However, they could be made a bit wider and more distinct for easier visibility. Similarly, the scale labels overlaid on the figures could be made a bit larger for easier visibility, particularly in panels (B) and (C).
+**[TODO] Figure 2: The arrows and scale references are very nice here. However, they could be made a bit wider and more distinct for easier visibility. Similarly, the scale labels overlaid on the figures could be made a bit larger for easier visibility, particularly in panels (B) and (C).**
+Reply: Enlarged all the labels, as well as bold the arrows and numbers. Also used more obvious
+colours instead of white.
 
 Section 3.3:
 
 Line 459-460: "Table 2 lists the selected representative units, their central coordinates, number of craters, and the largest crater diameter from that unit."
 The right column of Table 2 lists the crater diameter ranges used to fit and scale the crater production function (correctly described in the Fig. 2 caption) and not the largest crater diameter from each given unit, as in Table 1.
+Reply: corrected the typo, we listed the crater diamater ranges instead. 
 
 Figure 3 caption: "…(A) in equirectangular projection from 60°S to 60°N…"
 Panel (A) shows 90°S to 90°N.
+Reply: yes typo corrected. 90°S to 90°N as shown in the figure is correct.
 
-Figure 3: The white text is legible, but some of the colored text is pretty hard to read on top of the gray background (particularly the red and orange in my case). Perhaps making the label text bold or slightly increasing the font size would help in addition to trying some alternative colors.
+**[TODO] Figure 3: The white text is legible, but some of the colored text is pretty hard to read on top of the gray background (particularly the red and orange in my case). Perhaps making the label text bold or slightly increasing the font size would help in addition to trying some alternative colors.**
+Reply: Replaced red and orange and incrase the font size 
 
 Line 475: Supplementary Section S2 is referenced for the first time here before Supplementary Section S1 (first mentioned in lines 725-726).
+Reply: Switch the order of the old S1 & S2, and change the reference text in the revised manuscript
+accordingly.
 
 Line 475: The supplementary material provides a thorough description and justification for choosing each of the 13 representative regions for constructing the CPF.
+Reply: how do I reply? Say thanks? 
 
 In the PDF, Table 1 starts on pg 16 and continues on pg 15.
+Reply: We apologies for the confusion. Table 1 is too long due to the list of the units, and we
+separted into two part, frist part on p.15 of the first submittde PDF; second part and the caption
+are on the p.16. May we clarify if the reviewer is suggesting to put the captoin of table under the
+first part of the table? if so, we have amended. 
 
 Figure 4: Each of the 13 regions were split into separate areas for specific reasons to conduct the crater counting, but the figure then combines the crater densities for Near-Mid-CP1 and Near-Mid-CP2 as one unit as well as Far-Mid-CP1, Far-Mid-CP2, and Far-Mid-CP3 as one unit within panels (B), (C), and (D) without explanation. The figure caption states that the crater size-frequency measurements are provided for each unit, but doesn't explain the decision or justification for combining these regions together in the bottom three panels, which are then also used accordingly in the construction of the CPF. Does the CPF change when these 13 regions are considered separately and without some of them combined?
+Reply: We thank the reviewer for this comment. The justification for combining Near-Mid-CP1 & CP2 and Far-Mid-CP1, CP2, & CP3 has been added to both the main text and Figure 4 caption: large craters ($>$10~km) are intrinsically rare, and combining neighbouring units with comparable geological histories improves counting statistics and reduces Poisson uncertainties at large diameters. Treating these units separately would yield the same CPF shape but with larger uncertainties of the crater size-frequency measurement at the large-diameter end.
 
 Table 2:
 - KS-RP4-right is listed with a Lat., Long. position of 120°E and 10°N in Table 1, but is listed as centered at 115°E and 5°N in Table 2.
 - Near-Mid-CP1 is listed with a centered latitude of 15°W in Table 1 and at 15°E in Table 2.
+Reply: thanks. Corrected. KS-RP4-right: 120°E, 10°N, and Near-Mid-CP1: 15°W, 55°N.
 
 Section 3.4:
 
 Lines 539-541: "We adopt the Far-Mid-CP5 terrain as the reference unit because it spans a broad diameter range and exhibits an intermediate crater density, providing stable overlap with both more sparsely and more densely cratered terrains."
 - Can you elaborate a bit here on the choice of this region for normalization because of its intermediate crater density? I'm assuming it's because regions with higher densities are closer to the crater saturation limit (and loss of craters thereof) and regions with lower densities are assumed to have not enough crater accumulation present/visible due to a number of effects such as surface modification and image resolution. It would provide a bit more clarity on this choice to elaborate a little.
+Reply: We thank the reviewer for these detailed observations. The rationale for selecting Far-Mid-CP5 has been expanded to explain why intermediate crater density avoids both saturation bias and incomplete records. A description of how surface modification is mitigated through the three-step procedure has been added, along with a note confirming CPF robustness to binning choice.
 
+**[TODO] HERE**
 - It's also not clear from the text how the surface modification for each of the 13 representative areas is "removed" in the final CPF. Do both the 0.05 (in Log D) binning choice in diameter combined with the 10th-degree polynomial fitting "average" out the surface modification effects? As Fig 5B shows, the unbinned crater size-frequency measurements show quite a bit of modulation in slopes for the six regions included in the plot, but the paper doesn't describe explicitly how the surface modulation is accounted for in the final CPF. That also leaves a bit of a lack of confidence that the produced CPF "…isolate[s] how observational conditions and surface modification processes shape the observed crater population…" (lines 626-627). The paper would benefit from a deeper description of how the polynomial fitting is done following the normalization step to the scale all the regional crater densities to that of Far-Mid-CP5 (i.e., going from panel (C) to panel (D)). I'm also curious if the polynomial fitting results in different slopes (and by how much) if different diameter binning is used (e.g., √2D bin widths) or if no binning is used (as in Fig 5B)? How robust to the effects of surface modulation is the resulting CPF?
 
 Figure 5 caption: "(A) Cyan elliptical outlines highlight the uneven distribution of craters across Enceladus. Thin dashed lines bounding the semi-transparent areas mark the six distinctive units, each labelled with its name and best-fitted crater retention ages."
 I don't see the crater retention ages included in panel (A).
+Reply: sorry, there's no ages. The wrong text is removed.
 
 Section 4.2:
 
 Lines 601-607: The provision of the described code to the community is a very nice value-added supplement to the presented work.
+Reply: In github and Zenodo, and added the link in footnote 
 
+**[TODO] compare the general crater count with Kinczyk et al. (2024) and Kirchoff et al (2009)
+refer to: https://docs.google.com/document/d/1c8JdZ0C3E-GrYwIupeAV0eoio1NXq7854smyAaDeIlU/edit?tab=t.0**
 Lines 609-616: A comparison of the results to Kirchoff and Schenk (2009) is nice to see. Several previous works studying crater densities on Enceladus are discussed in the Introduction. In particular, crater-counting and statistical methods similar to Kinczyk et al. (2024) were utilized in the presented work (lines 415-417). How does the presented work compare to the findings of previous studies, including but not limited to Kinczyk et al. (2024; with all the necessary caveats for different regional coverage, etc)? For those for which comparison is not easily done, could a brief discussion of that be included as well?
 
 
@@ -150,7 +174,7 @@ Reply: We thank the reviewer for this point. Erosive processes --- including tec
 Ln 369: Is the use of the global mosaic to try and ensure consistency between images with respect to lighting and image resolution and such?
 Reply: we thank the reviewer for this question. The global mosaic was adopted for convenience. It provides a unified coordinate system well-suited for cross-unit comparison, regional morphology analysis, and crater recording in Geographic Information System software. It does not standardise imaging conditions; variations in emission angles, phase angles, and image resolution persist among the constituent Cassini images. Image resolution of the constituent images are not enchance or reduce for the consistency of the global images. These effects are discussed in Section~5.1, and (as mentioned in the commented paragraph) the 800~m diameter cutoff was applied specifically to mitigate the resulting incompleteness.
 
-**[TODO] Ln 412: It would be helpful to describe the process that was used for splitting the surface into the 62 units and then the rationale for determining which of those became the 13 representative units. I went to sections 5.1 and 5.2 and I was still very confused about the differentiation. For ease of reproducibility, I’d suggest adding this. More detail about how the representative units were chosen would be incredibly helpful. It’s a critical part of the study, but it’s not clear how one could then reproduce that method if they wanted to use that in their own crater counting/CPF deriving for another body.**
+**[TODO] **Ln 412: It would be helpful to describe the process that was used for splitting the surface into the 62 units and then the rationale for determining which of those became the 13 representative units. I went to sections 5.1 and 5.2 and I was still very confused about the differentiation. For ease of reproducibility, I’d suggest adding this. More detail about how the representative units were chosen would be incredibly helpful. It’s a critical part of the study, but it’s not clear how one could then reproduce that method if they wanted to use that in their own crater counting/CPF deriving for another body.**
 Reply: We thank the reviewer for this helpful and detailed comment. We have revised the manuscript to explicitly state the three criteria simultaneously applied when defining the 62 units: (i) large-scale geomorphological structures, (ii) spatial variations in crater density, and (iii) imaging properties. We provide below a brief description of how each criterion is applied in practice, with illustrative examples.
 
  For criterion (i), unit boundaries are traced along large-scale surface structures --- ridges, troughs, chasmata, and surface texture transitions --- which are visually identifiable in the global mosaic. Figure~X shows an example where a prominent ridge system defines the boundary between two adjacent units.
@@ -165,7 +189,9 @@ Ln 423: The description of near and far wasn’t entirely clear to me. If the re
 Reply: We thank the reviewer for flagging this mistake and ambiguity. We have rewritten the sentence to explicitly state which prefix corresponds to which hemisphere.
 
 Ln 428: Do all of the units have these identifiers on it? For the units from Crow-Willard & Pappalardo that are quite large, are these units broken up into smaller units? Or are the sizes of these areas maintained? What if there are regions where CW and the KS 2009 paper have overlapping map areas?
-Reply: All unit have identifiers, including the newly defined units in this study. Units adopted from CW and KS retain their original name and boundaries as published. Where both studies map the same general region on the trailing hemisphere, their boundaries do not coincide exactly --- the mapped areas overlap but differ in extent. **[TODO] To document this, we have added a remark column to the analytical unit table identifying CW and KS units that spatially overlap.**
+Reply: All unit have identifiers, including the newly defined units in this study. Units adopted from CW and KS retain their original name and boundaries as published. Where both studies map the same general region on the trailing hemisphere, their boundaries do not coincide exactly --- the mapped areas overlap but differ in extent. 
+
+**[TODO] To document this, we have added a remark column to the analytical unit table identifying CW and KS units that spatially overlap.**
 Most units adopted from CW and KS are kept at their original size and are not subdivided, except for (1) the crater plains, and (2) the paired units on the trailing hemisphere (CW's striated and transitional plains; KS's rp1, rp2, rp4), which each consist of a left and right part as shown in Fig.~2 of CW  and Fig.~4 of KS. For these paired units, crater counts and size-frequency measurements were conducted separately for each part, indicated by the ``-left'' and ``-right'' labels in the unit list. Additoinal paragraph is added to section 3.2.
 
 Ln 430: Why add resolution and lighting to the distinction? Is it possible that some of smaller split units are really more a part of a larger single unit? How does that change the results?
@@ -185,7 +211,7 @@ Ln 480: Does this sentence mean that the smooth plains was the only area that sm
 Reply: Thank you, we have rewphrase and clarifed the "linked up" and small craters occur everywhere.
 But the small crater size-frequency measurements that were used to construct the CPF are only taken from sparsely cratered smooth plains explicity chosen as representative units. Choosing smooth plains or plains with lower crater densities ensure the small-crater population is not biased, as mentioned in the mansurcipt.
 
-##TODO **Figure 4: The CSFDs are very small, making it much harder to read the plot and get the main information out of the figures. In panel C, the triangles at the smaller diameters aren’t noted, so it’s not entirely clear what these mean. **
+**[TODO] Figure 4: The CSFDs are very small, making it much harder to read the plot and get the main information out of the figures. In panel C, the triangles at the smaller diameters aren’t noted, so it’s not entirely clear what these mean.**
 Reply: We thank the reviewer for this observation. The figure has been enlarged. The caption for panel~(C) has been expanded to clarify that the arrows indicate the direction of vertical scaling relative to the Far-Mid-CP5 reference density, with downward scaling (i.e., Far-Eq-CP87, Near-Mid-CP1CP2, Far-Mid-CP1CP2CP3)  being less prominent on the logarithmic scale.
 
 Figure 4: It’s also not entirely clear why there’s only 6 curves on the CSFD, when there’s 13 representative units. 
@@ -216,7 +242,7 @@ comment on Fig 4D, will communicate with the editorical team regarding the place
 ~ Ln 559: What does this steep curve and variable slope mean in terms of the crater population?
 Reply: We thank the reviewer for this observation. The paragraph has been revised to clarify that the steeper slopes of low-density units are confined to the small-diameter range. A brief note acknowledges the uncertain cause, referencing the dedicated saturation discussion later in the manuscript.
 
-##TODO **Figure 5B: Would suggest making this SFD plot larger. This plot is also where I had questions about how the data goes from 13 representative units to only 6.**
+**[TODO] Figure 5B: Would suggest making this SFD plot larger. This plot is also where I had questions about how the data goes from 13 representative units to only 6.**
 Reply: We thank the reviewer for this suggestion. The plot has been enlarged in the revised version. 
 We also wish to clarify that the set of 6 curves in Figure~5(B) are not the same set as the 13 representative units used for CPF construction, although one or two of the selected terrains do overlap. Figure~5(B) is not intended to reconstruct the CPF, but rather to illustrate the heterogeneity in crater size-frequency measurements across globally diverse terrain types on Enceladus; one typical unit per terrain type was selected to demonstrate their general differences clearly without overcrowding the figure with all or too many units on Encelauds. The relationship between the 13 representative units and the ten sampling datasets used in Figure~4 is addressed in our response to the earlier Figure~4 comment.
 
@@ -230,33 +256,43 @@ Reply: done
 Reply: We thank the reviewer for this suggestion. A note has been added acknowledging that alternative scaling relations may yield different impactor-to-crater diameter conversions. Since the CPF is expressed in normalised form, however, the shape of the production function are unaffected; only the absolute impactor size at the reference diameter would change.
 
 Ln 597: What is the reference diameter?
-Reply: thanks. add 22.6 km which is the typical crater size produce by 1 km heliocentic comet
-impact.
+Reply: (no longer need to worry about this part) thanks. add 22.6 km which is the typical crater size produce by 1 km heliocentic comet 
 
 Ln 601: Where is this documented Python code housed? Is there a github or other repository? It would be helpful to have that noted here. 
 Reply: In github and Zenodo, and added the link in footnote 
 
-##TODO **change the scaling to 10 km crater on Far-Mid-CP5, instead current Obs 1km SDO**
+**[TODO] change the scaling to 10 km crater on Far-Mid-CP5, instead current Obs 1km SDO**
 Ln 606/607: I’m confused at this point, how can we use the CPF derived from Enceladus counts and resurfacing processes to look at other satellites? Or is it meant in a way to compare Enceladus counts to other surfaces?
-Reply: We thank the reviewer for raising this point. We acknowledge that anchoring the CPF normalisation to the current scattered disc object population and impactor-to-crater scaling relations introduced assumptions that went beyond what is necessary for the purposes of this study, and we appreciate the reviewer drawing attention to this. In the revised manuscript, we have removed this dependency entirely: the CPF is now normalised directly to the observed cumulative crater density of Far-Mid-CP5 at a reference diameter of 10~km, keeping the production function fully self-consistent within the Enceladian crater record. The CPF derived here is therefore applicable to Enceladian terrains only, and no comparison to other icy satellites is implied. The polynomial coefficients in Table~\ref{tab:cpf} have been updated accordingly.
+Reply:  We thank the reviewer for raising this point. This ambiguity is directly related to the next comment, and we refer the reviewer to our response there, where we address both issues together.
 
-##TODO **Ln 619-21: This statement is where I’m also confused since the CPF has been said to be derived directly from crater counts instead of model predictions, but previously the text described numbers from scattered disc objects (~ln 591). **
-Reply: We thank the reviewer for highlighting this ambiguity. The CPF is derived exclusively from Enceladus crater counts and is applicable to Enceladian terrains only. To remove dependence on impactor-to-crater scaling relations and avoid cross-satellite confusion, the normalisation has been revised to anchor directly to the observed crater density of Far-Mid-CP5 at 10~km diameter, making the CPF fully self-consistent within the Enceladian crater record.
+Ln 619-21: This statement is where I’m also confused since the CPF has been said to be derived directly from crater counts instead of model predictions, but previously the text described numbers from scattered disc objects (~ln 591).
+Reply: We thank the reviewer for highlighting this ambiguity. The reviewer is correct that anchoring the CPF normalisation to the observed scattered disc object population introduced an unnecessary model-dependent assumption — one that conflates the shape of the Enceladian production function with an external impactor flux estimate. In the revised manuscript, this dependency has been removed entirely. The CPF is now normalised to the directly observed cumulative crater density of Far-Mid-CP5 at a reference diameter of D_{\rm ref} = 10 km, keeping the production function fully grounded in the Enceladian crater record.
+
+The choice of 10 km as the reference diameter is arbitrary; any diameter within the valid range of the CPF would yield an equivalent result. Setting $\widetilde{S}(D_{\rm ref}) = 1$ simply fixes the vertical scale of the dimensionless shape function without altering the shape of the production function or the relative ages derived from it. Far-Mid-CP5 was selected as the reference unit because it spans a broad diameter range and exhibits an intermediate crater density, providing stable overlap with both more sparsely and more densely cratered terrains, making it the most robustly constrained unit for anchoring the normalisation. The polynomial coefficients in Table~\ref{tab:cpf} have been updated accordingly.
 
 Ln 637: This could be replaced with just emission angle and the camera could be referred to earlier and described as the Cassini ISS/NAC (Porco et al., 2004 is the Space Science Review paper describing the instrument). 
+Reply: We thank the reviewer. The Cassini ISS/NAC instrument is now introduced at first mention with the \citet{Porco2004} citation, and the emission angle definition has been simplified accordingly.
 
 Ln 636-38: This is a very short paragraph and I’d suggest combining it with the following paragraph. 
 Reply: done
 
 Section 5.1 as a whole is a bit repetitive of what was stated earlier in the paper around ~ ln 330 or so about the imaging constraints and split of the 
+Reply: We thank the reviewer and acknowledge the apparent repetition. The earlier mention intentionally introduces only the key imaging constraints to avoid distracting the reader during the crater counting and CPF derivation. Old sections 5.1--5.3 then provide the full justification for unit boundary delineation, which is most naturally discussed alongside the results.
 
+In the revision, old sections 5.1--5.3 have been reorganised as sub-subsections under a new parent subsection titled ``Criteria and justification for unit boundary delineation'', making explicit that image properties, surface morphology, and spatial crater density gradients are the three criteria simultaneously considered when drawing unit boundaries. The detailed discussion deliberately complements rather than repeats the brief methodological mention.
+ 
 ~Ln 647: This could be elaborated on more as to what illumination conditions are most preferable for crater identification. 
+Reply: We thank the reviewer. A note has been added that solar incidence angles above $\sim$60$^{\circ}$ are preferable as referencing a recent work by \citet{Blanco-Rojas2024}.
 
 Section 5.3 as currently written reads as if it could be included earlier in the methodology section instead of the discussion. 
+Reply: We thank the reviewer. The old section~5.3 has been retained in the discussion, renamed the title to ``Spatial crater density variations and unit subdivision'' to better reflect its content, and restructured as a sub-subsection alongside the old sections 5.1 and 5.2 under the unified parent subsection on unit boundary delineation.
 
 Ln 710: Is there any preferred resurfacing mechanism here? Does this apply only to a specific diameter range?
+Reply: We thank the reviewer. No preferred mechanism can be identified without further study (required dedicated geomorphological and geophysical modelling). We note that tectonic disturbance, basin-forming impacts, and local crustal melting are all plausible contributors, and have briefly acknowledged these in the text. 
+The mentioned processes erasing smaller craters first: smaller craters are more abundant, consistent with a declining impactor SFD, and assuming a globally homogeneous impact flux on Enceladus — that is, no preference for a specific impactor size range based on latitude or longitude — a specific diameter threshold for erasure cannot be defined.
 
 Ln 719: This description of surface geology would benefit a lot from the inclusion of a figure for context. 
+Reply: We thank the reviewer. Supporting figures were already provided in Supplementary Section~S1; we apologise that referencing them only in the final sentence of the paragraph made them easy to overlook. Figure references have now been added inline after each descriptive sentence.
 
-#TODO **Supplemental Material: The supplement looks fine to me, I’d just recommend adding scale bars to the figures.**
+**[TODO] Supplemental Material: The supplement looks fine to me, I’d just recommend adding scale bars to the figures.**
 Reply: Thank you very much, and we apologies for missing the scale bar. Because it’s general to show the outline of the region, as well as demonstrate the prinstine and homogenerouc of the crater on the surface as to prove or convine the choice of those unit that can be regards as reference unit for constructuing the CPF thus knowing the exact scale of the surface feature is not that crucial or important, neither the absolute size of crater or structure is mentioned in all caption. In our next paper, which we will measure the surface ages and taking into account the thershold diamater for measuring or distinguishing the resurfacing ages, where crater diamater and the size of the other geomorophoogy is more important, we will of course add scale bar in all remote sensing figures.
