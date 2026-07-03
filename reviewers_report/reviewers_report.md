@@ -101,16 +101,18 @@ Section 4.2:
 Lines 601-607: The provision of the described code to the community is a very nice value-added supplement to the presented work.
 Reply: In github and Zenodo, and added the link in footnote 
 
-**[TODO] compare the general crater count with Kinczyk et al. (2024) and Kirchoff et al (2009)
-refer to: https://docs.google.com/document/d/1c8JdZ0C3E-GrYwIupeAV0eoio1NXq7854smyAaDeIlU/edit?tab=t.0**
+**[TODO] Add the table for: https://docs.google.com/document/d/1c8JdZ0C3E-GrYwIupeAV0eoio1NXq7854smyAaDeIlU/edit?tab=t.0**
 Lines 609-616: A comparison of the results to Kirchoff and Schenk (2009) is nice to see. Several previous works studying crater densities on Enceladus are discussed in the Introduction. In particular, crater-counting and statistical methods similar to Kinczyk et al. (2024) were utilized in the presented work (lines 415-417). How does the presented work compare to the findings of previous studies, including but not limited to Kinczyk et al. (2024; with all the necessary caveats for different regional coverage, etc)? For those for which comparison is not easily done, could a brief discussion of that be included as well?
+Reply:  We thank the reviewer for this suggestion. Since no previous study has constructed an Enceladian CPF, direct comparison is limited to crater densities. 
 
+Our crater counts show good agreement with Kinczyk et al. (2024); for N($>$1 km) and N($>$2 km), differences are at most a factor of two, attributable to differing unit boundary definitions, as our classifications primarily follow Crow-Willard and Pappalardo (2015). For N($>$5 km), where large craters are intrinsically rare and counts are subject to greater statistical fluctuation and uncertainty, the agreement remains within one order of magnitude. Cumulative crater densities were read by eye from the log--log SFD plot in Fig. 4 of Kinczyk et al. (2024), given time constraints in obtaining their raw counts directly, and are therefore reported to one significant figure; the precision is limited by the graphical reading, and our crater counts are reported and compared to the same number of significant figures accordingly. Furthermore, because the unit boundaries in Kinczyk et al. (2024) and in the present study differ, an exact crater density comparison is not straightforward — broadly similar values are expected for equivalent terrain types, but not identical ones. A meaningful side-by-side comparison requires adopting the same unit boundaries, which we plan to carry out in the forthcoming companion paper. For the purposes of the present paper — which focuses on the shape of the production function rather than absolute crater densities — the order-of-magnitude agreement is sufficient to validate the crater counts.
+
+A direct comparison with \citet{Kirchoff2009} was not added, as the crater counts in this study were compiled consistently with and partially contributed by the same counters (M. Kirchoff); such a comparison would therefore not constitute an independent validation. For the forthcoming companion paper, we intend to contact Kinczyk et al. directly to obtain their raw crater counts, enabling a more rigorous unit-by-unit comparison, as well as estimated surface ages for both this study's units and the heavily cratered units defined by Kinczyk et al. (2024) using the CPF derived here.
 
 ========================================================================================================
 # Reviewers 2: 
 
 Overall Comments: I want to thank the authors for their thorough investigation Enceladus’ cratering record and their work to derive a new crater production function for Enceladus. Overall, I think the paper is worthy of being published in Icarus and should be published upon completion of minor revisions. Most of my comments are focused on clarifying the text and adding more detail to the methodology section of the manuscript. Other than those comments, I think the paper could benefit from the **addition of some more sentences focused on the implications of the CPF fit and how the community can best use this CPF upon publication**. 
-##TODO
 
 There are several instances throughout the manuscript where there are paragraphs that consist only of a sentence or two. I’ve noted places where they appear and they often seem like fragments that can be merged with the paragraph before or after it, or expanded upon to build a longer paragraph. 
 
@@ -126,8 +128,8 @@ Reply: We thank the reviewer and have revised the abstract to: (1) specify that 
 Ln 27: CHNOPS should be spelled out here since this is the first time its appearing. 
 Reply: We thank the reviewer for this comment. We have spelled out CHNOPS in full.
 
-**[TODO] Ln 49: I’m confused by the reference to Hirata 2016 since this was looking more for evidence of a leading/trailing asymmetry and not as much on the characteristics of planetocentric material/target properties. I’d suggest rewording this sentence for the Hirata reference to fit more with the text.**
-Reply: 
+Ln 49: I’m confused by the reference to Hirata 2016 since this was looking more for evidence of a leading/trailing asymmetry and not as much on the characteristics of planetocentric material/target properties. I’d suggest rewording this sentence for the Hirata reference to fit more with the text.
+Reply: Thank you for pointing this out. The inclusion of Hirata (2016) was a typo. The statement is supported by Bell (2020), who discusses the uncertain transition diameter between heliocentric and planetocentric impactors and its dependence on target properties and impact conditions. We revisited Hirata (2016). That study finds that the observed asymmetry of larger craters is consistent with predominantly heliocentric impactors, whereas the weak asymmetry of craters smaller than ~20 km could be explained by either an increased contribution from planetocentric impactors or crater saturation, without distinguishing between these possibilities. We have therefore removed the Hirata (2016) citation from this sentence. 
 
 Ln 112-14: Single sentence paragraph here, could be moved to the end of the preceding paragraph since that one was talking about Kirchoff & Schenk 2009 & 2010. 
 Reply: Done and thanks for the comment.
@@ -178,7 +180,8 @@ Reply: Thank and added
 Figure 2: The label for this figure is below all three panels sitting on its own, so it’s easy for the reader to miss the indication that this is actually Figure 2. 
 Reply: Thanks for pointing it out. The labels of Figure 2a, 2b and 2c are add to the beginning of the three captions.
 
-**[TODO] Ln 337: Could impact gardening also fall under partial resurfacing? Things like what Costello et al., 2023 did for Europa.**
+Ln 337: Could impact gardening also fall under partial resurfacing? Things like what Costello et al., 2023 did for Europa.
+Reply: Thank you for the suggestion. We agree that impact gardening is another mechanism that can contribute to partial resurfacing. We have cited Costello et al. (2021), ``Impact gardening on Europa and repercussions for possible biosignatures'' (Nature Astronomy) study and have added a brief sentence accordingly.
 
 Ln 341: Spell out Figure 2 instead of Fig 2. 
 Reply: Done
@@ -195,7 +198,7 @@ Reply: we thank the reviewer for this question. The global mosaic was adopted fo
 **[TODO] **Ln 412: It would be helpful to describe the process that was used for splitting the surface into the 62 units and then the rationale for determining which of those became the 13 representative units. I went to sections 5.1 and 5.2 and I was still very confused about the differentiation. For ease of reproducibility, I’d suggest adding this. More detail about how the representative units were chosen would be incredibly helpful. It’s a critical part of the study, but it’s not clear how one could then reproduce that method if they wanted to use that in their own crater counting/CPF deriving for another body.**
 Reply: We thank the reviewer for this helpful and detailed comment. We have revised the manuscript to explicitly state the three criteria simultaneously applied when defining the 62 units: (i) large-scale geomorphological structures, (ii) spatial variations in crater density, and (iii) imaging properties. We provide below a brief description of how each criterion is applied in practice, with illustrative examples.
 
- For criterion (i), unit boundaries are traced along large-scale surface structures --- ridges, troughs, chasmata, and surface texture transitions --- which are visually identifiable in the global mosaic. Figure~X shows an example where a prominent ridge system defines the boundary between two adjacent units.
+For criterion (i), unit boundaries are traced along large-scale surface structures --- ridges, troughs, chasmata, and surface texture transitions --- which are visually identifiable in the global mosaic. Figure~X shows an example where a prominent ridge system defines the boundary between two adjacent units.
 
  For criterion (ii), transitions in crater density are generally visible by eye, particularly the gradual decrease from high to low latitudes in the cratered plains (e.g., Far-Eq-CP8 to Far-Eq-CP4). Where such gradients exist, the boundary between units is anchored to the nearest large-scale geomorphological structure to avoid an arbitrary placement. Figure~Y illustrates such a density transition and the corresponding unit boundary.
 
@@ -207,10 +210,22 @@ Ln 423: The description of near and far wasn’t entirely clear to me. If the re
 Reply: We thank the reviewer for flagging this mistake and ambiguity. We have rewritten the sentence to explicitly state which prefix corresponds to which hemisphere.
 
 Ln 428: Do all of the units have these identifiers on it? For the units from Crow-Willard & Pappalardo that are quite large, are these units broken up into smaller units? Or are the sizes of these areas maintained? What if there are regions where CW and the KS 2009 paper have overlapping map areas?
-Reply: All unit have identifiers, including the newly defined units in this study. Units adopted from CW and KS retain their original name and boundaries as published. Where both studies map the same general region on the trailing hemisphere, their boundaries do not coincide exactly --- the mapped areas overlap but differ in extent. 
-
-**[TODO] To document this, we have added a remark column to the analytical unit table identifying CW and KS units that spatially overlap.**
-Most units adopted from CW and KS are kept at their original size and are not subdivided, except for (1) the crater plains, and (2) the paired units on the trailing hemisphere (CW's striated and transitional plains; KS's rp1, rp2, rp4), which each consist of a left and right part as shown in Fig.~2 of CW  and Fig.~4 of KS. For these paired units, crater counts and size-frequency measurements were conducted separately for each part, indicated by the ``-left'' and ``-right'' labels in the unit list. Additoinal paragraph is added to section 3.2.
+Reply: All units have identifiers, including newly defined units in this study. Units adopted from CW and KS retain their original names and boundaries as published. 
+Most units adopted from CW and KS are kept at their original size and are not subdivided, except for (1) the crater plains, and (2) the paired units on the trailing hemisphere (CW's striated and transitional plains; KS's rp1, rp2, rp4), which each consist of a left and right part as shown in Fig. 2 of CW  and Fig.~4 of KS. For these paired units, crater counts and size-frequency measurements were conducted separately for each part, indicated by the ``-left'' and ``-right'' labels in the unit list. Additoinal paragraph is added to section 3.2.
+Where both studies map the same general region — specifically the ridged plains of the trailing
+hemisphere — their boundaries do not coincide exactly; the mapped areas overlap but differ in
+extent. The correspondence between the seven CW units and nine KS units covering this region is
+summarised in the table below, and also noted in the caption of the analytical unit table in the
+revised version. Since crater counts are conducted per unit with fixed boundaries, this overlap does not affect our measurements. 
+| CW unit | Corresponding KS unit(s) |
+|---|---|
+| CW-T-curvilinear-left | KS-RP3 |
+| CW-T-curvilinear-right | KS-RP6 |
+| CW-T-ridged | KS-RP2-left, KS-RP2-right |
+| CW-T-striated-left | KS-RP4-left |
+| CW-T-striated-right | KS-RP4-right |
+| CW-T-transitional-left | KS-RP1-left |
+| CW-T-transitional-right | KS-RP1-middle, KS-RP1-right |
 
 Ln 430: Why add resolution and lighting to the distinction? Is it possible that some of smaller split units are really more a part of a larger single unit? How does that change the results?
 Reply: We thank the reviewer for this important question. Imaging-driven subdivision is scientifically necessary because a geologically coherent region captured by 
@@ -234,12 +249,12 @@ Reply: We thank the reviewer for this observation. The figure has been enlarged.
 
 Figure 4: It’s also not entirely clear why there’s only 6 curves on the CSFD, when there’s 13 representative units. 
 Reply: We thank the reviewer for this critics. 
-To ensure we address it accurately, we would first like to seek clarification: Figure~5 presents six curves (or dataset), whereas Figure~4(B)--(D) presents ten datasets. Could the reviewer kindly confirm which figure this comment refers to? In either case, we provide a full explanation below and have revised the manuscript accordingly.
+To ensure we address it accurately, we would first like to seek clarification: Figure 5 presents six curves (or dataset), whereas Figure 4(B)--(D) presents ten datasets. Could the reviewer kindly confirm which figure this comment refers to? In either case, we provide a full explanation below and have revised the manuscript accordingly.
 We apologise for any confusion arising from the placement of figure 4 & 5, and will consult the editorial team on whether adjustments to figure arrangement would reduce the risk of potential mistaken cross-referencing.
 
-Still, reviewer's question remaind valid, why it's ten datasets but not 13? The ten datasets in Figure~4, rather than 13, reflect the deliberate combination of neighbouring heavily cratered mid-latitude units for the large-crater range of the CPF. Large craters ($>10$~km) are intrinsically rare; treating each unit individually would yield sparse, highly scattered data points and large Poisson uncertainties at large diameters. To obtain robust counting statistics, we merged units that share comparable geological histories and size-frequency distributions: Near-Mid-CP1 and Near-Mid-CP2 (near side), and Far-Mid-CP1, Far-Mid-CP2, and Far-Mid-CP3 (far side), reducing the 13 units to ten sampling datasets. We have expanded the relevant paragraph and updated the Figure~4 caption to make this rationale explicit and to identify which units are combined.
+Still, reviewer's question remaind valid, why it's ten datasets but not 13? The ten datasets in Figure 4, rather than 13, reflect the deliberate combination of neighbouring heavily cratered mid-latitude units for the large-crater range of the CPF. Large craters ($>10$ km) are intrinsically rare; treating each unit individually would yield sparse, highly scattered data points and large Poisson uncertainties at large diameters. To obtain robust counting statistics, we merged units that share comparable geological histories and size-frequency distributions: Near-Mid-CP1 and Near-Mid-CP2 (near side), and Far-Mid-CP1, Far-Mid-CP2, and Far-Mid-CP3 (far side), reducing the 13 units to ten sampling datasets. We have expanded the relevant paragraph and updated the Figure~4 caption to make this rationale explicit and to identify which units are combined.
 
-We also note that, while Figure~4(B) and Figure~5(B) may appear visually similar, they serve distinct purposes. Figure~4(B)--(D) is designed to demonstrate the step-by-step construction of the CPF, whereas Figure~5(B) is presented to illustrate the diversity and contrast in crater size-frequency distributions across different terrain types on Enceladus.
+We also note that, while Figure 4(B) and Figure 5(B) may appear visually similar, they serve distinct purposes. Figure 4(B)--(D) is designed to demonstrate the step-by-step construction of the CPF, whereas Figure~5(B) is presented to illustrate the diversity and contrast in crater size-frequency distributions across different terrain types on Enceladus.
 
 Figure 4D: This is the first mention of the Far-Mid-CP5 unit being used as the normalization area, but it’s not clear why this one was chosen to normalize against. Detail earlier in the main text would be helpful. 
 Reply: We thank the reviewer for this observation. The justification for selecting Far-Mid-CP5 as the reference unit has been moved earlier in the main text (but such text might not be able to precede the description of Fig.~4D within the entire caption of Fig~4), and a brief rationale has been added to the figure caption (D) to make it self-contained. We also recognise that the Fig 4 caption appearing 2 page earlier that the detailed explanation may have contributed to this ambiguity, and we will communicate with the editorial team regarding the placement of Fig.~4 in the final layout to better align the figure with its full discussion.
@@ -262,7 +277,7 @@ Reply: We thank the reviewer for this observation. The paragraph has been revise
 
 **[TODO] Figure 5B: Would suggest making this SFD plot larger. This plot is also where I had questions about how the data goes from 13 representative units to only 6.**
 Reply: We thank the reviewer for this suggestion. The plot has been enlarged in the revised version. 
-We also wish to clarify that the set of 6 curves in Figure~5(B) are not the same set as the 13 representative units used for CPF construction, although one or two of the selected terrains do overlap. Figure~5(B) is not intended to reconstruct the CPF, but rather to illustrate the heterogeneity in crater size-frequency measurements across globally diverse terrain types on Enceladus; one typical unit per terrain type was selected to demonstrate their general differences clearly without overcrowding the figure with all or too many units on Encelauds. The relationship between the 13 representative units and the ten sampling datasets used in Figure~4 is addressed in our response to the earlier Figure~4 comment.
+We also wish to clarify that the set of 6 curves in Figure 5(B) are not the same set as the 13 representative units used for CPF construction, although one or two of the selected terrains do overlap. Figure~5(B) is not intended to reconstruct the CPF, but rather to illustrate the heterogeneity in crater size-frequency measurements across globally diverse terrain types on Enceladus; one typical unit per terrain type was selected to demonstrate their general differences clearly without overcrowding the figure with all or too many units on Encelauds. The relationship between the 13 representative units and the ten sampling datasets used in Figure~4 is addressed in our response to the earlier Figure~4 comment.
 
 Figure 5B: On the plot currently, the 1% and 10% saturation lines look very similar and it’s hard to distinguish between the two. 
 Reply: We thank the reviewer for this observation. The 10\% saturation line has been changed to a dot-dashed style, and the text and the caption has been updated accordingly.
