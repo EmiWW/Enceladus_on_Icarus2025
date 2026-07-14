@@ -136,8 +136,11 @@ def create_tethys() -> IcyMoon:
         impact_probability=4.74e-8,
         spherical_area=3.543e6,
     )
-
-
+#
+# === Reference Scaling: Far-Mid-CP5 observed crater density ===
+# All SFDs are normalised to match this observed anchor point.
+REFERENCE_CRATER_DIAMETER_KM = 10.0  # km
+OBSERVED_CP5_DENSITY_AT_10KM = 4e-4  # craters km^-2
 # ==================================================================================
 # === 1) Evaluate the normalized CPF ===
 def generate_CPF() -> np.poly1d:
@@ -151,7 +154,8 @@ def generate_CPF() -> np.poly1d:
     """
     cpf_coefficients = np.array(
         [
-            -0.065237099,  # a0
+            -0.59319679, #a0
+#            -0.065237099,  # a0
             -2.35027511,  # a1
             -5.55729243,  # a2
             24.95085739,  # a3
@@ -164,9 +168,14 @@ def generate_CPF() -> np.poly1d:
             -14.84990662,  # a10
         ]
     )
+#    unscaled_cpf = np.poly1d(cpf_coefficients[::-1])
+#    unscaled_density_at_10km = 10 ** (unscaled_cpf(np.log10(REFERENCE_CRATER_DIAMETER_KM)))
+#    a0_shift = np.log10(OBSERVED_CP5_DENSITY_AT_10KM / unscaled_density_at_10km)
+#    print(f"a0_shift: {a0_shift:.15f}")
+#    cpf_coefficients[0] += a0_shift  # only a0 changes; shape is preserved
+
     crater_production_function = np.poly1d(cpf_coefficients[::-1])
     return crater_production_function
-
 
 def wong_crater_sfd(crater_diameter: float | np.ndarray) -> float | np.ndarray:
     """
@@ -290,30 +299,34 @@ def calculate_impactor_density(
     minimum_impactor_diameter: float,
     maximum_impactor_diameter: float,
 ) -> tuple[np.ndarray, np.ndarray, float | np.ndarray, float | np.ndarray]:
-    """Calculate impactor density using the impactor size-frequency distribution"""
-    # Expected number of 1 km impactor from the impactor size-frequency distribution
-    one_km_impactor = impactor_sfd(1.0)
-    expected_one_km_impactor = expected_impact_density(
-        1.0, IcyMoon, singer_impactor_sfd
-    )
+    """
+    Calculate impactor density scaled to the Enceladus CPF.
+    The CPF is first anchored to the observed Far-Mid-CP5 crater density at 10 km (4e-4 km^-2).
+    The impactor SFDs are then anchored to the CPF value at the crater diameter
+    produced by a 1 km heliocentric impactor on Enceladus.
+    """
+    # Crater diameter produced by a 1 km impactor on this moon
+    crater_diameter_from_1km_impactor = IcyMoon.impactor_to_crater(1.0)
+    # CPF density at that crater diameter (CPF is already scaled to observed CP5 at 10 km)
+    cpf_density_at_1km_impactor = wong_crater_sfd(crater_diameter_from_1km_impactor)
 
-    # Creating function with the impactor diameter range plotted/discussed in the cited publication
+    # Normalize the impactor SFD so it matches the CPF at 1 km impactor
+    unscaled_ref_density = impactor_sfd(1.0)
+
+    # Impactor diameter range plotted/discussed in the cited publication
     reliable_impactor_diameter = make_diameter_range(
         minimum_impactor_diameter, maximum_impactor_diameter
     )
-    # Calculating the impactor density using the 'impactor_sfd'
     impactor_density = impactor_sfd(reliable_impactor_diameter)
     normalised_density_reliable_impactor_diameter = (
-        impactor_density / one_km_impactor * expected_one_km_impactor
+        impactor_density / unscaled_ref_density * cpf_density_at_1km_impactor
     )
 
-    # Creating function with the entire observed crater ranges in this work
+    # Entire observed crater range converted to impactor space
     all_impactor_diameter = IcyMoon.crater_to_impactor(crater_diameter)
     impactor_density_all_impactor_diameter = impactor_sfd(all_impactor_diameter)
     normalised_density_all_impactor_diameter = (
-        impactor_density_all_impactor_diameter
-        / one_km_impactor
-        * expected_one_km_impactor
+        impactor_density_all_impactor_diameter / unscaled_ref_density * cpf_density_at_1km_impactor
     )
     return (
         reliable_impactor_diameter,
@@ -321,6 +334,65 @@ def calculate_impactor_density(
         all_impactor_diameter,
         normalised_density_all_impactor_diameter,
     )
+
+    #"""Calculate impactor density scaled to the observed Far-Mid-CP5 crater density at 10 km"""
+    ## Reference impactor diameter that produces a 10 km crater on this moon
+    #ref_impactor_diameter = IcyMoon.crater_to_impactor(REFERENCE_CRATER_DIAMETER_KM)
+    #unscaled_ref_density = impactor_sfd(ref_impactor_diameter)
+
+    ## Impactor diameter range plotted/discussed in the cited publication
+    #reliable_impactor_diameter = make_diameter_range(
+    #    minimum_impactor_diameter, maximum_impactor_diameter
+    #)
+    #impactor_density = impactor_sfd(reliable_impactor_diameter)
+    #normalised_density_reliable_impactor_diameter = (
+    #    impactor_density / unscaled_ref_density * OBSERVED_CP5_DENSITY_AT_10KM
+    #)
+
+    ## Entire observed crater range converted to impactor space
+    #all_impactor_diameter = IcyMoon.crater_to_impactor(crater_diameter)
+    #impactor_density_all_impactor_diameter = impactor_sfd(all_impactor_diameter)
+    #normalised_density_all_impactor_diameter = (
+    #    impactor_density_all_impactor_diameter / unscaled_ref_density * OBSERVED_CP5_DENSITY_AT_10KM
+    #)
+    #return (
+    #    reliable_impactor_diameter,
+    #    normalised_density_reliable_impactor_diameter,
+    #    all_impactor_diameter,
+    #    normalised_density_all_impactor_diameter,
+    #)
+
+    #"""Calculate impactor density using the impactor size-frequency distribution"""
+    ## Expected number of 1 km impactor from the impactor size-frequency distribution
+    #one_km_impactor = impactor_sfd(1.0)
+    #expected_one_km_impactor = expected_impact_density(
+    #    1.0, IcyMoon, singer_impactor_sfd
+    #)
+
+    ## Creating function with the impactor diameter range plotted/discussed in the cited publication
+    #reliable_impactor_diameter = make_diameter_range(
+    #    minimum_impactor_diameter, maximum_impactor_diameter
+    #)
+    ## Calculating the impactor density using the 'impactor_sfd'
+    #impactor_density = impactor_sfd(reliable_impactor_diameter)
+    #normalised_density_reliable_impactor_diameter = (
+    #    impactor_density / one_km_impactor * expected_one_km_impactor
+    #)
+
+    ## Creating function with the entire observed crater ranges in this work
+    #all_impactor_diameter = IcyMoon.crater_to_impactor(crater_diameter)
+    #impactor_density_all_impactor_diameter = impactor_sfd(all_impactor_diameter)
+    #normalised_density_all_impactor_diameter = (
+    #    impactor_density_all_impactor_diameter
+    #    / one_km_impactor
+    #    * expected_one_km_impactor
+    #)
+    #return (
+    #    reliable_impactor_diameter,
+    #    normalised_density_reliable_impactor_diameter,
+    #    all_impactor_diameter,
+    #    normalised_density_all_impactor_diameter,
+    #)
 
 
 def calculate_crater_density(
@@ -330,41 +402,64 @@ def calculate_crater_density(
     minimum_crater_diameter: float,
     maximum_crater_diameter: float,
 ) -> tuple[np.ndarray, np.ndarray, float | np.ndarray]:
-    """Calculate crater density using the crater size-frequency distribution"""
-    # Get the Enceladus instance to convert between impactor and crater diameters
-    expected_crater_size_from_one_km_impactor = IcyMoon.impactor_to_crater(1.0)
-    # Calculate expected 1 km impactor density from the provided *crater* size-frequency distribution
-    unscaled_one_km_impact_density_on_moon = crater_sfd(
-        expected_crater_size_from_one_km_impactor
-    )
-    expected_one_km_impact_density_on_moon = expected_impact_density(
-        1.0, IcyMoon, singer_impactor_sfd
-    )
+    """Calculate crater density scaled to the observed Far-Mid-CP5 crater density at 10 km"""
+    # Normalise all SFDs to the observed CP5 crater density at 10 km diameter
+    unscaled_ref_density = crater_sfd(REFERENCE_CRATER_DIAMETER_KM)
 
-    # Creating function with the crater diameter range plotted/discussed in the cited publication
+    # Crater diameter range plotted/discussed in the cited publication
     reliable_crater_diameter = make_diameter_range(
         minimum_crater_diameter, maximum_crater_diameter
     )
-
-    # Calculating the crater density using "crater_sfd"
     unscaled_crater_density = crater_sfd(reliable_crater_diameter)
     normalised_density_reliable_crater_diameter = (
-        unscaled_crater_density
-        / unscaled_one_km_impact_density_on_moon
-        * expected_one_km_impact_density_on_moon
+        unscaled_crater_density / unscaled_ref_density * OBSERVED_CP5_DENSITY_AT_10KM
     )
 
     unscaled_density_all_crater_diameter = crater_sfd(crater_diameter)
     normalised_density_all_crater_diameter = (
-        unscaled_density_all_crater_diameter
-        / unscaled_one_km_impact_density_on_moon
-        * expected_one_km_impact_density_on_moon
+        unscaled_density_all_crater_diameter / unscaled_ref_density * OBSERVED_CP5_DENSITY_AT_10KM
     )
     return (
         reliable_crater_diameter,
         normalised_density_reliable_crater_diameter,
         normalised_density_all_crater_diameter,
     )
+
+#    """Calculate crater density using the crater size-frequency distribution"""
+#    # Get the Enceladus instance to convert between impactor and crater diameters
+#    expected_crater_size_from_one_km_impactor = IcyMoon.impactor_to_crater(1.0)
+#    # Calculate expected 1 km impactor density from the provided *crater* size-frequency distribution
+#    unscaled_one_km_impact_density_on_moon = crater_sfd(
+#        expected_crater_size_from_one_km_impactor
+#    )
+#    expected_one_km_impact_density_on_moon = expected_impact_density(
+#        1.0, IcyMoon, singer_impactor_sfd
+#    )
+#
+#    # Creating function with the crater diameter range plotted/discussed in the cited publication
+#    reliable_crater_diameter = make_diameter_range(
+#        minimum_crater_diameter, maximum_crater_diameter
+#    )
+#
+#    # Calculating the crater density using "crater_sfd"
+#    unscaled_crater_density = crater_sfd(reliable_crater_diameter)
+#    normalised_density_reliable_crater_diameter = (
+#        unscaled_crater_density
+#        / unscaled_one_km_impact_density_on_moon
+#        * expected_one_km_impact_density_on_moon
+#    )
+#
+#    unscaled_density_all_crater_diameter = crater_sfd(crater_diameter)
+#    normalised_density_all_crater_diameter = (
+#        unscaled_density_all_crater_diameter
+#        / unscaled_one_km_impact_density_on_moon
+#        * expected_one_km_impact_density_on_moon
+#    )
+#    return (
+#        reliable_crater_diameter,
+#        normalised_density_reliable_crater_diameter,
+#        normalised_density_all_crater_diameter,
+#    )
 
 
 # ==================================================================================
@@ -396,7 +491,7 @@ def plot_figure(all_data: list[tuple[np.ndarray, np.ndarray, str, str, str]]) ->
     plt.xticks(fontsize=13)
     plt.yticks(fontsize=13)
     plt.savefig(
-        "./Wongetal2025_fig1.png"
+        "./Wongetal2025_fig1_scaled_to_10km_FarMidCP5.png"
     )
     plt.show()
 
@@ -532,7 +627,7 @@ def main() -> None:
             "solid",
         ],
         ## Plot crater ranges outside the reliable ranges in dotted line
-        [
+        [ 
             moon.impactor_to_crater(zahnle_jfc_all_impactor_diameter),
             zahnle_jfc_normalised_density_all_impactor_diameter,
             None,
