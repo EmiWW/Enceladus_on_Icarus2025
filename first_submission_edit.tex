@@ -30,6 +30,7 @@
 \usepackage{xspace}
 \usepackage{caption}
 \usepackage{subfig}
+\setcounter{secnumdepth}{3}
 \newcommand\emi{\color{blue}\xspace}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -367,7 +368,7 @@ While a unit typically denotes a region with similar geological history and geom
   KS-RP6 & 140°E, 15°N & 209 & 15.8 \\
 \hline
 \end{tabular}
-  \caption{List of the 62 units, among them 13 representative units, with $*$ superscript, are used to derive the crater production function. From left to right are the name codes, rough coordinates of the centre of the unit, the number of craters counted within the unit, and the maximum crater diameter from the unit} 
+%  \caption{List of the 62 units, among them 13 representative units, with $*$ superscript, are used to derive the crater production function. From left to right are the name codes, rough coordinates of the centre of the unit, the number of craters counted within the unit, and the maximum crater diameter from the unit} 
 \label{tab:analytical_units}
 \end{table}
 
@@ -420,7 +421,7 @@ Table~\ref{tab:representative_units} lists the selected representative units, th
 
 Unit selection followed the rigorous requirements outlined by \citet{Neukum1983}, ensuring that crater populations reflect a homogeneous surface age. We prioritised geologically coherent units with uniform crater densities (avoiding those exhibiting gradual spatial variation) and evaluated whether observed craters formed during the exposure of the mapped surface or represented remnants of older, partially eroded terrains. Units exhibiting significant surface modification, such as partial resurfacing or preferential loss of small craters, were excluded. Secondary craters were not considered, as their expected sizes fall below the effective resolution of available Enceladus imagery. The maximum diameter of secondary craters is typically $\sim$5\% of the primary crater diameter \citet{Schultz1980} and decreases with distance from the source crater \citet{McEwen2006}. Because Enceladus hosts only a limited number of large craters (approximately a dozen craters that exceed 20 km), the resulting secondaries are expected to be sub-kilometre in size. At the image resolutions used in this study (typically $\ge$200 m pixel$^{-1}$), such small craters would fall near or below the reliable detection limit and are therefore unlikely to be represented in the counted crater population. Documentation and justification for choosing each of the 13 representative units is provided in Supplementary Section~S2.\\
 
-To ensure statistical robustness across the full diameter range, we normalised and linked up the crater size-frequency measurements from 13 representative units spanning distinct crater-size regimes (Fig.~\ref{fig:age}A).
+To ensure statistical robustness across the full diameter range, we normalised and linked up the crater size-frequency measurements from 13 representative units spanning distinct crater-size regimes.
 Crater diameters were measured consistently at the rim crest, and surface areas were precisely defined to ensure accurate normalisation of crater densities.
 Small craters ($<3$~km) were measured on sparsely cratered smooth plains lacking large impacts, minimising removal by resurfacing or contamination by ejecta. Large craters ($>10$~km), which are intrinsically rare, were sampled from multiple heavily cratered terrains where sufficient counts could be accumulated over large areas. These representative units enabled us to derive the Enceladian CPF over crater diameters from 800~m to 35~km, encompassing the minimum resolvable to the maximum observed diameter.
 
@@ -458,7 +459,7 @@ Practical guidance, such as \citet{Neukum1983,Xiao2015,Robbins2018}, emphasised 
 
 Following the established ``envelope-building'' approach, originally developed for the lunar CPF \citep{Neukum1983}, we apply the same method to construct the Enceladian CPF from selected representative crater size–frequency measurements across geological units. \\
 
-In Fig.~\ref{fig:age}B, we illustrate the observed crater size–frequency measurements for the 13 representative geological units listed in Table~\ref{tab:representative_units}. Crater diameters are binned logarithmically with a bin width of 0.05 in $\log D$, covering diameters from 0.8 to 34 km. This fine binning preserves statistical resolution, particularly in the unit where crater counts are low (which might induce fluctuations in the distribution curves with unbinned data), and facilitates consistent comparison across the crater counts from different units with different crater densities and areal extents.
+In Fig.~\ref{fig:age}B, we illustrate the observed crater size–frequency measurements for the 13 representative geological units listed in Table~\ref{tab:representative_units} and marked on the global mosaic images of Enceladus in Fig.~\ref{fig:age}A. Crater diameters are binned logarithmically with a bin width of 0.05 in $\log D$, covering diameters from 0.8 to 34 km. This fine binning preserves statistical resolution, particularly in the unit where crater counts are low (which might induce fluctuations in the distribution curves with unbinned data), and facilitates consistent comparison across the crater counts from different units with different crater densities and areal extents.
 Conventional bin widths (e.g., $D$ to $D \times \sqrt{2}$, or $\sim0.15$ in log scale, as used in Hartmann's incremental plots) would yield only 12 bins, potentially obscuring features, whereas, 0.05 intervals provide 34 bins, allowing more detailed analysis and robust surface age-fitting in the future.\\
 
 Individual measurements sample different diameter ranges depending on unit size, image resolution, surface morphology that's affected by post-impact modification and resurfacing events. Consequently, no single unit provides a complete and statistically robust crater SFD over the full diameter range on Enceladus. To construct a CPF, we therefore combine multiple measurements that partially overlap in diameter space. Only diameter ranges judged to be reliably preserved and well resolved are retained for each unit.\\
@@ -565,6 +566,9 @@ In this study, we construct a crater production function (CPF) for Enceladus bas
 In the following, we examine how variations in image properties and surface morphology affect the measured crater SFDs, and how systematic differences between the CPF and observed distributions across Enceladus motivate the subdivision into distinct terrain units. We then explore the potential origin of slope variations, and assess the extent to which processes such as partial resurfacing, crater saturation and crater relaxation may contribute to the observed trends. 
 
 \subsection{Known effects of image properties}
+\setcounter{section}{5}
+\setcounter{subsection}{1}
+\setcounter{subsubsection}{1}
 \label{sub:instrumental}
 The global mosaic comprises 108 images in an equirectangular projection, each with distinct resolution, solar incidence angle, and Cassini camera emission angle (see Fig.~12–14 in \citet{Bland2018}). These variations affect crater counts and geomorphological identification. \\
 
