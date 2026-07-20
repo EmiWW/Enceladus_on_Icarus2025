@@ -30,7 +30,6 @@
 \usepackage{xspace}
 \usepackage{caption}
 \usepackage{subfig}
-\setcounter{secnumdepth}{3}
 \newcommand\emi{\color{blue}\xspace}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -186,7 +185,7 @@ The CPF is commonly expressed as a polynomial function relating the logarithmic 
 \begin{equation}
   \log_{10}(N_{(D)}) = \sum_{i=0}^{j} a_{i} \times [\log_{10}(D)]^i
 \end{equation}
-For the lunar CPF in the inner Solar System, the Neukum-style formulation uses $j = 10$, resulting in an 11-degree polynomial \citep{Neukum2001}. Other CPF or production functions have also been defined for the Moon (e.g., \citealt{Marchi2009}).\\
+For the lunar CPF in the inner Solar System, the Neukum-style formulation uses $j = 11$, resulting in an 11-degree polynomial \citep{Neukum2001}. Other CPF or production functions have also been defined for the Moon (e.g., \citealt{Marchi2009}).\\
 
 \subsection{Crater and source population size-frequency distribution}
 Previous crater studies of Enceladus and the outer solar system icy satellites focused on specific terrains, particularly cratered plains, and inferred projectile SFDs from three main sources:
@@ -252,8 +251,9 @@ If the surface undergoes complete renewal, all pre-existing craters are erased, 
 In summary, assuming a unique impactor population, variations in crater size-frequency measurements within the same terrain or planetary body can be attributed to: i) differences in image resolution and crater detectability between surface units; ii) crater saturation, where older and more heavily cratered surfaces exhibit roll-over at larger diameters; and iii) selective removal of craters below a threshold diameter, typically associated with partial resurfacing. The relative contribution of these effects depends on the surface unit and the diameter range considered. Image resolution primarily affects the small-diameter end of the SFD, crater saturation dominates in cratered plains and can even influence larger diameters in heavily cratered terrains, and selective crater removal introduces more complex distortions. However, most of these modifications are easily assessed as documented in Fig~\ref{fig:resurface_exp}.\\
 
 \subsection{Extracting the Enceladian crater production function} 
-Previous surface age estimation for Enceladus has relied on imported or theoretical CPFs, either scaled from the lunar chronology \citep{Spencer2006}, or derived from modelled outer solar system impactor populations \citep{Kirchoff2009,Wong2023,Bottke2024}, none of which confirmed their applicability for Enceladus or other Saturnian satellite systems using their crater record.
-In contrast, our CPF presented in this study is explicitly anchored by Enceladus' observed crater record, enabling a reliable, body-specific framework that reduces reliance on assumptions derived from other planetary environments and physical parameters. Importantly, our CPF is not constructed solely from the heavily cratered terrains, which may under-represent smaller craters due to erosion, resurfacing, or potential crater saturation/equilibrium effects. Instead, guided by the established principles of lunar crater chronology \citep{Neukum1983}, we derive the Enceladean CPF from a global analysis spanning multiple surface units with different crater densities and geomorphological characteristics, including both young ridged plains and ancient heavily cratered regions. This approach minimises biases against small craters and allows us to assess potential variations in the crater size-frequency distribution across terrains. Such variations may reflect differences in resurfacing history or, potentially, changes in the impactor population or source region. By leveraging global coverage and unit-to-unit comparisons, our CPF provides a more robust and internally consistent reference for future age-dating applications as we will demonstrate in the following. 
+Previous surface age estimation for Enceladus has relied on imported or theoretical CPFs, either scaled from the lunar chronology \citep{Spencer2006}, or derived from modelled outer solar system impactor populations \citep{Kirchoff2009,Wong2023,Bottke2024}, none of which confirmed their applicability for Enceladus or other Saturnian satellite systems using their crater record. In contrast, our CPF presented in this study is explicitly anchored by Enceladus' observed crater record, enabling a reliable, body-specific framework that reduces reliance on assumptions derived from other planetary environments and physical parameters. 
+
+Importantly, our CPF is not constructed solely from the heavily cratered terrains, which may under-represent smaller craters due to erosion, resurfacing, or potential crater saturation/equilibrium effects. Instead, guided by the established principles of lunar crater chronology \citep{Neukum1983}, we derive the Enceladean CPF from a global analysis spanning multiple surface units with different crater densities and geomorphological characteristics, including both young ridged plains and ancient heavily cratered regions. This approach minimises biases against small craters and allows us to assess potential variations in the crater size-frequency distribution across terrains. Such variations may reflect differences in resurfacing history or, potentially, changes in the impactor population or source region. By leveraging global coverage and unit-to-unit comparisons, our CPF provides a more robust and internally consistent reference for future age-dating applications as we will demonstrate in the following. 
 
 %======================================================================================================
 
@@ -274,12 +274,6 @@ EW employed ArcGIS with the CraterTools add-in \citep{Kneissl2011} and QGIS with
 \label{sub:units}
 Previous mapping efforts have often grouped extensive regions as single units. For example, \citet{CrowWillard2015} classified 320,000~km$^{2}$ (41\% of Enceladus’ surface) as a single cratered plain. Although \citet{Kirchoff2009} separated the anti-Saturn side cratered plains into mid-latitude and equatorial units, these still encompass broad areas with apparent internal differences. Combining surfaces with potentially different solidification times and geological histories -- especially when younger, lower-crater-density surfaces are included -- dilutes crater statistics by mixing distinct crater populations. This mixing appears as drops in incremental frequencies or shallowing in cumulative frequencies, since smaller craters are more numerous, resulting in turnover or a reduced slope in the SFD at small diameters.\\
 
-To ensure representative crater statistics and size-frequency measurements, both of which are essential for interpreting surface ages and regional geological history, we subdivided Enceladus’ surface into 62 analytical units (Fig.~\ref{fig:division}) based on terrain geomorphology, crater distribution, and instrumental imaging characteristics (see Sec.~\ref{sub:geomorphology} to Sec.~\ref{sub:instrumental} for discussion). Of these, 15 units are based on global geomorphological mapping \citep{CrowWillard2015}, 10 are adapted from previous crater distribution studies \citep{Kirchoff2009}, and the remainder are newly defined here. We apply crater-counting and statistical methods similar to recent regional analyses from \citet{Kinczyk2024}, extending them to a global, unit-resolved catalogue.\\
-
-The names and crater information for all 62 units are listed in Table~\ref{tab:analytical_units} and their spatial distribution is shown in Fig.~\ref{fig:division}. Units previously defined by \citet{CrowWillard2015} are prefixed with ``CW'', those by \citet{Kirchoff2009} with ``KS'', and are further labelled ``T'' for the trailing hemisphere or ``L'' for the leading hemisphere. Newly defined units, primarily within the cratered plains, are prefixed with ``Far'' or ``Near'' to indicate their location on Enceladus' Saturn-facing and anti-Saturn sides, respectively, followed by ``Mid'' for mid-latitude or ``Eq'' for equatorial regions. North polar units are labelled ``NP'', followed by ``CP'' for crater plains or ``lineated'' for lineated plains. For the south polar regions, we adopt the nomenclature of \citet{CrowWillard2015}, including the south polar curvilinear plains (CW-S-curvilinear) and central plain (CW-S-central).\\
-
-While a unit typically denotes a region with similar geological history and geomorphology, our definition is also influenced by variations in image resolution and imaging conditions. As a result, adjacent areas that may form a single unit are sometimes treated separately if they were imaged separately by Cassini, to ensure consistent crater statistical assessment. In a comprehensive geological map developed in future work, such areas would likely be combined and represented by a typical crater SFD.
-
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=1.0\textwidth]{fig/figS1a.png}
@@ -287,18 +281,22 @@ While a unit typically denotes a region with similar geological history and geom
     \label{fig:division}
 \end{figure}
 
+To ensure representative crater statistics and size-frequency measurements, both of which are essential for interpreting surface ages and regional geological history, we subdivided Enceladus’ surface into 62 analytical units (Fig.~\ref{fig:division}) based on terrain geomorphology, crater distribution, and instrumental imaging characteristics (see Sec.~\ref{sub:geomorphology} to Sec.~\ref{sub:instrumental} for discussion). Of these, 15 units are based on global geomorphological mapping \citep{CrowWillard2015}, 10 are adapted from previous crater distribution studies \citep{Kirchoff2009}, and the remainder are newly defined here. We apply crater-counting and statistical methods similar to recent regional analyses from \citet{Kinczyk2024}, extending them to a global, unit-resolved catalogue.\\
+
+The names and crater information for all 62 units are listed in Table~\ref{tab:analytical_units} and their spatial distribution is shown in Fig.~\ref{fig:division}. Units previously defined by \citet{CrowWillard2015} are prefixed with ``CW'', those by \citet{Kirchoff2009} with ``KS'', and are further labelled ``T'' for the trailing hemisphere or ``L'' for the leading hemisphere. Newly defined units, primarily within the cratered plains, are prefixed with ``Far'' or ``Near'' to indicate their location on Enceladus' Saturn-facing and anti-Saturn sides, respectively, followed by ``Mid'' for mid-latitude or ``Eq'' for equatorial regions. North polar units are labelled ``NP'', followed by ``CP'' for crater plains or ``lineated'' for lineated plains. For the south polar regions, we adopt the nomenclature of \citet{CrowWillard2015}, including the south polar curvilinear plains (CW-S-curvilinear) and central plain (CW-S-central).\\
+
 \begin{table}[ht!]
 \centering
   \begin{tabular}{p{4.0cm} p{3.0cm} p{2.0cm} p{3.0cm}}
 \hline
-    \textbf{Analytical unit} & \textbf{Lat., Long. (°)} & \textbf{No. Craters} & \textbf{Maximum Crater Diameter (km)}  \\
+%    \textbf{Analytical unit} & \textbf{Lat., Long. (°)} & \textbf{No. Craters} & \textbf{Maximum Crater Diameter (km)}  \\
 \hline
   CW-L-central$^{*}$ & 90°W, 10°S & 34 & 3.1 \\
   CW-L-CP-island & 86°W, 27°S  & 37 & 4.2 \\ % 75°W, 27°S 
   CW-L-curvilinear &  140°W, 10°N & 7 &  13.1 \\
   CW-L-smooth &  90°W, 25°N & 274 &  2.0 \\
   CW-T-curvilinear-left & 25°E, 5°N & 93 &  15.3\\
-  CW-T-curvilinear-right & 125°E, 20°SN & 143 &  15.8\\
+  CW-T-curvilinear-right & 125°E, 20°S & 143 &  15.8\\
   CW-T-north-lineated & 30°E, 55°N & 187 &  16.3\\
   CW-T-ridged & 80°E, 5°N & 134 &  11.4 \\
   CW-T-square & 70°E, 40°N & 653 &  21.4 \\
@@ -309,7 +307,7 @@ While a unit typically denotes a region with similar geological history and geom
   CW-S-curvilinear & 0°, 60°S & 39 &  3.9 \\
   CW-S-central & 0°, 90°S & 32 &  2.8 \\
   Far-Eq-CP1 & 155°E, 25°N & 199 &  6.9 \\
-  Far-Eq-CP2 & 157°E, 15°SN & 210 &  15.1 \\
+  Far-Eq-CP2 & 157°E, 15°S & 210 &  15.1 \\
   Far-Eq-CP3 & 180°, 15°N & 149 &  10.2\\
   Far-Eq-CP4$^{*}$ & 175°E, 5°S & 1576 & 13.8 \\
   Far-Eq-CP5 & 162°W, 0° & 213 &  4.7 \\
@@ -328,14 +326,14 @@ While a unit typically denotes a region with similar geological history and geom
   Far-Mid-CP10 & 152°W, 30°S & 338 & 13.1 \\
 \hline
 \end{tabular}
-\caption*{Table continues on next page}
+%\caption*{Table continues on next page}
 \end{table}
 
 \begin{table}[ht!]
 \centering
   \begin{tabular}{p{4.0cm} p{3.0cm} p{2.0cm} p{3.0cm} }
 \hline
-    \textbf{Analytical unit} & \textbf{Lat., Long. (°)} & \textbf{No. Craters} & \textbf{Maximum Crater Diameter (km)}\\
+%    \textbf{Analytical unit} & \textbf{Lat., Long. (°)} & \textbf{No. Craters} & \textbf{Maximum Crater Diameter (km)}\\
 \hline
   Near-Eq-CP1 & 20°W, 15°N & 180 &  7.3\\
   Near-Eq-CP2 & 30°W, 10°N & 164 &  8.1\\
@@ -345,11 +343,11 @@ While a unit typically denotes a region with similar geological history and geom
   Near-Eq-CP6 & 15°E, 2°S & 43 &  6.7\\
   Near-Eq-CP7 & 30°E, 10°S & 105 &  6.5\\
   Near-Mid-CP1$^{*}$ & 15°W, 55°N & 1138 & 34.0 \\
-  Near-Mid-CP2$^{*}$ & 18°E, 30°N & 1450 & 15.0 \\
+  Near-Mid-CP2$^{*}$ & 20°W, 30°N & 1450 & 15.0 \\
   Near-Mid-CP3 & 15°E, 30°N & 448 &  10.7\\
   Near-Mid-CP4 & 45°W, 42°S & 150 &  8.5\\
   Near-Mid-CP5 & 20°W, 37°S & 128 &  21.8\\
-  Near-Mid-CP6 & 5°WE, 32°S & 20 &  2.6\\
+  Near-Mid-CP6 & 5°W, 32°S & 20 &  2.6\\
   Near-Mid-CP7 & 20°E, 40°S & 44 &  6.8\\
   NP-CP1 & 120°E, 75°N & 899 &  25\\
   NP-CP2 & 55°E, 70°N & 192 &  16.4\\
@@ -371,6 +369,8 @@ While a unit typically denotes a region with similar geological history and geom
 %  \caption{List of the 62 units, among them 13 representative units, with $*$ superscript, are used to derive the crater production function. From left to right are the name codes, rough coordinates of the centre of the unit, the number of craters counted within the unit, and the maximum crater diameter from the unit} 
 \label{tab:analytical_units}
 \end{table}
+
+While a unit typically denotes a region with similar geological history and geomorphology, our definition is also influenced by variations in image resolution and imaging conditions. As a result, adjacent areas that may form a single unit are sometimes treated separately if they were imaged separately by Cassini, to ensure consistent crater statistical assessment. In a comprehensive geological map developed in future work, such areas would likely be combined and represented by a typical crater SFD.
 
 %------------------------------------------------------------------------------------------------------
 
@@ -421,7 +421,7 @@ Table~\ref{tab:representative_units} lists the selected representative units, th
 
 Unit selection followed the rigorous requirements outlined by \citet{Neukum1983}, ensuring that crater populations reflect a homogeneous surface age. We prioritised geologically coherent units with uniform crater densities (avoiding those exhibiting gradual spatial variation) and evaluated whether observed craters formed during the exposure of the mapped surface or represented remnants of older, partially eroded terrains. Units exhibiting significant surface modification, such as partial resurfacing or preferential loss of small craters, were excluded. Secondary craters were not considered, as their expected sizes fall below the effective resolution of available Enceladus imagery. The maximum diameter of secondary craters is typically $\sim$5\% of the primary crater diameter \citet{Schultz1980} and decreases with distance from the source crater \citet{McEwen2006}. Because Enceladus hosts only a limited number of large craters (approximately a dozen craters that exceed 20 km), the resulting secondaries are expected to be sub-kilometre in size. At the image resolutions used in this study (typically $\ge$200 m pixel$^{-1}$), such small craters would fall near or below the reliable detection limit and are therefore unlikely to be represented in the counted crater population. Documentation and justification for choosing each of the 13 representative units is provided in Supplementary Section~S2.\\
 
-To ensure statistical robustness across the full diameter range, we normalised and linked up the crater size-frequency measurements from 13 representative units spanning distinct crater-size regimes.
+To ensure statistical robustness across the full diameter range, we normalised and linked up the crater size-frequency measurements from 13 representative units spanning distinct crater-size regimes (Fig.~\ref{fig:age}A).
 Crater diameters were measured consistently at the rim crest, and surface areas were precisely defined to ensure accurate normalisation of crater densities.
 Small craters ($<3$~km) were measured on sparsely cratered smooth plains lacking large impacts, minimising removal by resurfacing or contamination by ejecta. Large craters ($>10$~km), which are intrinsically rare, were sampled from multiple heavily cratered terrains where sufficient counts could be accumulated over large areas. These representative units enabled us to derive the Enceladian CPF over crater diameters from 800~m to 35~km, encompassing the minimum resolvable to the maximum observed diameter.
 
@@ -430,7 +430,7 @@ Small craters ($<3$~km) were measured on sparsely cratered smooth plains lacking
 \centering
     \begin{tabular}{p{4.0cm} p{3.0cm} p{2.0cm} p{3.0cm}}
 \hline
-\textbf{Representative unit} & \textbf{Lat., Long. (°)} & \textbf{No. Craters} & \textbf{Fitting Diameter (km)} \\
+      \textbf{Representative unit} & \textbf{Lat., Long. (°)} & \textbf{No. Craters} & \textbf{Fitting D$_{cr}$ ranges (km) }\\
 \hline
 CW-L-central & 90°W, 10°S & 34 & 0.8 $\sim$ 2.5 \\
 CW-T-transitional-left & 35°E, 30°S & 125 & 0.9 $\sim$ 3.8 \\
@@ -440,7 +440,7 @@ Far-Eq-CP4 & 175°E, 5°S & 1576 & 2.0 $\sim$ 10.2\\
 Far-Eq-CP6 & 137°E, 10°S & 125 & 1.6 $\sim$ 5.0 \\
 Far-Eq-CP8 & 175°E, 30°S & 857 & 6.0 $\sim$ 14.9 \\
 Near-Mid-CP1 & 15°E, 55°N & 1138 & 8.0 $\sim$ 34.0 \\
-Near-Mid-CP2 & 18°E, 30°N & 1450 & 8.0 $\sim$ 15 \\
+Near-Mid-CP2 & 20°W, 30°N & 1450 & 8.0 $\sim$ 15 \\
 Far-Mid-CP1 & 115°W, 50°N & 638 & 9.0 $\sim$ 15.4 \\
 Far-Mid-CP2 & 142°W, 42°N & 579 & 9.0 $\sim$ 19.5 \\
 Far-Mid-CP3 & 166°W, 30°N & 436 & 9.0 $\sim$ 31.2 \\
@@ -459,7 +459,7 @@ Practical guidance, such as \citet{Neukum1983,Xiao2015,Robbins2018}, emphasised 
 
 Following the established ``envelope-building'' approach, originally developed for the lunar CPF \citep{Neukum1983}, we apply the same method to construct the Enceladian CPF from selected representative crater size–frequency measurements across geological units. \\
 
-In Fig.~\ref{fig:age}B, we illustrate the observed crater size–frequency measurements for the 13 representative geological units listed in Table~\ref{tab:representative_units} and marked on the global mosaic images of Enceladus in Fig.~\ref{fig:age}A. Crater diameters are binned logarithmically with a bin width of 0.05 in $\log D$, covering diameters from 0.8 to 34 km. This fine binning preserves statistical resolution, particularly in the unit where crater counts are low (which might induce fluctuations in the distribution curves with unbinned data), and facilitates consistent comparison across the crater counts from different units with different crater densities and areal extents.
+In Fig.~\ref{fig:age}B, we illustrate the observed crater size–frequency measurements for the 13 representative geological units listed in Table~\ref{tab:representative_units}. Crater diameters are binned logarithmically with a bin width of 0.05 in $\log D$, covering diameters from 0.8 to 34 km. This fine binning preserves statistical resolution, particularly in the unit where crater counts are low (which might induce fluctuations in the distribution curves with unbinned data), and facilitates consistent comparison across the crater counts from different units with different crater densities and areal extents.
 Conventional bin widths (e.g., $D$ to $D \times \sqrt{2}$, or $\sim0.15$ in log scale, as used in Hartmann's incremental plots) would yield only 12 bins, potentially obscuring features, whereas, 0.05 intervals provide 34 bins, allowing more detailed analysis and robust surface age-fitting in the future.\\
 
 Individual measurements sample different diameter ranges depending on unit size, image resolution, surface morphology that's affected by post-impact modification and resurfacing events. Consequently, no single unit provides a complete and statistically robust crater SFD over the full diameter range on Enceladus. To construct a CPF, we therefore combine multiple measurements that partially overlap in diameter space. Only diameter ranges judged to be reliably preserved and well resolved are retained for each unit.\\
@@ -501,21 +501,16 @@ Figure~\ref{fig:crater}B compares the observed crater SFDs across different anal
 \label{subsec:fitting}
 The crater production function (CPF) for Mercury \citep{Neukum2001}, Mars \citep{Ivanov2001, Hartmann2005}, and asteroids Vesta, Ida \citep{Schmedemann2014}, and Ceres \citep{Hiesinger2016}, have been derived by fitting a mathematical function to the normalised crater SFDs, typically using polynomials or piecewise power laws. The former has traditionally been used for the Lunar \citep{Neukum2001}, and Martian CPFs \citep{Ivanov2001}, while the latter is more commonly used to describe impactor distributions in the outer Solar System \citep{Zahnle2003}. These empirical functions enable the translation of crater densities across different size ranges. \\
 
-For Enceladus, we derived a cumulative CPF by fitting the normalised and combined SFD (coloured points in Fig.~\ref{fig:age}D), we found that a 10$^{\rm th}$-degree polynomial (black line) best represents the CPF over crater diameters between 800~m and 35~km, while preserving a continuous downward slope.
-\emi To avoid unphysical absolute values and pre-assumption of any impactor source, and dependence on impactor-to-crater diameter scaling relations, we express the polynomial fit of the CPF in a \emph{normalised form}, characterised by a \emph{dimensionless shape function} $\widetilde{S}(D_{\rm cr})$. It is important to note that $\widetilde{S}(D_{\rm cr})$ alone does not represent a physical crater density or cumulative crater count; it provides only a relative scaling with diameter, capturing the \emph{shape} of the Enceladian production function. Physical crater densities are recovered by anchoring $\widetilde{S}$ to a directly observed crater density on Enceladus at a chosen reference diameter.
-The CPF is scaled such that the cumulative crater density at 10~km diameter matches the directly observed value from the Far-Mid-CP5 reference unit, corresponding to $\widetilde{S}(D_{\rm ref}) = 1$ at $D_{\rm ref} = 10$~km. The choice of $D_{\rm ref}$ is arbitrary; the shape of the production function is invariant to this choice. By anchoring the normalisation directly to an observed Enceladus crater density rather than to an impactor flux model or impactor-to-crater diameter conversion, the CPF remains self-consistently grounded in the Enceladian crater record and independent of crater scaling relations.
-%To avoid unphysical absolute values, we express the polynomial fit of the CPF in a \emph{normalised form}, scaled to the cumulative crater densities expected from impacts by typical 1~km projectiles (i.e., heliocentric comets) on Enceladus. A 1~km impactor is estimated to produce a final crater with a diameter of $D_{\rm cr} = 22.6$~km, based on icy satellite crater scaling relations \citep[e.g.,][]{Zahnle2003}. 
-%The estimated current number of such projectiles is derived from the observed population of Scattered Disc Objects with diameters greater than 10~km \citep[$(2.0 \pm 0.8) \times 10^{7}$;][]{Nesvorny2019}, and extrapolated down to 1~km using the SFD for trans-Neptunian objects from \citet{Singer2019}.
+For Enceladus, we derived a cumulative CPF by fitting the normalised and combined SFD (coloured points in Fig.~\ref{fig:age}D), we found that a 10$^{\rm th}$-degree polynomial (black line) best represents the CPF over crater diameters between 800~m and 35~km, while preserving a continuous downward slope.\\
+%To avoid unphysical absolute values, we express the polynomial fit of the CPF in a \emph{normalised form}, scaled to the cumulative crater densities expected from impacts by typical 1~km projectiles (i.e., heliocentric comets) on Enceladus. A 1~km impactor is estimated to produce a final crater with a diameter of $D_{\rm cr} = 22.6$~km, based on icy satellite crater scaling relations \citep[e.g.,][]{Zahnle2003}. The estimated current number of such projectiles is derived from the observed population of Scattered Disc Objects with diameters greater than 10~km \citep[$(2.0 \pm 0.8) \times 10^{7}$;][]{Nesvorny2019}, and extrapolated down to 1~km using the SFD for trans-Neptunian objects from \citet{Singer2019}.
 %The normalised CPF is expressed as:
-\normalcolor
 \begin{equation}
     \log \widetilde{S}(D_{\rm cr}) = \sum_{i=0}^{10} a_i \, \bigl[\log D_{\rm cr}\bigr]^i,
-    \label{eq:cpf_scale}
+    \label{equ:cpf_scale}
 \end{equation}
-%where $D_{\rm cr}$ is the crater diameter in km, $\widetilde{S}(D_{\rm cr})$ is a \emph{dimensionless shape function} that describes the relative form of the Enceladian cumulative crater density. The normalised function $\widetilde{S}(D_{\rm cr})$ is defined such that $\widetilde{S}(D_{\rm ref}) = 1$ at the reference diameter $D_{\rm ref} = 22.6$ km, which corresponds to the final crater size expected from a 1~km impactor on Enceladus \citep{Zahnle2003,Wong2023}. We note that alternative scaling relations \citep[e.g.,][]{Holsapple2007, Holsapple2022} may yield somewhat different impactor-to-crater diameter conversions; however, since our CPF is expressed in normalised form relative to a fixed reference diameter, the shape of the production function remain unaffected by this choice. Only the absolute impactor size associated with the normalisation diameter would shift accordingly.\\
-
-
-\begin{table}[t]%% placement specifier
+%where $D_{\rm cr}$ is the crater diameter in km, $\widetilde{S}(D_{\rm cr})$ is a \emph{dimensionless shape function} that describes the relative form of the Enceladian cumulative crater density. The normalised function $\widetilde{S}(D_{\rm cr})$ is defined such that $\widetilde{S}(D_{\rm ref}) = 1$ at the reference diameter $D_{\rm ref} = 22.6$ km, which corresponds to the final crater size expected from a 1~km impactor on Enceladus \citep{Zahnle2003,Wong2023}. \\
+%
+\begin{table}[H]%% placement specifier
 \centering
 \begin{tabular}{cc}
 \hline
@@ -537,18 +532,15 @@ The CPF is scaled such that the cumulative crater density at 10~km diameter matc
 \caption{Coefficients of the polynomial representation of Enceladus’ cumulative crater production function. The polynomial describes the relative shape of the cumulative distribution; absolute normalisation is defined separately.}
 \label{tab:cpf}
 \end{table}
-
-\emi
-Table~\ref{tab:cpf} lists the polynomial coefficients $a_{0}$–$a_{10}$. The coefficient $a_{0}$ encodes the absolute crater density of a given terrain unit and serves as a relative age measure; the remaining coefficients $a_{1}$–$a_{10}$ define the shape of the production function, and their ratios remain invariant across units.\\
+%
 %Table~\ref{tab:cpf} lists the polynomial coefficients $a_{0}$–$a_{10}$ that include this normalisation, accounting for Enceladus’ impact probability \citep{Wong2023,Brasser2025}, Enceladus' global surface area, and the number of scattered disc objects mentioned above. $a_{0}$ depends on the actual crater density of the studied unit and is used as a relative age measure. The other coefficients scale according to variations in $a_0$, and their ratios remain the same.\\
 %
 %It is important to note that $\widetilde{S}(D_{\rm cr})$ alone does not represent a physical crater density or cumulative number of craters. Instead, it provides a relative scaling with diameter.
-%Physical quantities, e.g., expected crater densities, are obtained by normalising $\widetilde{S}(D_{\rm cr})$ at a reference diameter ($D_{\rm ref} = 22.6$ km), such as that produced by a 1~km heliocentric comet.
+%Physical quantities, e.g., expected crater densities, are obtained by normalising $\widetilde{S}(D_{\rm cr})$ at a reference diameter, such as that produced by a 1~km comet.
 %In this way, the polynomial captures the \emph{shape} of the production function, while the absolute normalisation is set externally.\\
-
-To ensure reproducibility and facilitate use of our CPF, we provide a documented Python code\footnote{Available at \url{https://github.com/EmiWW/enceladus_crater_production_function} and archived on Zenodo: \url{https://doi.org/DOI}.} that (i) implements the polynomial functions of the CPF, (ii) includes routines to compute crater densities for arbitrary crater diameters as scaled to the crater densities of 10~km diameter craters on the Far-Mid-CP5 reference unit, and (iii) allows comparisons with published impactor and crater SFDs, including those from \citet{Kirchoff2009}, \citet{Zahnle2003}, and \citet{Singer2019}; for comparisons with impactor SFDs, the impactor-to-crater diameter conversion is performed using the $\pi$-scaling law of \citet{Zahnle2003}, accounting for Enceladus-specific gravity, impact velocity, and impact probability.
+%
+%To ensure reproducibility and facilitate use of our CPF, we provide a documented Python code that (i) implements the polynomial functions of the CPF, (ii) includes routines to compute crater densities for arbitrary impactor diameters, using the impactor-to-crater size conversion based on the $\pi$-scaling law of \citet{Zahnle2003}, and (iii) allows comparisons with published impactor and crater SFDs, including those from \citet{Kirchoff2009}, \citet{Zahnle2003}, and \citet{Singer2019}. 
 %This implementation enables users to reproduce Fig.~\ref{fig:cpf_compare} and to adapt the CPF to updated satellite-specific parameters, e.g., different icy satellites' surface gravity, impact velocities and impact probability, etc.\\
-\normalcolor
 
 To facilitate comparison to a piecewise linear power-law fitting, where different crater diameter ranges follow distinct power-law slopes, we note that the corresponding cumulative power-law slope of this polynomial varies from -2.6 to -4.2.
 The slope is shallower below $D_{\rm cr}\!\sim\!3$~km and steepens beyond $D_{\rm cr}\!\sim\!7$~km, although this transition is not pronounced enough to indicate a clear break in the SFD at 7--8~km. Such steepening at the largest diameters likely reflects edge effects due to the rarity of large craters.
@@ -566,15 +558,12 @@ In this study, we construct a crater production function (CPF) for Enceladus bas
 In the following, we examine how variations in image properties and surface morphology affect the measured crater SFDs, and how systematic differences between the CPF and observed distributions across Enceladus motivate the subdivision into distinct terrain units. We then explore the potential origin of slope variations, and assess the extent to which processes such as partial resurfacing, crater saturation and crater relaxation may contribute to the observed trends. 
 
 \subsection{Known effects of image properties}
-\setcounter{section}{5}
-\setcounter{subsection}{1}
-\setcounter{subsubsection}{1}
 \label{sub:instrumental}
 The global mosaic comprises 108 images in an equirectangular projection, each with distinct resolution, solar incidence angle, and Cassini camera emission angle (see Fig.~12–14 in \citet{Bland2018}). These variations affect crater counts and geomorphological identification. \\
 
 Variations in Cassini's surface imaging of Enceladus influence both crater counts and morphological interpretation. Image resolution constrains the smallest detectable crater diameters and can artificially flatten SFDs as diameters approach the resolution limit. If a delineated unit erroneously spans images of differing resolutions, the reduced detection of smaller craters in lower-resolution areas produces an apparent flattening in the SFD, which could be mistaken as resurfacing activity. In our analysis, we carefully separated units with respect to image resolution, to mitigate this effect.\\
 
-Illumination conditions, particularly solar incidence angle—the angle between incoming sunlight and the surface normal—also affect shadow length and feature visibility. Higher incidence angles produce longer shadows that enhance the visibility of features such as crater walls, while lower incidence angles (e.g., near local noon) yield more uniform illumination, than obscures subtle topography such as relaxed craters and low-relief ridges or troughs.\\
+Illumination conditions, particularly solar incidence angle—the angle between incoming sunlight and the surface normal—also affect shadow length and feature visibility. Higher incidence angles produce longer shadows that enhance the visibility of features such as crater walls, while lower incidence angles (e.g., near local noon) yield more uniform illumination, obscuring subtle topography such as relaxed craters and low-relief ridges or troughs.\\
 
 Viewing geometry further constrains interpretation. The emission angle, defined as the angle between Cassini's camera viewing direction and the surface normal, affects feature appearance and measurement accuracy. High emission angles can distort features and reduce the accuracy of size measurements (e.g., ridge width or crater rim-to-rim diameter). See Fig.~2 in \citet{Bland2018} for visual examples of how incidence and emission angles alter surface appearance.\\
 
@@ -831,7 +820,7 @@ This unit, which shares large craters with Far-Mid-CP2, records two main tectoni
 
 \begin{figure}[H]
     \includegraphics[width=1.0\linewidth]{fig/FigS4B_Far-Mid-CP9.png}
-    \caption{Far-Mid-CP9 (165°W, 40°N) feature three sets of pit chains formed at different times \citep{Martin2014}. The oldest NW-SE-trending chains (labelled as magenta lines) cross from the west, sharing an origin with those from Far-Mid-CP8. Two NE-SW trending chains lie along the southeast boundary adjacent to CW-S-curvilinear (red lines) and the northwest boundary adjacent to Far-Eq-CP8 (orange lines). The newest, also NE-SW chains dominate the terrain (yellow lines), intersecting most craters. The pit chain colours follow those used by \citet{Martin2014}. Due to images’ resolution limits, they indicate the general direction and rough location of each branch, rather than the precise position of individual pit chains. A most obvious feature is a 22 km crater at the southwest tip (white diamond), where pit chains and ridged belts have eroded at least one-third of its rim. Craters appear progressively more eroded and smoother toward the south.}
+    \caption{Far-Mid-CP9 (165°W, 40°S) feature three sets of pit chains formed at different times \citep{Martin2014}. The oldest NW-SE-trending chains (labelled as magenta lines) cross from the west, sharing an origin with those from Far-Mid-CP8. Two NE-SW trending chains lie along the southeast boundary adjacent to CW-S-curvilinear (red lines) and the northwest boundary adjacent to Far-Eq-CP8 (orange lines). The newest, also NE-SW chains dominate the terrain (yellow lines), intersecting most craters. The pit chain colours follow those used by \citet{Martin2014}. Due to images’ resolution limits, they indicate the general direction and rough location of each branch, rather than the precise position of individual pit chains. A most obvious feature is a 22 km crater at the southwest tip (white diamond), where pit chains and ridged belts have eroded at least one-third of its rim. Craters appear progressively more eroded and smoother toward the south.}
     \label{fig:app_erosion3}
 \end{figure}
 

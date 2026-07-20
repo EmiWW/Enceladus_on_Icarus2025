@@ -1,0 +1,3 @@
+[submodule "enceladus_crater_production_function"]
+	path = enceladus_crater_production_function
+	url = https://github.com/EmiWW/enceladus_crater_production_function
