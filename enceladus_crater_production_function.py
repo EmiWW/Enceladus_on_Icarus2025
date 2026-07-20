@@ -155,7 +155,6 @@ def generate_CPF() -> np.poly1d:
     cpf_coefficients = np.array(
         [
             -0.59319679, #a0
-#            -0.065237099,  # a0
             -2.35027511,  # a1
             -5.55729243,  # a2
             24.95085739,  # a3
