@@ -88,16 +88,16 @@
 Interpreting Enceladus’s past and present surface history and interior state remains challenging, owing to uncertain prescription of its impact bombardment history and limited interpretation of its crater statistics. Further progress in understanding its evolutionary history can be achieved with an improved crater chronology model and a thorough assessment of Enceladus’s surface.
 Here we present the first step in the form of a comprehensive, global crater catalogue with geomorphology survey for Enceladus. From our dataset we build the crater production function (CPF), which is the underlying, unmodified crater size-frequency distribution of the satellite surface, assuming no subsequent modification.
 We obtained the CPF with a data-driven approach;  therefore it makes no assumptions about the impactor source population or planet evolution models or the timing of impact.
-We fit the CPF with a high-order polynomial as is customary for the Moon and Mars, capturing the slope variations across different crater diameter ranges.%indicating the waviness at different crater diameters. 
 The Enceladian CPF generally has a steeper cumulative slope than that of the Moon and Mars for small crater diameters $D_{\rm cr}<10$~km , as well as that of the size-frequency distribution of trans-Neptunian objects. This CPF serves as a critical observational input for an Enceladian crater chronology model, enabling the conversion of crater densities into absolute surface ages. Extending the crater cataloguing and CPF derivation of this study to other Saturnian satellites will determine whether the Enceladian CPF is unique; a shared CPF would indicate a common impactor population, providing  observational constraints on the size-frequency distribution of small bodies in the outer Solar System.\\
   (253 words)
-%Future work will indicate whether the Enceladian CPF is unique or shared with the other nearby Saturnian satellites.
 \end{abstract}
 
 %%Research highlights
 \begin{highlights}
-\item Research highlight 1
-\item Research highlight 2
+\item New global crater catalogue of Enceladus down to 800 m diameter
+\item First Enceladus-specific crater production function is derived
+\item CPF is constructed directly from Enceladus' crater record
+\item Provides a framework for future age dating of icy satellites
 \end{highlights}
 
 %% Keywords
@@ -184,12 +184,12 @@ Although the assumption of a time-invariant CPF could be seen as a limitation, r
 
 While several ``crater production functions'' have been proposed for outer Solar System satellites based on impactor models or limited crater datasets (e.g., \citealt{Zahnle2003, Kirchoff2009, Singer2019, Wong2023}), a fully observed, body-specific crater production function for Enceladus (or any icy satellite) has not previously been constructed. Here, we present an Enceladian crater production function by quantifying the spatial distribution and size–frequency characteristics of craters across all major surface units, yielding a functional description of the unaltered crater population that is internally consistent at the global scale. \\
 
-The CPF is commonly expressed as a polynomial function relating the logarithmic of the cumulative crater size-frequency ($N_{(D)}$) to the logarithm of the crater diameter ($D$) in km:
+The CPF is commonly expressed as a polynomial function relating the logarithmic of the cumulative crater size-frequency ($N_{D}$) to the logarithm of the crater diameter ($D$) in km:
 \begin{equation}
-  \log_{10}(N_{(D)}) = \sum_{i=0}^{j} a_{i} \times [\log_{10}(D)]^i
+  \log_{10}(N_{D}) = \sum_{i=0}^{j} a_{i} \times [\log_{10}(D)]^i
   \label{eq:cpf}
 \end{equation}
-For the lunar CPF in the inner Solar System, the Neukum-style formulation uses $j = 11$, resulting in an 11th-degree polynomial \citep{Neukum2001}. The polynomial form was adopted because the lunar crater SFD exhibits genuine slope variations across diameter ranges that a simple power law cannot capture \citep{Neukum1983}; the same reasoning applies to Mars \citep{Ivanov2001} and, as we demonstrate here, to Enceladus. Other production functions have also been defined for the Moon (e.g., \citealt{Marchi2009}).\\
+For the lunar CPF in the inner Solar System, the Neukum-style formulation uses $j = 11$, resulting in an 11$^{th}$-degree polynomial \citep{Neukum2001}. The polynomial form was adopted because the lunar crater SFD exhibits genuine slope variations across diameter ranges that a simple power law cannot capture \citep{Neukum1983}; the same reasoning applies to Mars \citep{Ivanov2001} and, as we demonstrate here, to Enceladus. Other production functions have also been defined for the Moon (e.g., \citealt{Marchi2009}).\\
 
 \subsection{Crater and source population size-frequency distribution}
 Previous crater studies of Enceladus and the outer solar system icy satellites focused on specific terrains, particularly cratered plains, and inferred projectile SFDs from three main sources:
@@ -197,7 +197,7 @@ a) Jupiter-family comets (yellow line in Fig.~\ref{fig:cpf_compare}), b) craters
 and c) trans-Neptunian objects (pink line in Fig.~\ref{fig:cpf_compare}) \citep{Zahnle2003, Singer2019, Bottke2024}.
 Although these may all be viable sources, the comparisons rely on SFDs derived from different satellite systems (i.e., Jovian, Saturnian, Neptunian, and Pluto-Charon, respectively), where variations in planetary encounter velocities and therefore average impact velocities with the satellites, as well as material of the target surfaces, affect crater formation, potentially limiting their direct applicability to Enceladus and the other Saturnian satellites \citep{Neukum1983,Zahnle2003,DiSisto2007,DiSisto2011,DiSisto2013,DiSisto2016,Rossignoli2019,DiSisto2020,Rossignoli2022}.\\
 
-Moreover, these projectile SFDs mainly describe kilometre-scale objects, with the best constraints for bodies with diameter $>$10~km. Yet, most observable craters on Enceladus range from a few hundred metres to 34~km in diameter. Given Enceladus’ low mass and the high impact velocities of heliocentric impactors (relative to some of the other mid-sized Saturnian satellites; \citealt{Zahnle2003, Wong2021}), most visible craters on Enceladus were formed by sub-kilometre impactors. Using the impactor-to-crater scaling law of \citet{Zahnle2003} for icy targets --- which depends various parameters such as surface gravity and mean impact velocity --- a 1~km impactor produces a crater of $\sim$22.6~km on Enceladus, a size exceeded by only seven observed craters on the surface. This sub-kilometre size range is precisely where the projectile population remains largely unknown, making it unreliable for constructing a CPF. \\
+Moreover, these projectile SFDs mainly describe kilometre-scale objects, with the best constraints for bodies with diameter $>$10~km. Yet, most observable craters on Enceladus range from a few hundred metres to 34~km in diameter. Given Enceladus’ low mass and the high impact velocities of heliocentric impactors (relative to some of the other mid-sized Saturnian satellites; \citealt{Zahnle2003, Wong2021}), most visible craters on Enceladus were formed by sub-kilometre impactors. Using the impactor-to-crater scaling law of \citet{Zahnle2003} for icy targets --- which depends various parameters such as surface gravity and mean impact velocity --- a 1~km impactor produces a crater of $\sim$22.6~km on Enceladus, a diameter exceeded by only seven observed craters on the surface. This sub-kilometre size range is precisely where the projectile population remains largely unknown, making it unreliable for constructing a CPF. \\
 
 \begin{figure}
     \centering
@@ -259,18 +259,12 @@ In summary, assuming a unique impactor population, variations in crater size-fre
 The relative contribution of these effects depends on the surface unit and the diameter range considered. Image resolution primarily affects the small-diameter end of the SFD, crater saturation dominates in cratered plains and can even influence larger diameters in heavily cratered terrains, and selective crater removal introduces more complex distortions. However, most of these modifications are easily assessed as documented in Figure~\ref{fig:cp_exp} to \ref{fig:rp_exp}.\\
 
 \subsection{Extracting the Enceladian crater production function} 
-Previous surface age estimation for Enceladus has relied on imported or theoretical CPFs, either scaled from the lunar chronology \citep{Spencer2006}, or derived from modelled outer solar system impactor populations \citep{Kirchoff2009,Wong2023,Bottke2024}, none of which confirmed their applicability for Enceladus or other Saturnian satellite systems using their crater record.
-In contrast, our CPF presented in this study is explicitly anchored by Enceladus' observed crater record, enabling a reliable, body-specific framework that reduces reliance on assumptions derived from other planetary environments and physical parameters.\\
+Previous surface age estimates for Enceladus have relied on imported or theoretical CPFs, either scaled from the lunar chronology \citep{Spencer2006} or derived from modelled outer solar system impactor populations \citep{Kirchoff2009,Wong2023,Bottke2024}. None of these approaches have been directly validated using Enceladus' own crater record. In contrast, the CPF developed here is explicitly anchored to the observed global crater population of Enceladus, providing a reliable, body-specific framework that minimises assumptions inherited from other planetary environments and physical parameters.\\
 
-The key to extracting the underlying CPF from modified surfaces lies in the methodology: each surface unit preserves a reliable crater record only within a specific diameter range unaffected by the modification processes described above. 
-Crater diamater ranges affected by saturation, incomplete detection due to image resolution, or selective erasure by resurfacing are identified and excluded from the fitting procedure. The CPF shape is then recovered by combining the valid diameter ranges across multiple surface units of different ages --- following the overlap normalisation approach established by \citet{Neukum1983} --- such that the consistent, invariant shape that emerges across all units represents the underlying CPF, independent of the resurfacing history of any individual unit. \\
+The key to extracting the underlying CPF is recognising that each surface unit preserves a reliable crater record only over a restricted diameter range that remains largely unaffected by geological modification. Diameter ranges affected by crater saturation, observational incompleteness, resurfacing, or other modification processes are excluded from the fitting procedure. The CPF shape is then recovered by combining the remaining valid crater populations from multiple surface units of different ages and morphologies through overlap normalisation, following the approach of \citet{Neukum1983}. The consistent size--frequency distribution that emerges from these overlapping crater populations is interpreted as the underlying Enceladian CPF. The detailed implementation, representative unit selection criteria, and reliable crater diameter ranges are described in Section~\ref{subsec:cpf}.\\
 
-Erosive processes, including tectonic resurfacing and preferential removal of smaller craters, are accounted for by identifying a minimum threshold diameter below which crater counts are no longer reliable for a given unit --- this threshold is assessed individually for each unit based on surface morphology and typically ranges from 1 to 5~km (detailed in Section~\ref{subsec:cpf}). 
-Only crater diameter ranges above this threshold are retained. Units with significant surface modification are excluded entirely from the CPF derivation. We note, however, that crater relaxation driven by viscous ice flow and crater floor infill by E-ring material cannot be fully accounted for, as historial global heat flux estimates and south polar plume infall rates remain poorly constrained; these represent recognised limitations of the present analysis.\\
-
-Importantly, our CPF is not constructed solely from the heavily cratered terrains, which may under-represent smaller craters due to erosion, resurfacing, or potential crater saturation. Instead, we derive the Enceladian CPF from a global analysis spanning multiple surface units with different crater densities and geomorphological characteristics, including both young ridged plains and ancient heavily cratered regions. 
-This approach minimises biases against small craters and allows us to assess potential variations in the crater size-frequency distribution across terrains. By leveraging global coverage and unit-to-unit comparisons, our CPF provides a more robust and internally consistent reference for future age-dating applications as we will demonstrate in the following.\\
-
+Importantly, our CPF is not constructed solely from heavily cratered terrains, which may under-represent smaller craters owing to erosion, resurfacing, or potential crater saturation effects. Instead, guided by the established principles of lunar crater chronology \citep{Neukum1983}, we derive the Enceladian CPF from a global analysis spanning multiple surface units with different crater densities and geomorphological characteristics. This approach minimises biases against small craters by incorporating terrains where smaller crater remain comparatively well preserved, while simultaneously allowing assessment of regional variations in crater size-frequency distributions that may reflect differences in resurfacing history or, potentially, variations in impactor populations. By leveraging global coverage and unit-to-unit comparisons, the resulting CPF provides a more robust and internally consistent framework for future age-dating applications on Enceladus and other icy satellites. We note, however, that crater relaxation driven by viscous ice flow and crater floor infill by E-ring material cannot be fully quantified, as Enceladus' historical heat flux and long-term south polar plume deposition rates remain poorly constrained. These processes therefore represent
+recognised limitations of the present analysis.\\
 
 %======================================================================================================
 
@@ -314,7 +308,7 @@ are prefixed with ``Near'' for units on the sub-Saturn (Saturn-facing) hemispher
 %are prefixed with ``Far'' or ``Near'' to indicate their location on Enceladus' Saturn-facing and anti-Saturn sides, respectively, 
 followed by ``Mid'' for mid-latitude or ``Eq'' for equatorial regions. North polar units are labelled ``NP'', followed by ``CP'' for crater plains or ``lineated'' for lineated plains. For the south polar regions, we adopt the nomenclature of \citet{CrowWillard2015}, including the south polar curvilinear plains (CW-S-curvilinear) and central plain (CW-S-central).\\
 
-Of the 62 units, 13 were selected as representative units for CPF derivation following the criteria of \citet{Neukum1983}: units must exhibit spatially homogeneous crater densities, show no evidence of significant partial resurfacing or preferential small-crater loss, and contain sufficient craters for statistically robust size-frequency measurements. The minimum reliable crater diameter was assessed individually per unit based on surface morphology and imaging conditions, typically ranging from 1 to 5~km. Full documentation and justification for each representative unit is provided in Supplementary Section~S1.\\
+Of the 62 units, 13 were selected as representative units for CPF derivation following the criteria of \citet{Neukum1983}: units must exhibit spatially homogeneous crater densities, show no evidence of significant partial resurfacing or preferential small-crater loss, and contain sufficient craters for statistically robust size-frequency measurements. The minimum reliable crater diameter was assessed individually per unit based on surface morphology and imaging conditions, typically ranging from 1 to 5~km. More explanations is described in next section, full documentation and justification for each representative unit is provided in Supplementary Section~S1.\\
 
 Units adopted from \citet{CrowWillard2015} and \citet{Kirchoff2009} retain their original boundaries as published and are not further subdivided, with two exceptions: (i) the heavily cratered plains, which are further subdivided in this study, and (ii) the paired units on the trailing hemisphere --- CW's striated and transitional plains and KS's ridged plain (rp-)1, rp2, and rp4 --- which each comprise a left and right part (see Fig.~2 of \citealt{CrowWillard2015} and Fig.~4 of \citealt{Kirchoff2009}). For these paired units, crater counts and size-frequency measurements were conducted separately for each part, indicated by the ``-left'' 
 and ``-right'' labels. \\
@@ -409,7 +403,7 @@ KS-RP6$^{B}$ & 140°E, 15°N & 209 & 15.8 \\
 
 While a unit typically denotes a region with similar geological history and geomorphology, our definition is also influenced by variations in image resolution and imaging conditions. 
 A geologically coherent region that was imaged by Cassini as separate images of different resolution would exhibit an artificial flattening in the SFD at small diameters in the lower-resolution portion, which is indistinguishable from geological resurfacing unless accounted for; such regions are therefore subdivided into separate units to ensure reliable crater statistics within each unit.
-Where adjacent units are separated for instrumental in addition to geomorphological and crater distribution reasons, their SFDs are expected to be mutually consistent well above the reliable diameter limits --- set by the poorer-resolution constituent image. In a comprehensive geological map developed in future work, instrumentally separated areas would likely be combined and represented by a single unit.\\ 
+Where adjacent units are separated for instrumental in addition to geomorphological and crater distribution reasons, their SFDs are expected to be mutually consistent well above the reliable diameter limits --- set by the poorer-resolution constituent image. In a comprehensive geological map developed in future work, instrumentally separated areas would likely be combined and represented by a single geologic unit.\\ 
 %As a result, adjacent areas that may form a single unit are sometimes treated separately if they were imaged separately by Cassini, to ensure consistent crater statistical assessment. In a comprehensive geological map developed in future work, such areas would likely be combined and represented by a typical crater SFD.
 
 
@@ -417,41 +411,33 @@ Where adjacent units are separated for instrumental in addition to geomorphologi
 
 \subsection{Preparing crater counts to derive the Enceladus-specific crater production function}
 \label{subsec:cpf}
-Tectonic activity is hypothesised to selectively remove smaller craters while leaving larger ones relatively intact \citep{Michael2010}. As a result, observed crater size-frequency measurements often gradually, and possibly irregularly, roll off toward smaller diameters, which can lead to a misinterpretation of the crater production function (or initial SFD) if the slope is fit directly to these measurements. Including smaller, potentially removed craters in the analysis under-represents the original projectile flux and thus the CPF.\\
+Tectonic activity and other erosive processes are hypothesised to preferentially remove smaller craters while leaving larger ones relatively intact \citep{Michael2010}. Consequently, small and potentially removed craters are under-represented in the observed crater size-frequency measurements, causing the cumulative distributions to gradually, and sometimes irregularly, roll off towards smaller diameters. Directly fitting such modified crater populations may therefore lead to a misinterpretation of the CPF.\\
 
-To address this, we analysed the global crater database in conjunction with surface morphology to assess how tectonic resurfacing alters the crater size-frequency measurements. Specifically, we examined craters with diameters comparable to the size of tectonic features traversing the same terrain, or those susceptible to removal by partial resurfacing, often extending from adjacent, younger terrains. 
- The threshold diameter is determined through three complementary assessments: 
-(i) a morphological assessment, in which the sizes of tectonic features --- ridges, troughs, and resurfacing fronts --- traversing each unit are measured, 
-as craters of comparable or smaller size are likely to have been obscured or erased; (ii) an image resolution assessment, in which the diameter below which 
-craters become increasingly difficult to resolve is identified from the image pixel scale and illumination conditions of each unit; and (iii) an SFD 
-assessment, in which the diameter at which the observed cumulative SFD begins to flatten or roll off below the expected power-law slope is identified, 
-indicating the onset of preferential crater removal or resolution incompleteness, as confirm with (i) and (ii). 
-The threshold is set at the largest of the three estimates for each unit, and varies by region, typically from 1~km to 5~km.
-%This approach allowed us to identify the minimum crater diameter that remains largely unaffected by geological activity; this minimum diameter varies by region, typically from 1~km to 5~km. 
-In heavily cratered regions, small craters are preferentially erased by subsequent impacts, flattening the slope at the small end of the size-frequency measurements \citep{DiSisto2016, Minton2019}. In tectonically active areas, ridges and troughs obscure or erase craters of similar or smaller size. Conversely, in smoother, recently resurfaced terrains, newly formed smaller craters may be distinguishable, with some preserved down to 1~km. Establishing this threshold diameter enables construction of an initial, non-geologically modified crater SFD, which serves as the basis for deriving the CPF.\\
+In heavily cratered terrains, subsequent impacts preferentially erase smaller craters, flattening the small-diameter end of the observed crater SFD through crater saturation and equilibrium processes \citep{DiSisto2016,Minton2019}. In tectonically active regions, ridges, troughs, and resurfacing fronts may similarly obscure or remove craters of comparable or smaller size. Conversely, smoother terrains with lower crater densities may preserve smaller craters more effectively, with some units retaining crater populations down to diameters of $\sim$1~km. These effects motivate the identification of a threshold diameter above which crater populations are considered minimally modified and therefore suitable for CPF derivation.\\
 
-Given these considerations, not all mapped units were suitable for assessing undisturbed production distributions using observed crater SFDs. We therefore selected a list of units that best preserve presumed primary crater populations, using established photogeological criteria for reliable crater statistics as recommended by \citet{Neukum1983} for constructing the lunar crater production function.
+To mitigate these effects, we analysed the global crater database in conjunction with surface morphology to identify, for each unit, a minimum threshold diameter below which crater counts are no longer considered reliable for a given unit. Specifically, we examined craters with diameters comparable to tectonic features traversing the same terrain, or those potentially susceptible to removal by partial resurfacing, often extending from adjacent (younger) terrains.
+The threshold diameter was determined using three complementary assessments: (i) a morphological assessment, in which the sizes of tectonic features --- including ridges, troughs, and resurfacing fronts --- were measured, as craters of comparable or smaller size are likely to have been obscured or erased; 
+(ii) an image-resolution assessment, in which the diameter below which craters become increasingly difficult to resolve was estimated from the image pixel scale and illumination conditions of each unit; 
+and (iii) an SFD assessment, in which the diameter at which the cumulative crater size-frequency distribution begins to flatten or roll off was identified, indicating the onset of preferential crater removal or observational incompleteness, as corroborated by criteria (i) and (ii). For each unit, the adopted threshold was taken as the largest of the three estimates and typically ranges from 1 to 5~km.\\
+
+Given these considerations, not all mapped units are suitable for reconstructing undisturbed crater production distributions. We therefore selected a list of units that best preserve presumed primary crater populations, using established photogeological criteria for reliable crater statistics as recommended by \citet{Neukum1983} for constructing the lunar crater production function.
 Table~\ref{tab:representative_units} lists the selected representative units, their central coordinates, number of craters within the unit, and the crater diameter ranges used to construct the CPF.\\
 
 Unit selection followed the rigorous requirements outlined by \citet{Neukum1983}, ensuring that crater populations reflect a homogeneous surface age. We prioritised geologically coherent units, that is, units sharing a similar formation history and bounded by mappable structural or morphological boundaries --- with uniform crater densities (avoiding those exhibiting gradual spatial variation). We evaluated whether observed craters formed during the exposure of the mapped surface or represented remnants of older, partially eroded terrains. Units exhibiting significant surface modification, such as partial resurfacing or preferential loss of small craters, were excluded. 
-Secondary craters were not considered, as their expected sizes fall below the effective resolution of available Enceladus imagery. The maximum diameter of secondary craters is typically $\sim$5\% of the primary crater diameter \citet{Schultz1980, Bierhaus2018} and decreases with distance from the source crater \citet{McEwen2006}. 
-Based on the largest crater on Enceladus ($\sim$35~km), the maximum expected secondary diameter is $\sim$1.7~km; because Enceladus hosts only a limited number of large craters (approximately a dozen craters that exceed 20~km), the resulting secondaries are expected to be sub-kilometre in size for most source craters.
+Secondary craters were not considered, as their expected sizes fall below the effective resolution of available Enceladus imagery. The maximum diameter of secondary craters is typically $\sim$5\% of the primary crater diameter \citep{Schultz1980, Bierhaus2018} and decreases with distance from the source crater \citep{McEwen2006}. 
+Based on the largest crater on Enceladus ($\sim$35~km), the maximum expected secondary diameter is $\sim$1.7~km; because Enceladus hosts only a limited number of large craters (approximately a dozen craters that exceed 20~km), the resulting secondaries are expected to be sub-kilometre in size.
 At the image resolutions used in this study (typically $\ge$200 m pixel$^{-1}$), such small craters would fall near or below the reliable detection limit and are therefore unlikely to be represented in the counted crater population. Documentation and justification for choosing each of the 13 representative units is provided in Supplementary Section~S1.\\
 
 To ensure statistical robustness across the full diameter range, we normalised and 
-%linked up the crater size-frequency measurements from the representative units spanning distinct crater-size regimes (Fig.~\ref{fig:age}A).
 joined the crater size-frequency measurements from the representative units spanning distinct crater-size regimes through an overlap normalisation procedure: adjacent units contributing overlapping diameter ranges 
-are scaled to a common reference density by averaging the crater frequency ratios within shared diameter bins, following \citet{Neukum1983}.\\
+are scaled to a common reference density by averaging the crater frequency ratios within shared diameter bins, following \citet{Neukum1983}.
+Crater diameters were measured consistently at the rim crest, and unit surface areas were precisely defined to ensure accurate normalisation of crater densities.\\
 
-Crater diameters were measured consistently at the rim crest, and surface areas were precisely defined to ensure accurate normalisation of crater densities.
-%Small craters ($<3$~km) were measured on sparsely cratered smooth plains lacking large impacts, minimising removal by resurfacing or contamination by ejecta. Large craters ($>10$~km), which are intrinsically rare, were sampled from multiple heavily cratered terrains where sufficient counts could be accumulated over large areas. These representative units enabled us to derive the Enceladian CPF over crater diameters from 800~m to 35~km, encompassing the minimum resolvable to the maximum observed diameters.
-Small craters ($<3$~km) occur across Enceladus, but to construct an unbiased CPF, small-crater
-counts were obtained exclusively from sparsely cratered smooth plains selected as representative
-units of the small-crater population (e.g., CW-L-central, CW-T-transitional-left, CW-T-striated-left, and KS-RP4-right; marked as navy to green in figure~\ref{fig:age}). Their lower crater densities minimise size-frequency smoothing due to potential crater saturation, and the absence of nearby large impacts reduces removal by resurfacing or contamination by ejecta.
-In contrast, large craters ($>10$~km) are intrinsically rare, such that measurements from any single unit yield highly uncertain counts at large diameters with few detections and large Poisson errors. To obtain robust statistics, we combined crater counts from neighbouring heavily cratered mid-latitude units that share comparable geological histories and crater size-frequency distributions: Near-Mid-CP1 and Near-Mid-CP2 on the near side (marked as pink crosses in Fig.~\ref{fig:age}B--D), and Far-Mid-CP1, Far-Mid-CP2, and Far-Mid-CP3 on the far side (marked as pink stars in Fig.~\ref{fig:age}B--D).
-Combining these adjacent units substantially reduces scatter and Poisson uncertainties at large crater diameters, yielding ten sampling datasets from the 13 representative units. 
+Small craters ($<3$~km) occur widely across Enceladus. However, to derive an unbiased CPF, small-crater counts were obtained exclusively from sparsely cratered smooth plains selected as representative units of the small-crater population (e.g., CW-L-central, CW-T-transitional-left, CW-T-striated-left, and KS-RP4-right; marked from navy to green in Fig.~\ref{fig:age}). Their low crater densities minimise potential smoothing of the crater SFD due to crater saturation, while the absence of nearby large impacts reduces possible removal by ejecta emplacement, local resurfacing, and contamination by secondary craters.\\
+
+In contrast, large craters ($>10$~km) are intrinsically rare, such that crater counts from individual units suffer from substantial Poisson uncertainties. To improve counting statistics, crater populations from neighbouring heavily cratered mid-latitude units exhibiting comparable geological histories and similar crater SFDs were combined: Near-Mid-CP1 and Near-Mid-CP2 on the near side (marked as pink crosses in Fig.~\ref{fig:age}B--D), and Far-Mid-CP1, Far-Mid-CP2, and Far-Mid-CP3 on the far side (marked as pink stars in Fig.~\ref{fig:age}B--D). 
+Combining these adjacent units substantially reduces statistical scatter at large diameters, yielding ten sampling datasets derived from the 13 representative units. 
 Together — smooth plains for the small-diameter range, and combined heavily cratered terrains for the large-diameter range — these datasets enabled us to derive the Enceladian CPF over crater diameters from 800~m to 35~km, encompassing the minimum resolvable to the maximum observed diameter.
-
 
 \subsection{Scaling and fitting the crater production function}
 \begin{table}[t]
@@ -490,7 +476,8 @@ In this approach, crater SFD measurements from multiple geological units of diff
 This normalisation procedure follows established CPF construction methods developed for the Moon \citep{Neukum1975, Neukum1983, Werner2005}. 
 \citet{Neukum1983} formalised this method for the Moon across units spanning ${\sim}$0.1 to more than 4~billion years and diameters from 10~m to 300~km, demonstrating that the composite SFD envelope is time-invariant and deviates significantly from a simple power law. The distribution was instead described by an 11th-degree polynomial in $\log$--$\log$ space (Eq.~\ref{eq:cpf}). We adopt the same strategy here for Enceladus.\\
 
-In Fig.~\ref{fig:age}B, we illustrate the observed crater size–frequency measurements for the 13 representative geological units listed in Table~\ref{tab:representative_units} and marked on the global mosaic images of Enceladus in Fig.~\ref{fig:age}A. Crater diameters are binned logarithmically with a bin width of 0.05 in $\log D$, covering diameters from 0.8 to 34 km. 
+The 13 representative geological units listed in Table~\ref{tab:representative_units} are marked on the global mosaic images of Enceladus in Fig.~\ref{fig:age}A. We illustrate the observed crater size-frequency measurements for these units in Fig.~\ref{fig:age}B.
+Crater diameters are binned logarithmically with a bin width of 0.05 in $\log D$, covering diameters from 0.8 to 34 km. 
 This fine binning preserves statistical resolution, particularly in the units where crater counts are low (e.g., CW-L-central), reducing fluctuations that would otherwise arise with unbinned data. It also facilitates consistent comparison across the crater counts from different units with different crater densities and areal extents.
 Conventional bin widths (e.g., $D$ to $D \times \sqrt{2}$, or $\sim0.15$ in log scale, as used in Hartmann's incremental plots) would yield only 12 bins, potentially obscuring features, whereas, 0.05 intervals provide 34 bins, allowing more detailed analysis and robust surface age-fitting in the future.\\
 
@@ -500,9 +487,7 @@ Figure~\ref{fig:age}C illustrates the normalisation procedure and how the crater
 
 We adopt the Far-Mid-CP5 terrain as the reference unit because it spans a broad diameter range and exhibits an intermediate crater density, providing stable overlap with both more sparsely and more densely cratered terrains. 
 Heavily cratered units are more likely to approach the crater saturation limit, where crater destruction begins to balance production and the SFD shape becomes unreliable as a proxy for the production function; units with lower crater densities have accumulated too few intermediate and large craters to provide statistically robust counts at those diameter ranges, resulting in large Poisson uncertainties and poor count resolution. Far-Mid-CP5 sits between these extremes, making it the most robustly constrained anchor for the normalisation.
-In Fig.~\ref{fig:age}D, the same measurements are shown after applying vertical scaling factors to align crater densities across overlapping diameter intervals.\\
-
-After normalisation, the standardised crater size–frequency measurements from all units are merged to form a composite envelope that traces the time-independent shape of the crater production function (black line in Fig.~\ref{fig:age}D). 
+In Fig.~\ref{fig:age}D, the same measurements are shown after applying vertical scaling factors to align crater densities across overlapping diameter intervals. After normalisation, the standardised crater size–frequency measurements from all units are merged to form a composite envelope that traces the time-independent shape of the crater production function (black line in Fig.~\ref{fig:age}D). 
 %
 % ============ PAGE 1: Fig 4A and 4B ============
 \begin{figure}[H]
@@ -555,89 +540,11 @@ After normalisation, the standardised crater size–frequency measurements from 
 
     \caption[]{(Continued.)
         \textbf{(C)} Visualisation of the vertical scaling applied to align crater size-frequency measurements to the reference crater density of Far-Mid-CP5. Arrows indicate the direction and relative magnitude of each unit's scaling: upward-pointing arrows denote units with lower crater densities that are scaled up, while downward-pointing arrows denote more densely cratered units scaled down; the latter are less visually prominent due to the logarithmic scale.
-        %\textbf{(C)} Visualisation of the upscaling and alignment of the crater measurements.
         \textbf{(D)} Normalised size-frequency measurements relative to the crater density of Far-Mid-CP5 (selected as reference owing to its broad diameter coverage and intermediate crater density, providing stable overlap with both sparser and denser units), with the black line showing a 10$^{\rm th}$-degree polynomial fit for the crater production function.
-%        \textbf{(D)} Normalised size-frequency measurements relative to the crater density of Far-Mid-CP5, with the black line showing a 10$^{\rm th}$-degree polynomial fit for the crater production function.
         }
     \label{fig:age_cont}   % optional second label for cross-ref to page 2
 \end{figure}
 
-%\begin{figure}[H]
-%    \centering
-%
-%    % --- Row 1: A full width ---
-%    \begin{subfigure}{\textwidth}
-%        \centering
-%        \captionsetup{width=.9\linewidth}
-%        \includegraphics[width=\linewidth]{fig/fig2a_solid_semitransparent.png}
-%        \caption*{\raggedright\textbf{A)}}
-%    \end{subfigure}
-%
-%    \vspace{-1.0em}
-%
-%    % --- Row 2: B alone at half width ---
-%    \begin{subfigure}{0.49\textwidth}
-%        \centering
-%        \captionsetup{width=.9\linewidth}
-%        \includegraphics[width=\linewidth]{fig/icarus_fig4b.png}
-%        \caption*{\raggedright\textbf{B)}}
-%    \end{subfigure}
-%
-%    \vspace{0.5em}
-%
-%    % --- Row 3: C and D side by side ---
-%    \begin{subfigure}{0.49\textwidth}
-%        \centering
-%        \captionsetup{width=.9\linewidth}
-%        \includegraphics[width=\linewidth]{fig/icarus_fig4c_with_arrow.png}
-%        \caption*{\raggedright\textbf{C)}}
-%    \end{subfigure}%
-%    \hfill
-%    \begin{subfigure}{0.49\textwidth}
-%        \centering
-%        \captionsetup{width=.9\linewidth}
-%        \includegraphics[width=\linewidth]{fig/icarus_fig4d.png}
-%        \caption*{\raggedright\textbf{D)}}
-%    \end{subfigure}
-%\begin{figure}[H]
-%    \centering
-%    \begin{subfigure}{1.0\textwidth}
-%      \centering
-%      %\captionsetup{width=.9\linewidth}
-%      \resizebox{\hsize}{!}{\includegraphics{fig/fig2a_solid_semitransparent.png}}
-%      \caption*{\raggedright\textbf{A)}}
-%    \end{subfigure}
-%    \vspace{-1.0em}
-%    \begin{subfigure}{0.49\textwidth}
-%      \centering
-%      %\captionsetup{width=.9\linewidth}
-%      \resizebox{\hsize}{!}{\includegraphics{fig/icarus_fig4b.png}}
-%      \caption*{\raggedright\textbf{B)}}
-%    \end{subfigure}
-%    \begin{subfigure}{0.49\textwidth}
-%      \centering
-%      %\captionsetup{width=.9\linewidth}
-%      \resizebox{\hsize}{!}{\includegraphics{fig/icarus_fig4c_with_arrow.png}}
-%      \caption*{\raggedright\textbf{C)}}
-%    \end{subfigure}
-%    \begin{subfigure}{0.49\textwidth}
-%      \centering
-%      %\captionsetup{width=.9\linewidth}
-%      \resizebox{\hsize}{!}{\includegraphics{fig/icarus_fig4d.png}}
-%      \caption*{\raggedright\textbf{D)}}
-%    \end{subfigure}
-%%    \raisebox{2.4mm}{\includegraphics[width=0.3\textwidth]{fig/icarus_fig4d.png}}
-%    \caption{Construction of the crater production function.
-%        \textbf{(A)} Representative units overlaid on global mosaic images of Enceladus. White names denote units referenced from \citet{Kirchoff2009} and \citet{CrowWillard2015}, while black names denote units defined in this study.
-%        \textbf{(B)} Crater size-frequency measurements for ten sampling datasets with logarithmic binning at 0.05 intervals. To improve large-crater statistics, neighbouring heavily cratered mid-latitude units with comparable size-frequency distributions are combined: Near-Mid-CP1\,\&\,CP2 (near side) and Far-Mid-CP1, CP2,\,\&\,CP3 (far side), yielding ten datasets from the 13 representative units. Transitioning colours (navy to pink) indicate increasing crater density and larger typical diameters. The error bars represent Poisson errors.
-%%        \textbf{(B)} Crater size-frequency measurements for each unit with logarithmic binning at 0.05 intervals. Transitioning colours (navy to pink) indicate increasing crater density and larger typical diameters. The error bars represent Poisson errors.
-%        \textbf{(C)} Visualisation of the vertical scaling applied to align crater size-frequency measurements to the reference crater density of Far-Mid-CP5. Arrows indicate the direction and relative magnitude of each unit's scaling: upward-pointing arrows denote units with lower crater densities that are scaled up, while downward-pointing arrows denote more densely cratered units scaled down; the latter are less visually prominent due to the logarithmic scale.
-%        %\textbf{(C)} Visualisation of the upscaling and alignment of the crater measurements.
-%        \textbf{(D)} Normalised size-frequency measurements relative to the crater density of Far-Mid-CP5 (selected as reference owing to its broad diameter coverage and intermediate crater density, providing stable overlap with both sparser and denser units), with the black line showing a 10$^{\rm th}$-degree polynomial fit for the crater production function.
-%%        \textbf{(D)} Normalised size-frequency measurements relative to the crater density of Far-Mid-CP5, with the black line showing a 10$^{\rm th}$-degree polynomial fit for the crater production function.
-%        }
-%    \label{fig:age}
-%\end{figure}
 %------------------------------------------------------------------------------------------------------
 
 \section{Results}
@@ -761,7 +668,7 @@ Figure~\ref{fig:unit_subdivide_example} shows an example where Far-Mid-CP9 and F
 Craters, being circular or elliptical, are generally distinguishable from most tectonic features -- such as ridges, troughs, and chasmata -- which are often linear and parallel. However, distinguishing craters from tectonic features of similar scale can be challenging, particularly when the width of curvilinear troughs in transitional units (e.g., CW-T-transitional-left/right; \citet{CrowWillard2015}) resembles that of small craters (1–3.5~km wide). Cross-cutting troughs may produce quadrilateral or circular-like features that mimic small craters. In cratered plains, heavily eroded ``squarish'' craters (see Fig.~\ref{fig:app_erosion1}) and craters intersected by pit chains (Fig.~\ref{fig:app_erosion3}) are often difficult to identify and measure. The size and shape of these ambiguous craters vary across units due to differences in background topography, necessitating separate consideration of crater counts for each unit. All of which results in a possible underdetection of craters at scales similar to the tectonic surface texture. \\
 %% added sentence
 
-Additionally, Enceladus’ surface is characterised by abundant ridges and troughs that often form large, nearly parallel groups with similar widths, dominating regions such as the far-side southern mid-latitude cratered plain (e.g., Far-Eq-CP3) and the trailing hemisphere transitional plain (e.g., KS-RP1-middle). When a more extensive region displays the same group of ridges or troughs, this pattern indicates partial or complete resurfacing by a single event, which can affect surface age and crater density. However, regions with similar morphology may form at different times through similar processes. Therefore, considering the superposed crater population is essential for distinguishing units or subunits that appear morphologically similar but have distinct formation ages. Thus, we can infer several episodes of tectonic overprinting has modified Enceladus' surface (related to crater density per diameter bin), with the resulting SFDs varying across diameter ranges according to the scale and extent of the underlying tectonic textures. 
+Additionally, Enceladus’ surface is characterised by abundant ridges and troughs that often form large, nearly parallel groups with similar widths, dominating regions such as the far-side southern mid-latitude cratered plain (e.g., Far-Eq-CP3) and the trailing hemisphere transitional plain (e.g., KS-RP1-middle). When a more extensive region displays the same group of ridges or troughs, this pattern indicates partial or complete resurfacing by a single event, which can affect surface age and crater density. However, regions with similar morphology may form at different times through similar processes. Therefore, considering the superposed crater population is essential for distinguishing units or subunits that appear morphologically similar but have distinct formation ages. Thus, we can infer several episodes of tectonic overprinting has modified Enceladus' surface (related to crater density per diameter bin), with the resulting SFDs varying across diameter ranges according to the scale and extent of the underlying tectonic textures. \\
 
 Unit boundaries were accordingly drawn along large-scale geomorphological structures --- ridges, troughs, and surface texture transitions --- which are visually identifiable in the global mosacis, to ensure each unit captures a geologically coherent region. 
 Figure~\ref{fig:unit_subdivide_example} shows an example where the eastern boundary of Far-Mid-CP10 is defined by a prominent ridge system — a lineated band of closely-spaced scarps in CW-L-curvilinear — separating the two units.\\
@@ -769,7 +676,7 @@ Figure~\ref{fig:unit_subdivide_example} shows an example where the eastern bound
 
 \subsubsection{Spatial crater density variations across Enceladus}
 \label{subsec:crater_distribution}
-Crater density varies across Enceladus, even within the cratered plains and subdued cratered plains defined by \citet{CrowWillard2015}. Because surface age estimates depend on crater density -- older surfaces accumulate more craters -- combining crater counts from areas that solidified at different times can skew average crater densities and misrepresent solidification ages. Accurate age calculations therefore necessitate bounding units to areas with similar crater densities.\
+Crater density varies across Enceladus, even within the cratered plains and subdued cratered plains defined by \citet{CrowWillard2015}. Because surface age estimates depend on crater density -- older surfaces accumulate more craters -- combining crater counts from areas that solidified at different times can skew average crater densities and misrepresent solidification ages. Accurate age calculations therefore necessitate bounding units to areas with similar crater densities.\\
 
 However, Enceladus presents additional challenges due to its complex and potentially multiple resurfacing history. Not all surfaces experienced complete resurfacing, which would erase all pre-existing features and fully reset ages; instead, many areas were only partially resurfaced. Some cratered plains show gradual decreases in crater density, for example from high to low latitudes (e.g., Far-Eq-CP8 to Far-Eq-CP4) or near boundaries with other terrains or tectonic features (e.g., Far-Eq-CP4 to Far-Eq-CP7). These variations in crater density reflect differences in surface age and resurfacing intensity, and necessitate the classification of distinct units. 
 %% added sentence
@@ -784,8 +691,7 @@ From Fig.~\ref{fig:crater}B, we observe that the two most heavily cratered terra
 One could argue that this rolling off results from a change in the cratering population with time. Yet, geomorphological analysis points towards partial resurfacing as a plausible and more straightforward explanation, selectively removing small craters first, and most prominently for the heavily cratered plains \citep{Michael2010}. Heavily cratered regions have accumulated high crater densities, implying they comprise old surfaces. These regions have since been disturbed by tectonic-like structures that extend from neighbouring terrains. Such tectonic activity has modified the crater record, particularly for craters with diameter ranges comparable to the scale of the tectonic features. Cassini's images reveal ample evidence of partially eroded or traversed craters within the ancient cratered plains, demonstrating the effect of tectonic structures extending from neighbouring, less-cratered younger surfaces. Additional partial resurfacing mechanisms — including resurfacing by basin-forming impacts and local crustal melting consistent with the diachronous crustal solidification argued here — are also plausible contributors.\\
 
 
-Regarding disturbance by tectonic-like features, for example, in the trailing hemisphere, the relatively young CW-S-curvilinear unit -- identified by its well-preserved curvilinear ridges and scarcity of craters -- has traversed and eroded small craters along the southern boundary of the heavily cratered Far-Mid-CP9 unit (Fig.~\ref{fig:app_erosion3}). Similarly, in the leading hemisphere, the formation of the smooth and sparsely cratered terrain, CW-L-Curvilinear, apparently degraded and obscured craters in the nearby cratered plains Near-Mid-CP1 and Near-Mid-CP2, producing ridged and lineated structures that cut across pre-existing craters and preferentially removed smaller ones (Fig.~\ref{fig:app_erosion2}). Additional examples of partial resurfacing, crater erosion, and tectonic-like modification are provided in Supplementary Section~S2.\\
-%Regarding disturbance by tectonic-like features, for example, in the trailing hemisphere, the relatively young CW-S-curvilinear unit -- identified by its well-preserved curvilinear ridges and scarcity of craters -- has traversed and eroded small craters along the southern boundary of the heavily cratered Far-Mid-CP9 unit (please refer to Supplemertary section, Figure S.1.3). Similarly, in the leading hemisphere, the formation of the smooth and sparsely cratered terrain, CW-L-Curvilinear, apparently degraded/obscured the craters in nearby cratered plains, i.e., Near-Mid-CP1 and Near-Mid-CP2, producing ridged and lineated structures that cut across pre-existing craters and preferentially removed smaller ones (Figure S.1.2.). Additional examples of partial resurfacing, crater erosion, and tectonic-like modification are provided in the Supplementary Section~S2.\\
+Regarding disturbance by tectonic-like features, for example, in the trailing hemisphere, the relatively young CW-S-curvilinear unit -- identified by its well-preserved curvilinear ridges and scarcity of craters -- has traversed and eroded small craters along the southern boundary of the heavily cratered Far-Mid-CP9 unit (Fig.~\ref{fig:app_erosion3}). Similarly, in the leading hemisphere, the formation of the smooth and sparsely cratered terrain, CW-L-Curvilinear, apparently degraded and obscured craters in the nearby cratered plains, i.e., Near-Mid-CP1 and Near-Mid-CP2, producing ridged and lineated structures that cut across pre-existing craters and preferentially removed smaller ones (Fig.~\ref{fig:app_erosion2}). Additional examples of partial resurfacing, crater erosion, and tectonic-like modification are provided in Supplementary Section~S2.\\
 
 By contrast, scarcely cratered regions (e.g., Fig.~\ref{fig:crater}B green and blue, units around the central leading and trailing hemisphere) appear smoother and morphologically more homogeneous, often dominated by single-directional lineated bands of ridges and troughs. Their low crater density suggests they formed more recently, while their structural uniformity implies resurfacing occurred during a single, coherent geological event. Having undergone fewer episodes of tectonic-like reworking and crater erosion, their crater populations are less modified. 
 Consequently, the SFDs of these less-cratered and presumably more recently solidified terrains exhibit little or no roll-off; the resulting steep crater SFDs suggest that the recent impactor population is characterised by a steep size distribution, which cannot be explained by secondary cratering processes associated with impacts on Enceladus itself.\normalcolor\\
@@ -798,9 +704,9 @@ On more heavily cratered terrains (pink and orange data), the SFD rolls off at l
 
 \subsection{Crater degradation due to viscous relaxation}
 \label{subsec:relax}
-Crater degradation processes may themselves modify the observed crater size--frequency distribution and therefore potentially influence the derived crater production function. Studies of lunar crater degradation suggest that crater detectability decreases with time and that smaller craters generally have shorter observable lifetimes than larger ones \citep{Fassett2014,Fassett2022}. In contrast, models for Enceladus indicate that viscous relaxation may preferentially affect larger craters owing to their greater depths and the temperature dependence of ice rheology \citep{Bland2012}. Because these studies concern different degradation mechanisms operating on fundamentally different surface materials, their quantitative results cannot be directly compared or transferred to Enceladus.
+Crater degradation processes may themselves modify the observed crater size--frequency distribution and therefore potentially influence the derived crater production function. Studies of lunar crater degradation suggest that crater detectability decreases with time and that smaller craters generally have shorter observable lifetimes than larger ones \citep{Fassett2014,Fassett2022}. In contrast, models for Enceladus indicate that viscous relaxation may preferentially affect larger craters owing to their greater depths and the temperature dependence of ice rheology \citep{Bland2012}. Because these studies concern different degradation mechanisms operating on fundamentally different surface materials, their quantitative results cannot be directly compared or transferred to Enceladus.\\
 
-At present, the influence of crater relaxation on Enceladus' crater SFD remains poorly constrained. In this study, we do not explicitly quantify relaxation effects, as measurements of crater depth-to-diameter ratios and rim degradation are beyond the scope of the present work. If relaxation operates globally and preferentially modifies craters within particular diameter ranges, it could locally produce deficits or excesses in specific crater sizes and thereby distort the observed CPF. Alternatively, if relaxation is spatially heterogeneous and linked to local thermal conditions or plume deposition, its effects may primarily contribute to regional slope variations and local departures from the CPF, with some of these variations potentially averaging out when constructing a global production function. Furthermore, if crater degradation timescales are substantially longer than the ages of younger terrains, crater SFD measurements on such surfaces are expected to be less affected by viscous relaxation.
+At present, the influence of crater relaxation on Enceladus' crater SFD remains poorly constrained. In this study, we do not explicitly quantify relaxation effects, as measurements of crater depth-to-diameter ratios and rim degradation are beyond the scope of the present work. If relaxation operates globally and preferentially modifies craters within particular diameter ranges, it could locally produce deficits or excesses in specific crater sizes and thereby distort the observed CPF. Alternatively, if relaxation is spatially heterogeneous and linked to local thermal conditions or plume deposition, its effects may primarily contribute to regional slope variations and local departures from the CPF, with some of these variations potentially averaging out when constructing a global production function. Furthermore, if crater degradation timescales are substantially longer than the ages of younger terrains, crater SFD measurements on such surfaces are expected to be less affected by viscous relaxation.\\
 
 Recently \citet{Bland2012,Martin2023} indicate that Enceladus’ low gravity and nominal cold surface temperature of $\sim$70 K, even with a high constant heat flux of 150 mW m$^{-2}$ still make complete crater burial through viscous relaxation and burial by south polar plumes and E-ring material alone unlikely. However, the observed crater relaxation (e.g., \citealt{Bland2012}) and scarcity of large craters near the equator likely required a short period of excessive heat flux ($>$150 mW m$^{-2}$) and warmer subsurface temperatures ($\sim$150 K). Such conditions were possibly enhanced by insulation from regolith or plume material.\\
 
@@ -818,7 +724,7 @@ Future work will indicate whether the Enceladian CPF can be applied to the other
 With an appropriate description of the projectile flux, it will also be possible to constrain the timing and rates of the processes that modified Enceladus’ surface. In this contribution, however, we focus on describing the nature and sequence of these processes. Importantly, Enceladus’ surface evolution reflects the combined influence of endogenic activity—driven primarily by tidal heating—and exogenic modification through impact cratering. Together, these mechanisms rejuvenate the surface, obscuring or erasing parts of its cratering record while preserving clues to the moon’s complex (and potentially ancient) geological history. A corresponding improved model crater chronology for Enceladus will be presented in a forthcoming paper.
 
 \section*{Acknowledgments}
-To prevent visual distortion of the data and exclusion of readers with colour-vision deficiencies, the Scientific colour map batlow \citet{Crameri2020} is used in all the figures in this work. EW would like to thank the Japan Society for the Promotion of Science (JSPS) for the support provided through the JSPS Research Fellow grant No. 22KJ12886 during which this work originated. SCW and RB acknowledge the Research Council of Norway for funding through its Centres of Excellence funding scheme, project No. 332523 (PHAB). MRK appreciates the support from the NASA Cassini Data Analysis Program, grant No. 80NSSC22K0632. Our QGIS map with complete crater counts and units are available by email request from the corresponding author.
+To prevent visual distortion of the data and exclusion of readers with colour-vision deficiencies, the Scientific colour map batlow from \citet{Crameri2020} is used in all the figures in this work. EW would like to thank the Japan Society for the Promotion of Science (JSPS) for the support provided through the JSPS Research Fellow grant No. 22KJ12886 during which this work originated. SCW and RB acknowledge the Research Council of Norway for funding through its Centres of Excellence funding scheme, project No. 332523 (PHAB). MRK appreciates the support from the NASA Cassini Data Analysis Program, grant No. 80NSSC22K0632. Our QGIS map with complete crater counts and units are available by email request from the corresponding author.
 
 \bibliographystyle{elsarticle-harv}
 \bibliography{enceladus_crater}{}
